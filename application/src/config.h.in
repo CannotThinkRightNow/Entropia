@@ -1,0 +1,9 @@
+#pragma once
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// Do not use "constexpr auto"
+#define NAME "@PROJECT_NAME@"
+#define VERSION "@PROJECT_VERSION@"
+
+#endif /* CONFIG_H */

@@ -1,0 +1,383 @@
+//////////////////////////////////////////////////
+// CMake Settings
+//////////////////////////////////////////////////
+// This file is only useful when using Microsoft Visual Studio.
+
+{
+  ////////////////////
+  // Environments
+  ////////////////////
+  "environments": [
+    {
+      "environment": "none"
+    },
+    {
+      "namespace": "polly",
+      "root": "polly"
+    }
+  ],
+  ////////////////////
+  // Configurations
+  ////////////////////
+  "configurations": [
+    ////////////////////
+    // Android
+    ////////////////////
+    {
+      "name": "Android-x86-Windows-x86-Release",
+      "description": "Build application for Android x86 on Windows x86.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-x86",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-arm-Windows-x86-Release",
+      "description": "Build application for Android ARM on Windows x86.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-arm64-Windows-x86-Release",
+      "description": "Build application for Android ARM64 on Windows x86.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm64",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-mips-Windows-x86-Release",
+      "description": "Build application for Android ARM64 on Windows x86.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-x86-Windows-x64-Release",
+      "description": "Build application for Android x86 on Windows x86-64.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-x86",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-arm-Windows-x64-Release",
+      "description": "Build application for Android ARM on Windows x86-64.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-arm64-Windows-x64-Release",
+      "description": "Build application for Android ARM64 on Windows x86-64.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm64",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-mips-Windows-x64-Release",
+      "description": "Build application for Android ARM64 on Windows x86-64.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    ////////////////////
+    // iOS
+    ////////////////////
+    {
+      "name": "iOS-Universal-Release",
+      "description": "Build application for iOS Universal.",
+      "generator": "Xcode",
+      "configurationType": "RelWithDebInfo",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-12-0-dep-9-0-device-bitcode-cxx11.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "iOS-Universal-NoCodeSign-Release",
+      "description": "Build application for iOS Universal.",
+      "generator": "Xcode",
+      "configurationType": "RelWithDebInfo",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-nocodesign-12-0-dep-9-0-bitcode-cxx11.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    ////////////////////
+    // Linux
+    ////////////////////
+    {
+      "name": "Linux-x64-Remote-Debug",
+      "description": "Debug application for Linux x86-64 remotely.",
+      "generator": "Unix Makefiles",
+      "remoteMachineName": "${defaultRemoteMachineName}",
+      "configurationType": "Debug",
+      "intelliSenseMode": "linux-gcc-x64",
+      "remoteCMakeListsRoot": "/var/tmp/src/${workspaceHash}/${name}",
+      "cmakeExecutable": "/usr/bin",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "remoteBuildRoot": "/var/tmp/build/${workspaceHash}/build/${name}",
+      "remoteInstallRoot": "/var/tmp/build/${workspaceHash}/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesOutputVerbosity": "Normal",
+      "remoteCopySourcesConcurrentCopies": "10",
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopySourcesExclusionList": [
+        ".vs",
+        ".git",
+        "${polly.root}"
+      ],
+      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "remoteCopyBuildOutput": false,
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/linux-gcc-x64.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [
+        "none" // "linux_x64"
+      ]
+    },
+    {
+      "name": "Linux-x64-Remote-Release",
+      "description": "Build application for Linux x86-64 remotely.",
+      "generator": "Unix Makefiles",
+      "remoteMachineName": "${defaultRemoteMachineName}",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "linux-gcc-x64",
+      "remoteCMakeListsRoot": "/var/tmp/src/${workspaceHash}/${name}",
+      "cmakeExecutable": "/usr/bin",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "remoteBuildRoot": "/var/tmp/build/${workspaceHash}/build/${name}",
+      "remoteInstallRoot": "/var/tmp/build/${workspaceHash}/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesOutputVerbosity": "Normal",
+      "remoteCopySourcesConcurrentCopies": "10",
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopySourcesExclusionList": [
+        ".vs",
+        ".git",
+        "${polly.root}"
+      ],
+      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "remoteCopyBuildOutput": false,
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/linux-gcc-x64.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [
+        "none" // "linux_x64"
+      ]
+    },
+    {
+      "name": "Linux-arm-Remote-Debug",
+      "description": "Debug application for Linux ARM remotely.",
+      "generator": "Unix Makefiles",
+      "remoteMachineName": "${defaultRemoteMachineName}",
+      "configurationType": "Debug",
+      "intelliSenseMode": "linux-gcc-arm",
+      "remoteCMakeListsRoot": "/var/tmp/src/${workspaceHash}/${name}",
+      "cmakeExecutable": "/usr/bin",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "remoteBuildRoot": "/var/tmp/build/${workspaceHash}/build/${name}",
+      "remoteInstallRoot": "/var/tmp/build/${workspaceHash}/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesOutputVerbosity": "Normal",
+      "remoteCopySourcesConcurrentCopies": "10",
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopySourcesExclusionList": [
+        ".vs",
+        ".git",
+        "${polly.root}"
+      ],
+      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "remoteCopyBuildOutput": false,
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/linux-gcc-armhf.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [
+        "none" // "linux_arm"
+      ]
+    },
+    {
+      "name": "Linux-arm-Remote-Release",
+      "description": "Build application for Linux ARM remotely.",
+      "generator": "Unix Makefiles",
+      "remoteMachineName": "${defaultRemoteMachineName}",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "linux-gcc-arm",
+      "remoteCMakeListsRoot": "/var/tmp/src/${workspaceHash}/${name}",
+      "cmakeExecutable": "/usr/bin",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "remoteBuildRoot": "/var/tmp/build/${workspaceHash}/build/${name}",
+      "remoteInstallRoot": "/var/tmp/build/${workspaceHash}/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesOutputVerbosity": "Normal",
+      "remoteCopySourcesConcurrentCopies": "10",
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopySourcesExclusionList": [
+        ".vs",
+        ".git",
+        "${polly.root}"
+      ],
+      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "remoteCopyBuildOutput": false,
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/linux-gcc-armhf.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [
+        "none" // "linux_arm"
+      ]
+    },
+    ////////////////////
+    // macOS
+    ////////////////////
+    {
+      "name": "macOS-Release",
+      "description": "Build application for macOS.",
+      "generator": "Xcode",
+      "configurationType": "RelWithDebInfo",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/osx-10-14.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    ////////////////////
+    // Windows
+    ////////////////////
+    {
+      "name": "Windows-x86-Debug",
+      "description": "Debug application for Windows x86.",
+      "generator": "Visual Studio 15 2017",
+      "configurationType": "Debug",
+      "intelliSenseMode": "windows-msvc-x86",
+      "inheritEnvironments": [
+        "none" // "msvc_x64_x64"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Windows-x86-Release",
+      "description": "Build application for Windows x86.",
+      "generator": "Visual Studio 15 2017",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "windows-msvc-x86",
+      "inheritEnvironments": [
+        "none" // "msvc_x64_x64"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Windows-x64-Debug",
+      "description": "Debug application for Windows x86-64.",
+      "generator": "Visual Studio 15 2017 Win64",
+      "configurationType": "Debug",
+      "intelliSenseMode": "windows-msvc-x64",
+      "inheritEnvironments": [
+        "none" // "msvc_x64_x64"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Windows-x64-Release",
+      "description": "Build application for Windows x86-64.",
+      "generator": "Visual Studio 15 2017 Win64",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "windows-msvc-x64",
+      "inheritEnvironments": [
+        "none" // "msvc_x64_x64"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": ""
+    }
+  ]
+}
