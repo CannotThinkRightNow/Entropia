@@ -1,25 +1,34 @@
 # Unnamed (Placeholder Name)
 It's not going to be called **_Unnamed_**, but I haven't though of a **good unused** name.
 
+[Travis CI Status]: https://travis-ci.org/etaoinshrdlcumwfgypbvkjxqz/unnamed.svg?branch=master
+[Travis CI Build]: https://travis-ci.org/etaoinshrdlcumwfgypbvkjxqz/unnamed
+
+[AppVeyor Status]: https://ci.appveyor.com/api/projects/status/qo1ga84154doiwwx?svg=true
+[AppVeyor Build]: https://ci.appveyor.com/project/etaoinshrdlcumwfgypbvkjxqz/unnamed
+
+| Builds                                                                                                |
+|-------------------------------------------------------------------------------------------------------|
+|[![Build Status][Travis CI Status]][Travis CI Build] [![Build Status][AppVeyor Status]][AppVeyor Build]|
+
 ## About
 Nothing as of now.
 
 ## Setup
-1. Download **[polly](https://github.com/ruslo/polly)** and save it in a directory named **_polly_** in your project directory or do `git clone https://github.com/ruslo/polly.git` in your project directory.
-
+1. Do `git clone https://github.com/etaoinshrdlcumwfgypbvkjxqz/unnamed.git`.
 ### Microsoft Visual Studio
 2. Click **File > Open > CMake...** and then choose **_CMakeLists.txt_**.
 3. _Wait..._
 4. **Almost** everything should be set because some configurations will not work.<br>
    See below.
-#### Android
+#### Windows
+##### Android
 5. Download **[Android NDK](https://developer.android.com/ndk/downloads/) _r15c_**.
-#### Linux
-##### Windows
+##### Linux
 5. See this **[guide](https://blogs.msdn.microsoft.com/vcblog/2017/02/08/targeting-windows-subsystem-for-linux-from-visual-studio/)** _([archive](https://archive.fo/QgEBg))_ to build for Linux on Windows.<br>
    You may also want to remove `#` from `#Port 22` and change `22` to **any port that you haven't used** when editing **_/etc/ssh/sshd_config_**.
    When connecting, use **the port you set** instead of `22`.
-#### iOS _and_ macOS
+##### iOS _and_ macOS
 5. _Haven't figured it out yet. **Help needed.**_ :confused:
 
 ### Console
