@@ -312,7 +312,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/osx-10-13.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/osx-10-14.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },

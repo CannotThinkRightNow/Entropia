@@ -40,10 +40,10 @@ matrix:
     # iOS
     ####################
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode10.0
       env: TOOLCHAIN=ios-nocodesign-12-0-dep-9-0-bitcode-cxx11 CONFIG=Release
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode10.0
       env: TOOLCHAIN=ios-nocodesign-12-0-dep-9-0-bitcode-cxx11 CONFIG=Debug
 
     ####################
@@ -58,23 +58,23 @@ matrix:
       addons:
         apt:
           packages:
-            - arm-linux-gnueabihf-gcc
+            - arm-linux-gnueabihf
     - os: linux
       env: TOOLCHAIN=linux-gcc-armhf CONFIG=Debug
       addons:
         apt:
           packages:
-            - arm-linux-gnueabihf-gcc
+            - arm-linux-gnueabihf
 
     ####################
     # macOS
     ####################
     - os: osx
       osx_image: xcode10.1
-      env: TOOLCHAIN=osx-10-13 CONFIG=Release
+      env: TOOLCHAIN=osx-10-14 CONFIG=Release
     - os: osx
       osx_image: xcode10.1
-      env: TOOLCHAIN=osx-10-13 CONFIG=Debug
+      env: TOOLCHAIN=osx-10-14 CONFIG=Debug
 
     ####################
     # Windows
