@@ -18,49 +18,49 @@ matrix:
   include:
     ####################
     # Android
-	####################
+    ####################
     - os: linux
-	  env: TOOLCHAIN=polly/android-ndk-r15c-api-16-x86-clang-libcxx CONFIG=Release
+      env: TOOLCHAIN=polly/android-ndk-r15c-api-16-x86-clang-libcxx CONFIG=Release
     - os: linux
-	  env: TOOLCHAIN=polly/android-ndk-r15c-api-16-x86-clang-libcxx CONFIG=Debug
-	- os: linux
-	  env: TOOLCHAIN=polly/android-ndk-r15c-api-16-armeabi-clang-libcxx CONFIG=Release
-	- os: linux
-	  env: TOOLCHAIN=polly/android-ndk-r15c-api-16-armeabi-clang-libcxx CONFIG=Debug
-	- os: linux
-	  env: TOOLCHAIN=polly/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx CONFIG=Release
-	- os: linux
-	  env: TOOLCHAIN=polly/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx CONFIG=Debug
-	- os: linux
-	  env: TOOLCHAIN=polly/android-ndk-r15c-api-16-mips-clang-libcxx CONFIG=Release
-	- os: linux
-	  env: TOOLCHAIN=polly/android-ndk-r15c-api-16-mips-clang-libcxx CONFIG=Debug
+      env: TOOLCHAIN=polly/android-ndk-r15c-api-16-x86-clang-libcxx CONFIG=Debug
+    - os: linux
+      env: TOOLCHAIN=polly/android-ndk-r15c-api-16-armeabi-clang-libcxx CONFIG=Release
+    - os: linux
+      env: TOOLCHAIN=polly/android-ndk-r15c-api-16-armeabi-clang-libcxx CONFIG=Debug
+    - os: linux
+      env: TOOLCHAIN=polly/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx CONFIG=Release
+    - os: linux
+      env: TOOLCHAIN=polly/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx CONFIG=Debug
+    - os: linux
+      env: TOOLCHAIN=polly/android-ndk-r15c-api-16-mips-clang-libcxx CONFIG=Release
+    - os: linux
+      env: TOOLCHAIN=polly/android-ndk-r15c-api-16-mips-clang-libcxx CONFIG=Debug
 
-	####################
+    ####################
     # iOS
-	####################
-	- os: osx
-	  osx_image: xcode9.4
-	  env: TOOLCHAIN=polly/ios-nocodesign-12-0-dep-9-0-bitcode-cxx11 CONFIG=Release
-	- os: osx
-	  osx_image: xcode9.4
-	  env: TOOLCHAIN=polly/ios-nocodesign-12-0-dep-9-0-bitcode-cxx11 CONFIG=Debug
+    ####################
+    - os: osx
+      osx_image: xcode9.4
+      env: TOOLCHAIN=polly/ios-nocodesign-12-0-dep-9-0-bitcode-cxx11 CONFIG=Release
+    - os: osx
+      osx_image: xcode9.4
+      env: TOOLCHAIN=polly/ios-nocodesign-12-0-dep-9-0-bitcode-cxx11 CONFIG=Debug
 
     ####################
     # Linux
-	####################
+    ####################
     - os: linux
-	  env: TOOLCHAIN=polly/linux-gcc-x6 CONFIG=Release
+      env: TOOLCHAIN=polly/linux-gcc-x6 CONFIG=Release
     - os: linux
-	  env: TOOLCHAIN=polly/linux-gcc-x6 CONFIG=Debug
-	- os: linux
-	  env: TOOLCHAIN=polly/linux-gcc-armhf CONFIG=Release
-	- os: linux
-	  env: TOOLCHAIN=polly/linux-gcc-armhf CONFIG=Debug
+      env: TOOLCHAIN=polly/linux-gcc-x6 CONFIG=Debug
+    - os: linux
+      env: TOOLCHAIN=polly/linux-gcc-armhf CONFIG=Release
+    - os: linux
+      env: TOOLCHAIN=polly/linux-gcc-armhf CONFIG=Debug
 
-	####################
+    ####################
     # macOS
-	####################
+    ####################
     - os: osx
       osx_image: xcode9.4
       env: TOOLCHAIN=polly/osx-10-13.cmake CONFIG=Release
@@ -70,8 +70,8 @@ matrix:
 
     ####################
     # Windows
-	####################
-	# See appveyor.yml
+    ####################
+    # See appveyor.yml.
 
 install:
   # Info about OS
