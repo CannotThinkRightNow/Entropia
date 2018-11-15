@@ -160,7 +160,7 @@
     },
     {
       "name": "iOS-Universal-NoCodeSign-Release",
-      "description": "Build application for iOS Universal.",
+      "description": "Build application for iOS Universal with no code sign.",
       "generator": "Xcode",
       "configurationType": "RelWithDebInfo",
       "inheritEnvironments": [

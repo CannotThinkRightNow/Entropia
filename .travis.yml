@@ -50,21 +50,9 @@ matrix:
     # Linux
     ####################
     - os: linux
-      env: TOOLCHAIN=linux-gcc-x64 CONFIG=Release
+      env: TOOLCHAIN=libcxx CONFIG=Release
     - os: linux
-      env: TOOLCHAIN=linux-gcc-x64 CONFIG=Debug
-    - os: linux
-      env: TOOLCHAIN=linux-gcc-armhf CONFIG=Release
-      addons:
-        apt:
-          packages:
-            - arm-linux-gnueabihf
-    - os: linux
-      env: TOOLCHAIN=linux-gcc-armhf CONFIG=Debug
-      addons:
-        apt:
-          packages:
-            - arm-linux-gnueabihf
+      env: TOOLCHAIN=libcxx CONFIG=Debug
 
     ####################
     # macOS
