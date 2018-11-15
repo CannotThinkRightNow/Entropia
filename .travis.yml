@@ -41,10 +41,10 @@ matrix:
     ####################
     - os: osx
       osx_image: xcode9.4
-      env: TOOLCHAIN=ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11 CONFIG=Release
+      env: TOOLCHAIN=ios-nocodesign-11-4-dep-9-0-bitcode-cxx11 CONFIG=Release
     - os: osx
       osx_image: xcode9.4
-      env: TOOLCHAIN=ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11 CONFIG=Debug
+      env: TOOLCHAIN=ios-nocodesign-11-4-dep-9-0-bitcode-cxx11 CONFIG=Debug
 
     ####################
     # Linux
