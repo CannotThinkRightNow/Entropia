@@ -154,7 +154,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-12-0-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-11-4-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -168,7 +168,21 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-nocodesign-12-0-dep-9-0-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "iOS-Universal-NoCodeSign-Debug",
+      "description": "Debug application for iOS Universal with no code sign.",
+      "generator": "Xcode",
+      "configurationType": "Debug",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },

@@ -4,7 +4,7 @@
 # Modified from https://github.com/ruslo/polly/blob/master/.travis.yml.
 
 language:
-  - minimal
+  - cpp
 
 addons:
   apt:
@@ -40,11 +40,11 @@ matrix:
     # iOS
     ####################
     - os: osx
-      osx_image: xcode10.0
-      env: TOOLCHAIN=ios-nocodesign-12-0-dep-9-0-bitcode-cxx11 CONFIG=Release
+      osx_image: xcode9.4
+      env: TOOLCHAIN=ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11 CONFIG=Release
     - os: osx
-      osx_image: xcode10.0
-      env: TOOLCHAIN=ios-nocodesign-12-0-dep-9-0-bitcode-cxx11 CONFIG=Debug
+      osx_image: xcode9.4
+      env: TOOLCHAIN=ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11 CONFIG=Debug
 
     ####################
     # Linux
