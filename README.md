@@ -1,4 +1,4 @@
-# Unnamed (Placeholder Name)
+# Unnamed _(Placeholder)_
 It's not going to be called **_Unnamed_**, but I haven't though of a **good unused** name.
 
 [Travis CI Status]: https://travis-ci.org/etaoinshrdlcumwfgypbvkjxqz/unnamed.svg?branch=master
@@ -16,6 +16,7 @@ Nothing as of now.
 
 ## Setup
 1. Do `git clone https://github.com/etaoinshrdlcumwfgypbvkjxqz/unnamed.git`.
+
 ### Microsoft Visual Studio
 2. Click **File > Open > CMake...** and then choose **_CMakeLists.txt_**.
 3. _Wait..._
@@ -24,12 +25,18 @@ Nothing as of now.
 #### Windows
 ##### Android
 5. Download **[Android NDK](https://developer.android.com/ndk/downloads/) _r15c_**.
+##### iOS
+_You can't.<br>
+Use a machine running on **macOS** instead._
 ##### Linux
-5. See this **[guide](https://blogs.msdn.microsoft.com/vcblog/2017/02/08/targeting-windows-subsystem-for-linux-from-visual-studio/)** _([archive](https://archive.fo/QgEBg))_ to build for Linux on Windows.<br>
+5. See this **[guide](https://blogs.msdn.microsoft.com/vcblog/2017/02/08/targeting-windows-subsystem-for-linux-from-visual-studio/)** _([archive](https://archive.fo/QgEBg))_ to build for **Linux** on **Windows**.<br>
    You may also want to remove `#` from `#Port 22` and change `22` to **any port that you haven't used** when editing **_/etc/ssh/sshd_config_**.
    When connecting, use **the port you set** instead of `22`.
-##### iOS _and_ macOS
-5. _Haven't figured it out yet. **Help needed.**_ :confused:
+##### macOS
+_You can't.<br>
+Use a machine running on **macOS** instead._
+#### Linux
+_Working on it..._
 
 ### Console
 2. Download and install **[CMake](https://cmake.org/download/) _3.8 or above_**.
