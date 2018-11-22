@@ -4,6 +4,6 @@
 
 // Do not use "constexpr auto"
 #define NAME "unnamed"
-#define VERSION "0.0.1-alpha-build 1"
+#define VERSION "0.0.1-b1-alpha"
 
 #endif /* CONFIG_H */

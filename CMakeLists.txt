@@ -8,7 +8,7 @@ cmake_minimum_required (VERSION 3.8)
 
 # Project
 project ("unnamed")
-set (PROJECT_VERSION "0.0.1-alpha-build 1")
+set (PROJECT_VERSION "0.0.1-b1-alpha")
 
 # Sub-projects
 add_subdirectory ("application")

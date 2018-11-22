@@ -336,60 +336,72 @@
     {
       "name": "Windows-x86-Debug",
       "description": "Debug application for Windows x86.",
-      "generator": "Visual Studio 15 2017",
+      // Workaround
+      "generator": "Ninja", // "Visual Studio 15 2017",
       "configurationType": "Debug",
       "intelliSenseMode": "windows-msvc-x86",
       "inheritEnvironments": [
-        "none" // "msvc_x64_x64"
+        // Workaround
+        "msvc_x86" // "none" // "msvc_x86"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
+      // Workaround
+      "cmakeCommandArgs": "", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
     {
       "name": "Windows-x86-Release",
       "description": "Build application for Windows x86.",
-      "generator": "Visual Studio 15 2017",
+      // Workaround
+      "generator": "Ninja", // "Visual Studio 15 2017",
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "windows-msvc-x86",
       "inheritEnvironments": [
-        "none" // "msvc_x64_x64"
+        // Workaround
+        "msvc_x86" // "none" // "msvc_x86"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
+      // Workaround
+      "cmakeCommandArgs": "", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
     {
       "name": "Windows-x64-Debug",
       "description": "Debug application for Windows x86-64.",
-      "generator": "Visual Studio 15 2017 Win64",
+      // Workaround
+      "generator": "Ninja", // "Visual Studio 15 2017 Win64",
       "configurationType": "Debug",
       "intelliSenseMode": "windows-msvc-x64",
       "inheritEnvironments": [
-        "none" // "msvc_x64_x64"
+        // Workaround
+        "msvc_x64_x64" // "none" // "msvc_x64_x64"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
+      // Workaround
+      "cmakeCommandArgs": "", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
     {
       "name": "Windows-x64-Release",
       "description": "Build application for Windows x86-64.",
-      "generator": "Visual Studio 15 2017 Win64",
+      // Workaround
+      "generator": "Ninja", // "Visual Studio 15 2017 Win64",
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "windows-msvc-x64",
       "inheritEnvironments": [
-        "none" // "msvc_x64_x64"
+        // Workaround
+        "msvc_x64_x64" // "none" // "msvc_x64_x64"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
+      // Workaround
+      "cmakeCommandArgs": "", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }
