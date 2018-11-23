@@ -19,8 +19,10 @@ file (GLOB OLD_GLEW_SOURCE_TGZ_NAMES "${GLEW_SOURCE_PATH}/glew-*.tgz")
 if (NOT EXISTS ${GLEW_SOURCE_TGZ_PATH})
   file (DOWNLOAD ${GLEW_SOURCE_TGZ_URL} ${GLEW_SOURCE_TGZ_PATH} SHOW_PROGRESS TLS_VERIFY ON)
   execute_process (COMMAND ${CMAKE_COMMAND} -E remove_directory "output"
-                   COMMAND ${CMAKE_COMMAND} -E make_directory "output"
-                   COMMAND ${CMAKE_COMMAND} -E chdir "output" ${CMAKE_COMMAND} -E tar -xvf "${GLEW_SOURCE_TGZ_PATH}"
+                   WORKING_DIRECTORY "${GLEW_SOURCE_PATH}")
+  execute_process (COMMAND ${CMAKE_COMMAND} -E make_directory "output"
+                   WORKING_DIRECTORY "${GLEW_SOURCE_PATH}")
+  execute_process (COMMAND ${CMAKE_COMMAND} -E chdir "output" ${CMAKE_COMMAND} -E tar -xvf "${GLEW_SOURCE_TGZ_PATH}"
                    WORKING_DIRECTORY "${GLEW_SOURCE_PATH}")
 else ()
   list (REMOVE_ITEM OLD_GLEW_SOURCE_TGZ_NAMES ${GLEW_SOURCE_TGZ_PATH})
