@@ -8,7 +8,18 @@ cmake_minimum_required (VERSION 3.8)
 
 # Project
 project ("unnamed")
+
+# Variables
 set (PROJECT_VERSION "0.0.1-b1-alpha")
+if (NOT DEFINED POLLY_TOOLCHAIN_TAG)
+  set (POLLY_TOOLCHAIN_TAG " ")
+endif ()
+string (FIND ${POLLY_TOOLCHAIN_TAG} "ios" IOS)
+if (${IOS} EQUAL "-1")
+  set (IOS FALSE)
+else ()
+  set (IOS TRUE)
+endif ()
 
 # Sub-projects
 add_subdirectory ("application")

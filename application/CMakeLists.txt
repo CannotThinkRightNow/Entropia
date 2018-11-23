@@ -4,14 +4,19 @@
 # Policies
 cmake_minimum_required (VERSION 3.8)
 
-# Packages
-find_package (OpenGL)
+# Variables
+if (ANDROID OR IOS)
+  set (USE_OPENGL_ES TRUE)
+else ()
+  set (USE_OPENGL_ES FALSE)
+endif ()
 
 # Files
 configure_file ("src/config.h.in" "${CMAKE_CURRENT_LIST_DIR}/src/config.h")
 aux_source_directory ("src" APPLICATION_SOURCE)
+if (USE_OPENGL_ES)
 
-if (${OPENGL_FOUND})
+else ()
   set (GLEW_DIR "${PROJECT_SOURCE_DIR}/glew")
   file (READ "${GLEW_DIR}/README.md" GLEW_SOURCE_TGZ_URL)
   string (REGEX MATCH "https:\/\/sourceforge.net\/projects\/glew\/files\/glew\/snapshots\/glew-[0-9]+\.tgz\/download" GLEW_SOURCE_TGZ_URL ${GLEW_SOURCE_TGZ_URL})
@@ -37,7 +42,9 @@ endif ()
 
 # Target definitions
 add_executable (${PROJECT_NAME} ${APPLICATION_SOURCE})
-if (${OPENGL_FOUND})
+if (USE_OPENGL_ES)
+
+else ()
   add_subdirectory ("${GLEW_DIR}/build/cmake" "${GLEW_DIR}/build")
   target_link_libraries (${PROJECT_NAME} glew)
   include_directories ("${GLEW_DIR}/include")
