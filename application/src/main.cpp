@@ -2,10 +2,10 @@
 #include "main.h"
 
 #if PLATFORM_ANDROID
-void glInit()
+void glfwCreateWindow()
 {
 }
-void glfwCreateWindow()
+void glInit()
 {
 }
 void loop()
@@ -13,10 +13,10 @@ void loop()
 }
 
 #elif PLATFORM_IOS // PLATFORM_ANDROID
-void glInit()
+void glfwCreateWindow()
 {
 }
-void glfwCreateWindow()
+void glInit()
 {
 }
 void loop()
@@ -24,10 +24,10 @@ void loop()
 }
 
 #elif PLATFORM_MACOS // PLATFORM_IOS
-void glInit()
+void glfwCreateWindow()
 {
 }
-void glfwCreateWindow()
+void glInit()
 {
 }
 void loop()
@@ -35,10 +35,10 @@ void loop()
 }
 
 #elif PLATFORM_LINUX // PLATFORM_MACOS
-void glInit()
+void glfwCreateWindow()
 {
 }
-void glfwCreateWindow()
+void glInit()
 {
 }
 void loop()
@@ -50,18 +50,13 @@ GLFWmonitor* monitor;
 GLFWwindow* window;
 GLuint vertexBuffer;
 
-void glInit()
-{
-    glewExperimental = GL_TRUE;
-    glewInit();
-    glGenBuffers(1, &vertexBuffer);
-    glfwInit();
-}
 void glCreateWindow()
 {
-    // Require the OpenGL context to support OpenGL 3.0 at the least.
+    glfwInit();
+
+    // Require the OpenGL context to support OpenGL 3.2 at the least.
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -75,6 +70,12 @@ void glCreateWindow()
     
     window = glfwCreateWindow(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), NAME, glfwGetPrimaryMonitor(), nullptr);
     glfwMakeContextCurrent(window);
+}
+void glInit()
+{
+    glewExperimental = GL_TRUE;
+    glewInit();
+    glGenBuffers(1, &vertexBuffer);
 }
 void loop()
 {
@@ -98,8 +99,8 @@ int main(int argc, char* argv[])
         fprintf(stdout, " %s", argv[i]);
     fprintf(stdout, "\n");
 
-    glInit();
     glCreateWindow();
+    glInit();
     loop();
     glfwTerminate();
     return 0;
