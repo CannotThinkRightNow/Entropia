@@ -1,6 +1,7 @@
-#pragma once
 #ifndef CONFIG_H
 #define CONFIG_H
+
+#pragma once
 
 #define NAME "unnamed"
 #define VERSION "0.0.1-b1-alpha"
