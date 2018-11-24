@@ -2,8 +2,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// Do not use "constexpr auto"
 #define NAME "@PROJECT_NAME@"
 #define VERSION "@PROJECT_VERSION@"
+#define PLATFORM_@PLATFORM@ 1
 
-#endif /* CONFIG_H */
+#endif // CONFIG_H

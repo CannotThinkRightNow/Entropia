@@ -346,8 +346,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      // Workaround
-      "cmakeCommandArgs": "", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -364,8 +363,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      // Workaround
-      "cmakeCommandArgs": "", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -382,8 +380,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      // Workaround
-      "cmakeCommandArgs": "", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -400,8 +397,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      // Workaround
-      "cmakeCommandArgs": "", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }

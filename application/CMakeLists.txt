@@ -4,14 +4,16 @@
 # Policies
 cmake_minimum_required (VERSION 3.8)
 
-# Variables
-set (USE_GLES ${ANROID})
-
 # Files
 configure_file ("src/config.h.in" "${CMAKE_CURRENT_LIST_DIR}/src/config.h")
 aux_source_directory ("src" APPLICATION_SOURCE)
 
-if (NOT USE_GLES)
+if (ANDROID)
+  find_library (GLES2_LIB "libGLESv2.so" HINTS "${ANDROID_NDK}/platforms/android-${CMAKE_ANDROID_API}/arch-${CMAKE_ANDROID_ARCH}")
+  find_path (GLES2_INCLUDE_DIR "GLES2/gl2.h" HINTS ${ANDROID_NDK})
+elseif (IOS)
+  # TODO: use Metal here...
+else ()
   set (GLEW_DIR "${PROJECT_SOURCE_DIR}/glew")
   file (READ "${GLEW_DIR}/README.md" GLEW_SOURCE_TGZ_URL)
   string (REGEX MATCH "https:\/\/sourceforge.net\/projects\/glew\/files\/glew\/snapshots\/glew-[0-9]+\.tgz\/download" GLEW_SOURCE_TGZ_URL ${GLEW_SOURCE_TGZ_URL})
@@ -34,13 +36,11 @@ endif ()
 
 # Target definitions
 add_executable (${PROJECT_NAME} ${APPLICATION_SOURCE})
-if (USE_GLES)
-  find_library (GLES2_LIB "libGLESv2.so" HINTS "${ANDROID_NDK}/platforms/android-${CMAKE_ANDROID_API}/arch-${CMAKE_ANDROID_ARCH}")
-  find_path (GLES2_INCLUDE_DIR "GLES2/gl2.h" HINTS ${ANDROID_NDK})
+if (ANDROID)
   target_link_libraries (${PROJECT_NAME} ${GLES2_LIB})
   target_include_directories (${PROJECT_NAME} PUBLIC ${GLES2_INCLUDE_DIR})
 elseif (IOS)
-# TODO: use Metal here...
+  # TODO: use Metal here...
 else ()
   add_subdirectory ("${GLEW_DIR}/build/cmake" "${GLEW_DIR}/build")
   target_link_libraries (${PROJECT_NAME} glew)

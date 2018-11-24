@@ -1,5 +1,14 @@
 #pragma once
-#ifndef CONFIG_MAIN
-#define CONFIG_MAIN
+#ifndef MAIN_H
+#define MAIN_H
 
-#endif /* CONFIG_MAIN */
+#include "config.h"
+
+#if PLATFORM_ANDROID
+#elif PLATFORM_IOS
+#elif PLATFORM_MACOS
+#else
+#include <GL/glew.h>
+#endif
+
+#endif // MAIN_H
