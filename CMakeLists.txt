@@ -62,6 +62,8 @@ else (WINDOWS)
 endif ()
 
 # Sub-projects
+add_subdirectory ("server")
+add_subdirectory ("client")
 add_subdirectory ("application")
 
 # Packaging

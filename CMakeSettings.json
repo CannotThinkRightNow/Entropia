@@ -10,10 +10,6 @@
   "environments": [
     {
       "environment": "none"
-    },
-    {
-      "namespace": "polly",
-      "root": "polly"
     }
   ],
   ////////////////////
@@ -34,7 +30,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -49,7 +45,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -64,7 +60,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -78,7 +74,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -93,7 +89,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -108,7 +104,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -123,7 +119,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -137,7 +133,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/android-ndk-r15c-api-16-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -154,7 +150,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-11-4-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-11-4-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -168,7 +164,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -182,13 +178,73 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
     ////////////////////
     // Linux
     ////////////////////
+    {
+      "name": "Linux-x86-Remote-Debug",
+      "description": "Debug application for Linux x86 remotely.",
+      "generator": "Unix Makefiles",
+      "remoteMachineName": "${defaultRemoteMachineName}",
+      "configurationType": "Debug",
+      "intelliSenseMode": "linux-gcc-x86",
+      "remoteCMakeListsRoot": "/var/tmp/src/${workspaceHash}/${name}",
+      "cmakeExecutable": "/usr/bin",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "remoteBuildRoot": "/var/tmp/build/${workspaceHash}/build/${name}",
+      "remoteInstallRoot": "/var/tmp/build/${workspaceHash}/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesOutputVerbosity": "Normal",
+      "remoteCopySourcesConcurrentCopies": "10",
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopySourcesExclusionList": [
+        ".vs",
+        ".git"
+      ],
+      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "remoteCopyBuildOutput": false,
+      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=linux-gcc", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [
+        "linux_x86"
+      ]
+    },
+    {
+      "name": "Linux-x86-Remote-Release",
+      "description": "Build application for Linux x86 remotely.",
+      "generator": "Unix Makefiles",
+      "remoteMachineName": "${defaultRemoteMachineName}",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "linux-gcc-x86",
+      "remoteCMakeListsRoot": "/var/tmp/src/${workspaceHash}/${name}",
+      "cmakeExecutable": "/usr/bin",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "remoteBuildRoot": "/var/tmp/build/${workspaceHash}/build/${name}",
+      "remoteInstallRoot": "/var/tmp/build/${workspaceHash}/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesOutputVerbosity": "Normal",
+      "remoteCopySourcesConcurrentCopies": "10",
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopySourcesExclusionList": [
+        ".vs",
+        ".git"
+      ],
+      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "remoteCopyBuildOutput": false,
+      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=linux-gcc", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [
+        "linux_x86"
+      ]
+    },
     {
       "name": "Linux-x64-Remote-Debug",
       "description": "Debug application for Linux x86-64 remotely.",
@@ -208,16 +264,15 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git",
-        "${polly.root}"
+        ".git"
       ],
       "rsyncCommandArgs": "-t --delete --delete-excluded",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/linux-gcc-x64.cmake",
+      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=linux-gcc-x64", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
-        "none" // "linux_x64"
+        "linux_x64"
       ]
     },
     {
@@ -239,16 +294,15 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git",
-        "${polly.root}"
+        ".git"
       ],
       "rsyncCommandArgs": "-t --delete --delete-excluded",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/linux-gcc-x64.cmake",
+      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=linux-gcc-x64", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
-        "none" // "linux_x64"
+        "linux_x64"
       ]
     },
     {
@@ -270,16 +324,15 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git",
-        "${polly.root}"
+        ".git"
       ],
       "rsyncCommandArgs": "-t --delete --delete-excluded",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/linux-gcc-armhf.cmake",
+      "cmakeCommandArgs": "-DPOLLY_TOOLCHAIN_TAG=linux-gcc-armhf", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
-        "none" // "linux_arm"
+        "linux_arm"
       ]
     },
     {
@@ -301,16 +354,15 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git",
-        "${polly.root}"
+        ".git"
       ],
       "rsyncCommandArgs": "-t --delete --delete-excluded",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/linux-gcc-armhf.cmake",
+      "cmakeCommandArgs": "-DPOLLY_TOOLCHAIN_TAG=linux-gcc-armhf", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
-        "none" // "linux_arm"
+        "linux_arm"
       ]
     },
     ////////////////////
@@ -326,7 +378,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/osx-10-14.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/osx-10-14.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -336,72 +388,61 @@
     {
       "name": "Windows-x86-Debug",
       "description": "Debug application for Windows x86.",
-      // Workaround
       "generator": "Ninja", // "Visual Studio 15 2017",
       "configurationType": "Debug",
       "intelliSenseMode": "windows-msvc-x86",
       "inheritEnvironments": [
-        // Workaround
-        "msvc_x86" // "none" // "msvc_x86"
+        "msvc_x86"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
       // Workaround
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=${polly.root}/vs-15-2017.cmake", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
     {
       "name": "Windows-x86-Release",
       "description": "Build application for Windows x86.",
-      // Workaround
       "generator": "Ninja", // "Visual Studio 15 2017",
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "windows-msvc-x86",
       "inheritEnvironments": [
-        // Workaround
-        "msvc_x86" // "none" // "msvc_x86"
+        "msvc_x86"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      // Workaround
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=${polly.root}/vs-15-2017.cmake", // "-DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
     {
       "name": "Windows-x64-Debug",
       "description": "Debug application for Windows x86-64.",
-      // Workaround
       "generator": "Ninja", // "Visual Studio 15 2017 Win64",
       "configurationType": "Debug",
       "intelliSenseMode": "windows-msvc-x64",
       "inheritEnvironments": [
-        // Workaround
-        "msvc_x64_x64" // "none" // "msvc_x64_x64"
+        "msvc_x64_x64"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      // Workaround
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=${polly.root}/vs-15-2017-win64.cmake", // -DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
     {
       "name": "Windows-x64-Release",
       "description": "Build application for Windows x86-64.",
-      // Workaround
       "generator": "Ninja", // "Visual Studio 15 2017 Win64",
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "windows-msvc-x64",
       "inheritEnvironments": [
-        // Workaround
-        "msvc_x64_x64" // "none" // "msvc_x64_x64"
+        "msvc_x64_x64"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      // Workaround
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=${polly.root}/vs-15-2017-win64.cmake", // -DCMAKE_TOOLCHAIN_FILE=${polly.root}/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }

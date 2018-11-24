@@ -1,51 +1,6 @@
-#include "config.h"
 #include "main.h"
 
-#if PLATFORM_ANDROID
-void glfwCreateWindow()
-{
-}
-void glInit()
-{
-}
-void loop()
-{
-}
-
-#elif PLATFORM_IOS // PLATFORM_ANDROID
-void glfwCreateWindow()
-{
-}
-void glInit()
-{
-}
-void loop()
-{
-}
-
-#elif PLATFORM_MACOS // PLATFORM_IOS
-void glfwCreateWindow()
-{
-}
-void glInit()
-{
-}
-void loop()
-{
-}
-
-#elif PLATFORM_LINUX // PLATFORM_MACOS
-void glfwCreateWindow()
-{
-}
-void glInit()
-{
-}
-void loop()
-{
-}
-
-#elif PLATFORM_WINDOWS // PLATFORM_LINUX
+#if GL_GRAPHICS
 GLFWmonitor* monitor;
 GLFWwindow* window;
 GLuint vertexBuffer;
@@ -64,11 +19,13 @@ void glCreateWindow()
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     fprintf(stdout, "==========Monitors Information==========\n");
-    fprintf(stdout, "All Monitors Combined Size: (%d, %d)\n", GetSystemMetrics(SM_CXVIRTUALSCREEN), GetSystemMetrics(SM_CYVIRTUALSCREEN));
-    fprintf(stdout, "Primary Monitor Size: (%d, %d)\n", GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
+#if PLATFORM_WINDOWS
+    fprintf(stdout, "Virtual Monitor Size: (%d, %d)\n", VIRTUAL_X, VIRTUAL_Y);
+    fprintf(stdout, "Primary Monitor Size: (%d, %d)\n", PRIMARY_X, PRIMARY_Y);
     fprintf(stdout, "Primary Monitor Work Area: %d\n", GetSystemMetrics(SPI_GETWORKAREA));
+#endif // PLATFORM_WINDOWS
     
-    window = glfwCreateWindow(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), NAME, glfwGetPrimaryMonitor(), nullptr);
+    window = glfwCreateWindow(PRIMARY_X, PRIMARY_Y, NAME, glfwGetPrimaryMonitor(), nullptr);
     glfwMakeContextCurrent(window);
 }
 void glInit()
@@ -87,8 +44,11 @@ void loop()
             glfwSetWindowShouldClose(window, GL_TRUE);
     }
 }
+#elif GLES_GRAPHICS // GL_GRAPHICS
 
-#endif // PLATFORM_WINOWS
+#elif METAL_GRAPHICS // GLES_GRAPHICS
+
+#endif // METAL_GRAPHICS
 
 int main(int argc, char* argv[])
 {
