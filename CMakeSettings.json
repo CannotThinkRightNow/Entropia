@@ -204,11 +204,12 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git"
+        ".git",
+        "out"
       ],
-      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=linux-gcc", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -234,11 +235,12 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git"
+        ".git",
+        "out"
       ],
-      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=linux-gcc", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -264,11 +266,12 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git"
+        ".git",
+        "out"
       ],
-      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=linux-gcc-x64", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc-x64.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -294,11 +297,12 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git"
+        ".git",
+        "out"
       ],
-      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=linux-gcc-x64", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc-x64.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -324,11 +328,12 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git"
+        ".git",
+        "out"
       ],
-      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DPOLLY_TOOLCHAIN_TAG=linux-gcc-armhf", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc-armhf.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -354,11 +359,12 @@
       "remoteCopySourcesMethod": "rsync",
       "remoteCopySourcesExclusionList": [
         ".vs",
-        ".git"
+        ".git",
+        "out"
       ],
-      "rsyncCommandArgs": "-t --delete --delete-excluded",
+      "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DPOLLY_TOOLCHAIN_TAG=linux-gcc-armhf", // "-DCMAKE_TOOLCHAIN_FILE=polly/libcxx.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc-armhf.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -396,8 +402,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      // Workaround
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -412,7 +417,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -427,7 +432,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -442,7 +447,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DPOLLY_TOOCHAIN_TAG=vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }

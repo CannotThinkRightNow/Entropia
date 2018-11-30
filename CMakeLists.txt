@@ -1,10 +1,10 @@
 ##################################################
 # Unnamed
 ##################################################
-# Press CMake > Cache (${name} Only) > Delete Cache Folders > CMakeLists.txt (or alternative if not in Microsoft Visual Studio) before building if changes are not picked up.
+# Click "CMake > Clean All" (or alternative if not in Microsoft Visual Studio) if new files are not picked up.
 
 # Policies
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required (VERSION 3.12)
 
 # Project
 project ("unnamed")
@@ -13,36 +13,43 @@ include(GNUInstallDirs)
 
 # Variables
 set (PROJECT_VERSION "0.0.1-b1-alpha")
+set (SECTION_HEADER "==================================================")
+set (SECTION_SPLITER "--------------------------------------------------")
+set (SECTION_FOOTER "==================================================")
 
-if (DEFINED CMAKE_TOOLCHAIN_FILE AND NOT DEFINED POLLY_TOOCHAIN_TAG)
-  set (POLLY_TOOCHAIN_TAG ${CMAKE_TOOLCHAIN_FILE})
+if (NOT DEFINED TOOLCHAIN_TAG)
+  if (DEFINED CMAKE_TOOLCHAIN_FILE)
+    set (TOOLCHAIN_TAG ${CMAKE_TOOLCHAIN_FILE})
+  else ()
+    message (FATAL_ERROR "CMAKE_TOOLCHAIN_FILE and TOOLCHAIN_TAG are not defined.")
+  endif ()
 endif ()
 
-string (FIND ${POLLY_TOOCHAIN_TAG} "android" ANDROID)
+string (FIND ${TOOLCHAIN_TAG} "android" ANDROID)
 if (${ANDROID} EQUAL "-1")
   set (ANDROID FALSE)
 else ()
   set (ANDROID TRUE)
 endif ()
-string (FIND ${POLLY_TOOCHAIN_TAG} "ios" IOS)
+string (FIND ${TOOLCHAIN_TAG} "ios" IOS)
 if (${IOS} EQUAL "-1")
   set (IOS FALSE)
 else ()
   set (IOS TRUE)
 endif ()
-string (FIND ${POLLY_TOOCHAIN_TAG} "libcxx" LINUX)
+string (FIND ${TOOLCHAIN_TAG} "libcxx" LINUX)
 if (${LINUX} EQUAL "-1")
   set (LINUX FALSE)
 else ()
   set (LINUX TRUE)
 endif ()
-string (FIND ${POLLY_TOOCHAIN_TAG} "osx" MACOS)
+string (FIND ${TOOLCHAIN_TAG} "osx" MACOS)
 if (${MACOS} EQUAL "-1")
   set (MACOS FALSE)
 else ()
   set (MACOS TRUE)
 endif ()
-string (FIND ${POLLY_TOOCHAIN_TAG} "vs" WINDOWS)
+string (FIND ${TOOLCHAIN_TAG} "vs" WINDOWS)
 if (${WINDOWS} EQUAL "-1")
   set (WINDOWS FALSE)
 else ()
@@ -61,10 +68,33 @@ else (WINDOWS)
   set (PLATFORM "WINDOWS")
 endif ()
 
+message (${SECTION_HEADER})
+message ("Variables")
+message (${SECTION_SPLITER})
+message ("Name: ${PROJECT_NAME}")
+message ("Version: ${PROJECT_VERSION}")
+message ("Toolchain: ${TOOLCHAIN_TAG}")
+message ("Platform: ${PLATFORM}")
+message (${SECTION_FOOTER})
+
 # Sub-projects
+message (${SECTION_HEADER})
+message ("Building ${PROJECT_NAME}...")
+message (${SECTION_SPLITER})
+message ("Building server...")
 add_subdirectory ("server")
+message ("Successfully built server.")
+message (${SECTION_SPLITER})
+message ("Building client...")
 add_subdirectory ("client")
+message ("Successfully built client.")
+message (${SECTION_SPLITER})
+message ("Building application...")
 add_subdirectory ("application")
+message ("Successfully built application.")
+message (${SECTION_SPLITER})
+message ("Successfully built ${PROJECT_NAME}.")
+message (${SECTION_FOOTER})
 
 # Packaging
 include (InstallRequiredSystemLibraries)

@@ -2,9 +2,6 @@
 # Application
 ##################################################
 
-# Policies
-cmake_minimum_required (VERSION 3.8)
-
 # Files
 if (ANDROID)
   # OpenGL ES 2.0
@@ -28,7 +25,9 @@ else ()
     set (GLEW_TGZ_OUTPUT_DIR "${PROJECT_BINARY_DIR}/output")
     file (REMOVE_RECURSE ${GLEW_TGZ_OUTPUT_DIR})
     file (MAKE_DIRECTORY ${GLEW_TGZ_OUTPUT_DIR})
-    execute_process (COMMAND ${CMAKE_COMMAND} -E tar -xvf "${GLEW_TGZ}" WORKING_DIRECTORY ${GLEW_TGZ_OUTPUT_DIR})
+    message ("Unpacking ${GLEW_TGZ}...")
+    execute_process (COMMAND ${CMAKE_COMMAND} -E tar -xf ${GLEW_TGZ} WORKING_DIRECTORY ${GLEW_TGZ_OUTPUT_DIR})
+    message ("Finished unpacking ${GLEW_TGZ}.")
     file (GLOB GLEW_DIR "${PROJECT_BINARY_DIR}/output/glew-*")
     file (RENAME ${GLEW_DIR} "${PROJECT_BINARY_DIR}/glew")
   else ()
@@ -42,12 +41,15 @@ else ()
 
   set (GRAPHICS_LIBRARY "GL")
 endif ()
+message ("Graphics library: ${GRAPHICS_LIBRARY}")
 
-configure_file ("src/config.h.in" "${CMAKE_CURRENT_LIST_DIR}/src/config.h")
-aux_source_directory ("src" APPLICATION_SOURCE)
+configure_file ("src/config.h.in" "${CMAKE_CURRENT_LIST_DIR}/out/config.h")
+file (GLOB_RECURSE APPLICATION_OUT CONFIGURE_DEPENDS "out/*")
+file (GLOB_RECURSE APPLICATION_SOURCE CONFIGURE_DEPENDS "src/*")
 
-# Target definitions
-add_executable (${PROJECT_NAME} ${APPLICATION_SOURCE})
+# Targets
+add_executable (${PROJECT_NAME} ${APPLICATION_OUT} ${APPLICATION_SOURCE})
+target_include_directories (${PROJECT_NAME} PUBLIC "out" PUBLIC "src")
 if (ANDROID)
   # OpenGL ES 2.0
   target_link_libraries (${PROJECT_NAME} ${GLES2_LIB})
@@ -62,8 +64,13 @@ else ()
   # GLFW
   add_subdirectory (${GLFW_DIR} ${GLFW_BINARY_DIR})
   target_link_libraries (${PROJECT_NAME} glfw)
+  target_include_directories (${PROJECT_NAME} PUBLIC "${GLFW_DIR}/include")
 endif ()
+# Copy installed files from ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR} to ${PROJECT_BINARY_DIR}/application to avoid missing libraries errors
+file (GLOB_RECURSE CMAKE_INSTALL_BIN CONFIGURE_DEPENDS "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/*")
+file (COPY ${CMAKE_INSTALL_BIN} DESTINATION "${PROJECT_BINARY_DIR}/application")
 
 # Packaging
 install (TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
+install (FILES ${APPLICATION_OUT} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PLATFORM}")
 install (FILES ${APPLICATION_SOURCE} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

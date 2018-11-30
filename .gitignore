@@ -9,6 +9,9 @@
 ####################
 # Custom definitions.
 
+# Configured files
+out/
+
 ####################
 # C++
 ####################
