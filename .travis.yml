@@ -67,7 +67,7 @@ matrix:
     ####################
     # Windows
     ####################
-    # See appveyor.yml.
+    # See .appveyor.yml.
 
 install:
   # Info about OS
