@@ -1,6 +1,6 @@
 ##################################################
 # Application
-##################################################
+##################################################\
 
 # Files
 if (ANDROID)
@@ -21,7 +21,9 @@ else ()
   set (GLEW_TGZ "${PROJECT_BINARY_DIR}/${GLEW_TGZ_NAME}")
   file (GLOB OLD_GLEW_TGZ "${PROJECT_BINARY_DIR}/glew-*.tgz")
   if (NOT EXISTS ${GLEW_TGZ})
+    message (STATUS "Downloading ${GLEW_TGZ_URL}...")
     file (DOWNLOAD ${GLEW_TGZ_URL} ${GLEW_TGZ} SHOW_PROGRESS TLS_VERIFY ON)
+    message (STATUS "Finished downloading ${GLEW_TGZ_URL}.")
     set (GLEW_TGZ_OUTPUT_DIR "${PROJECT_BINARY_DIR}/output")
     file (REMOVE_RECURSE ${GLEW_TGZ_OUTPUT_DIR})
     file (MAKE_DIRECTORY ${GLEW_TGZ_OUTPUT_DIR})
