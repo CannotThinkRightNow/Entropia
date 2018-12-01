@@ -70,6 +70,9 @@ endif ()
 
 if (NOT DEFINED ENV{CI})
   set (ENV{CI} FALSE)
+elseif ($ENV{CI} EQUAL "true" # Travis CI, AppVeyor
+        OR $ENV{CI} EQUAL "True") # AppVeyor
+  set (ENV{CI} TRUE)
 endif ()
 
 message (STATUS ${SECTION_HEADER})
