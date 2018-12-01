@@ -5,6 +5,7 @@
 3. `git submodule update --init --recursive`
 
 ## Required
+- **[Git](https://git-scm.com/)**
 - **[CMake](https://cmake.org/download/) _3.12 or above_**
 
 ## Optional
@@ -15,4 +16,4 @@
 
 ## Commands
 ### Linux
-**Ubuntu**: `sudo apt-get install cmake libx11-dev`
+**Ubuntu**: `sudo apt-get install git cmake libx11-dev`
