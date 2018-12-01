@@ -70,6 +70,8 @@ endif ()
 
 if (NOT DEFINED CI)
   set (CI FALSE)
+elseif (${CI} EQUAL "true" OR ${CI} EQUAL "True")
+  set (CI TRUE)
 endif ()
 
 message (STATUS ${SECTION_HEADER})
