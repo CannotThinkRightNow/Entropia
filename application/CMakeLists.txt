@@ -7,11 +7,13 @@ if (ANDROID)
   # OpenGL ES 2.0
   find_library (GLES2_LIB "libGLESv2.so" HINTS "${ANDROID_NDK}/platforms/android-${CMAKE_ANDROID_API}/arch-${CMAKE_ANDROID_ARCH}")
   find_path (GLES2_INCLUDE_DIR "GLES2/gl2.h" HINTS ${ANDROID_NDK})
+
   set (GRAPHICS_LIBRARY "GLES2")
 elseif (IOS)
   # TODO: use Metal here...
+
   set (GRAPHICS_LIBRARY "METAL")
-else ()
+elseif (LINUX OR MACOS OR WINDOWS)
   # GLEW
   set (GLEW_DIR "${PROJECT_SOURCE_DIR}/glew")
   file (READ "${GLEW_DIR}/README.md" GLEW_TGZ_URL)
@@ -52,13 +54,12 @@ file (GLOB_RECURSE APPLICATION_SOURCE CONFIGURE_DEPENDS "src/*")
 # Targets
 add_executable (${PROJECT_NAME} ${APPLICATION_OUT} ${APPLICATION_SOURCE})
 target_include_directories (${PROJECT_NAME} PUBLIC "out" PUBLIC "src")
-if (ANDROID)
-  # OpenGL ES 2.0
+if (${GRAPHICS_LIBRARY} STREQUAL "GLES2") # OpenGL ES 2.0
   target_link_libraries (${PROJECT_NAME} ${GLES2_LIB})
   target_include_directories (${PROJECT_NAME} PUBLIC ${GLES2_INCLUDE_DIR})
-elseif (IOS)
+elseif (${GRAPHICS_LIBRARY} STREQUAL "METAL") # Metal
   # TODO: use Metal here...
-else ()
+elseif (${GRAPHICS_LIBRARY} STREQUAL "GL") # OpenGL
   # GLEW
   add_subdirectory ("${GLEW_DIR}/build/cmake" ${GLEW_DIR})
   target_link_libraries (${PROJECT_NAME} glew)
@@ -67,6 +68,8 @@ else ()
   add_subdirectory (${GLFW_DIR} ${GLFW_BINARY_DIR})
   target_link_libraries (${PROJECT_NAME} glfw)
   target_include_directories (${PROJECT_NAME} PUBLIC "${GLFW_DIR}/include")
+else ()
+  message (FATAL_ERROR "Unknown graphics library: ${GRAPHICS_LIBRARY}")
 endif ()
 # Copy installed files from ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR} to ${PROJECT_BINARY_DIR}/application to avoid missing libraries errors
 file (GLOB_RECURSE CMAKE_INSTALL_BIN CONFIGURE_DEPENDS "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/*")
