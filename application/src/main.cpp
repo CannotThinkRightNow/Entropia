@@ -1,6 +1,9 @@
 #include "config.h"
-#include "vars.h"
+#include "logging.h"
 
+#define ID "Main"
+
+#include <stdexcept>
 #if GL_GRAPHICS
 #if PLATFORM_MACOS
 #include <OpenGL/glew.h>
@@ -30,12 +33,6 @@
 #include <WinUser.h>
 #endif /* PLATFORM_WINDOWS */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-
-using namespace std;
-
 #if GL_GRAPHICS
 GLFWmonitor* monitor;
 GLFWwindow* window;
@@ -43,7 +40,11 @@ GLuint vertexBuffer;
 
 void glCreateWindow()
 {
-    glfwInit();
+    if (!glfwInit())
+    {
+        printlnf(LEVEL_ERROR, ID, "Failed to initialize glfw!");
+        throw std::runtime_error("Failed to initialize glfw!");
+    }
 
     // Require the OpenGL context to support OpenGL 3.2 at the least.
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -54,13 +55,13 @@ void glCreateWindow()
 
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    fprintf(stdout, SECTION_HEADER_NAMED, "Monitors Information");
+    printlnf(LEVEL_INFO, ID, SECTION_HEADER_NAMED, "Monitors Information");
 #if PLATFORM_WINDOWS
-    fprintf(stdout, "Virtual Monitor Size: (%d, %d)\n", VIRTUAL_X, VIRTUAL_Y);
-    fprintf(stdout, "Primary Monitor Size: (%d, %d)\n", PRIMARY_X, PRIMARY_Y);
-    fprintf(stdout, "Primary Monitor Work Area: %d\n", GetSystemMetrics(SPI_GETWORKAREA));
+    printlnf(LEVEL_INFO, ID, "Virtual Monitor Size: (%d, %d)", VIRTUAL_X, VIRTUAL_Y);
+    printlnf(LEVEL_INFO, ID, "Primary Monitor Size: (%d, %d)", PRIMARY_X, PRIMARY_Y);
+    printlnf(LEVEL_INFO, ID, "Primary Monitor Work Area: %d", GetSystemMetrics(SPI_GETWORKAREA));
 #endif /* PLATFORM_WINDOWS */
-    fprintf(stdout, SECTION_FOOTER);
+    printlnf(LEVEL_INFO, ID, SECTION_FOOTER);
     
     window = glfwCreateWindow(PRIMARY_X, PRIMARY_Y, NAME, glfwGetPrimaryMonitor(), nullptr);
     glfwMakeContextCurrent(window);
@@ -89,12 +90,13 @@ void loop()
 
 int main(int argc, char* argv[])
 {
-    fprintf(stdout, SECTION_HEADER_NAMED, "Arguments");
-    fprintf(stdout, "Arguments Count: %d\n", argc);
-    fprintf(stdout, "Arguments:");
+    printlnf(LEVEL_INFO, ID, SECTION_HEADER_NAMED, "Arguments");
+    printlnf(LEVEL_INFO, ID, "Arguments Count: %d", argc);
+    printf(LEVEL_INFO, ID, "Arguments:");
     for (int i = 0; i < argc; i++)
-        fprintf(stdout, " %s", argv[i]);
-    fprintf(stdout, "\n");
+        printf(" %s", argv[i]);
+    println();
+    printlnf(LEVEL_INFO, ID, SECTION_FOOTER);
 
     glCreateWindow();
     glInit();
