@@ -8,4 +8,4 @@
 #define PLATFORM_@PLATFORM@ 1
 #define @GRAPHICS_LIBRARY@_GRAPHICS 1
 
-#endif // CONFIG_H
+#endif /* CONFIG_H */
