@@ -94,4 +94,8 @@ void glInit()
     glGenBuffers(1, &vertexBuffer);
 }
 
-#endif /* GL_GRAPHICS */
+#elif GLES_GRAPHICS /* GL_GRAPHICS */
+
+#elif METAL_GRAPHICS /* GLES_GRAPHICS */
+
+#endif /* METAL_GRAPHICS*/

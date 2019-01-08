@@ -1,8 +1,5 @@
 #include "logging.h"
-
-#ifndef SERVER_ID
-#define SERVER_ID "Server"
-#endif
+#include "main.h"
 
 namespace logUtility = logging::utility;
 

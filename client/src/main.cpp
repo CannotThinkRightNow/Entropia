@@ -1,9 +1,6 @@
 #include "logging.h"
-#include "graphics.cpp"
-
-#ifndef CLIENT_ID
-#define CLIENT_ID "Client"
-#endif
+#include "main.h"
+#include "graphics.h"
 
 namespace logUtility = logging::utility;
 

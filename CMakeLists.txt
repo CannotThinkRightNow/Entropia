@@ -67,6 +67,12 @@ else (WINDOWS)
   set (PLATFORM "WINDOWS")
 endif ()
 
+if (WINDOWS)
+  set (SECURE_FUNCTIONS 1)
+else ()
+  set (SECURE_FUNCTIONS 0)
+endif ()
+
 if (NOT DEFINED ENV{CI})
   set (ENV{CI} FALSE)
 elseif ($ENV{CI} EQUAL "true" # Travis CI, AppVeyor
