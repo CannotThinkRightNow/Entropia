@@ -1,7 +1,6 @@
 ##################################################
 # Unnamed
 ##################################################
-# Click "CMake > Clean All" (or alternative if not in Microsoft Visual Studio) if new files are not picked up.
 
 # Policies
 cmake_minimum_required (VERSION 3.12)
@@ -151,9 +150,9 @@ message (STATUS "Building 'client'...")
 add_subdirectory ("client")
 message (STATUS "Successfully built 'client'.")
 message (STATUS ${SECTION_SPLITTER})
-message (STATUS "Building 'application'...")
-add_subdirectory ("application")
-message (STATUS "Successfully built 'application'.")
+message (STATUS "Building 'core'...")
+add_subdirectory ("core")
+message (STATUS "Successfully built 'core'.")
 message (STATUS ${SECTION_SPLITTER})
 message (STATUS "Successfully built '${PROJECT_NAME}'.")
 message (STATUS ${SECTION_FOOTER})

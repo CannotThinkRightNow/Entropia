@@ -52,30 +52,26 @@ file (GLOB_RECURSE APPLICATION_OUT CONFIGURE_DEPENDS "out/*")
 file (GLOB_RECURSE APPLICATION_SOURCE CONFIGURE_DEPENDS "src/*")
 
 # Targets
-add_executable (${PROJECT_NAME} ${APPLICATION_OUT} ${APPLICATION_SOURCE})
-target_include_directories (${PROJECT_NAME} PUBLIC "out" PUBLIC "src")
+add_library (core ${APPLICATION_OUT} ${APPLICATION_SOURCE})
+target_include_directories (core PUBLIC "out" PUBLIC "src")
 if (${GRAPHICS_LIBRARY} STREQUAL "GLES2") # OpenGL ES 2.0
-  target_link_libraries (${PROJECT_NAME} ${GLES2_LIB})
-  target_include_directories (${PROJECT_NAME} PUBLIC ${GLES2_INCLUDE_DIR})
+  target_link_libraries (core ${GLES2_LIB})
+  target_include_directories (core PUBLIC ${GLES2_INCLUDE_DIR})
 elseif (${GRAPHICS_LIBRARY} STREQUAL "METAL") # Metal
   # TODO: use Metal here...
 elseif (${GRAPHICS_LIBRARY} STREQUAL "GL") # OpenGL
   # GLEW
   add_subdirectory ("${GLEW_DIR}/build/cmake" ${GLEW_DIR})
-  target_link_libraries (${PROJECT_NAME} glew)
-  target_include_directories (${PROJECT_NAME} PUBLIC "${GLEW_DIR}/include")
+  target_link_libraries (core glew)
+  target_include_directories (core PUBLIC "${GLEW_DIR}/include")
   # GLFW
   add_subdirectory (${GLFW_DIR} ${GLFW_BINARY_DIR})
-  target_link_libraries (${PROJECT_NAME} glfw)
-  target_include_directories (${PROJECT_NAME} PUBLIC "${GLFW_DIR}/include")
+  target_link_libraries (core glfw)
+  target_include_directories (core PUBLIC "${GLFW_DIR}/include")
 else ()
   message (FATAL_ERROR "Unknown graphics library: ${GRAPHICS_LIBRARY}")
 endif ()
-# Copy installed files from ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR} to ${PROJECT_BINARY_DIR}/application to avoid missing libraries errors
-file (GLOB_RECURSE CMAKE_INSTALL_BIN CONFIGURE_DEPENDS "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/*")
-file (COPY ${CMAKE_INSTALL_BIN} DESTINATION "${PROJECT_BINARY_DIR}/application")
 
 # Packaging
-install (TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
-install (FILES ${APPLICATION_OUT} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PLATFORM}")
-install (FILES ${APPLICATION_SOURCE} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install (TARGETS core DESTINATION ${CMAKE_INSTALL_BINDIR})
+install (FILES ${APPLICATION_OUT} ${APPLICATION_SOURCE} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PLATFORM}")
