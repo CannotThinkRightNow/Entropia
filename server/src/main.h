@@ -1,10 +1,8 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MAIN_H_
+#define MAIN_H_
 
 #pragma once
 
-#ifndef SERVER_ID
 #define SERVER_ID "Server"
-#endif
 
-#endif /* MAIN_H */
+#endif /* MAIN_H_ */

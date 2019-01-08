@@ -1,5 +1,10 @@
+#ifndef GRAPHICS_H_
+#define GRAPHICS_H_
+
+#pragma once
+
 #include "config.h"
-#include "logging.h"
+#include "utilities/logging.h"
 
 #ifndef GRAPHICS_ID
 #define GRAPHICS_ID "Graphics"
@@ -99,3 +104,5 @@ void glInit()
 #elif METAL_GRAPHICS /* GLES_GRAPHICS */
 
 #endif /* METAL_GRAPHICS*/
+
+#endif /* GRAPHICS_H_ */

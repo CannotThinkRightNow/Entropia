@@ -1,7 +1,10 @@
-#ifndef LOGGING_H
-#define LOGGING_H
+#ifndef LOGGING_H_
+#define LOGGING_H_
 
 #pragma once
+
+#include "config.h"
+#include "types.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +14,6 @@
 #include <ctime>
 #include <algorithm>
 
-typedef const char* c_str;
 using system_clock = std::chrono::system_clock;
 
 #define SECTION_HEADER "=================================================="
@@ -31,7 +33,7 @@ namespace logging
     };
     static const c_str levelNames[] = {"Fatal", "Error", "Warning", "Info", "Debug"};
 
-    // Delete returned string after use.
+    // Returned string should be 'delete[]'ed.
     c_str getNowTimeString()
     {
         std::time_t time = system_clock::to_time_t(system_clock::now());
@@ -60,7 +62,7 @@ namespace logging
         oss << "[%s] [%s] [%s] " << format;
         c_str time_str = getNowTimeString();
         int ret = std::printf(oss.str().c_str(), time_str, levelNames[levelValue], id, args...);
-        delete time_str;
+        delete[] time_str;
         return ret;
     }
 
@@ -77,7 +79,7 @@ namespace logging
         return std::printf("\n");
     }
 
-    namespace utility
+    namespace utilities
     {
         void printArgs(c_str id, int argc, char** argv)
         {
@@ -92,4 +94,4 @@ namespace logging
     }
 }
 
-#endif /* LOGGING_H */
+#endif /* LOGGING_H_ */

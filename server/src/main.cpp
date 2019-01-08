@@ -1,9 +1,9 @@
-#include "logging.h"
+#include "utilities/logging.h"
 #include "main.h"
 
-namespace logUtility = logging::utility;
+namespace logUtilities = logging::utilities;
 
 int main(int argc, char** argv)
 {
-    logUtility::printArgs(SERVER_ID, argc, argv);
+    logUtilities::printArgs(SERVER_ID, argc, argv);
 }

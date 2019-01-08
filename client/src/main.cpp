@@ -1,12 +1,12 @@
-#include "logging.h"
+#include "utilities/logging.h"
 #include "main.h"
 #include "graphics.h"
 
-namespace logUtility = logging::utility;
+namespace logUtilities = logging::utilities;
 
 int main(int argc, char** argv)
 {
-    logUtility::printArgs(CLIENT_ID, argc, argv);
+    logUtilities::printArgs(CLIENT_ID, argc, argv);
     createWindow();
     glInit();
 
