@@ -7,15 +7,15 @@ namespace logUtilities = logging::utilities;
 int main(int argc, char** argv)
 {
     logUtilities::printArgs(CLIENT_ID, argc, argv);
-    createWindow();
-    glInit();
+    graphics::createWindow();
+    graphics::glInit();
 
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(graphics::window))
     {
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(graphics::window);
         glfwPollEvents();
-        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-            glfwSetWindowShouldClose(window, GL_TRUE);
+        if (glfwGetKey(graphics::window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            glfwSetWindowShouldClose(graphics::window, GL_TRUE);
     }
 
     glfwTerminate();

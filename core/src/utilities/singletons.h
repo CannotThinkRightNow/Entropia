@@ -1,12 +1,12 @@
 #ifndef SINGLETONS_H_
 #define SINGLETONS_H_
 
-// Modified from https://stackoverflow.com/a/1008289
+// Modified from https://stackoverflow.com/a/1008289.
 template<class T>
 class Singleton
 {
-private:
-    // Constructor
+protected:
+    // Constructor.
     Singleton<T>(){}
 
 public:
@@ -33,12 +33,12 @@ public:
     void operator=(Singleton<T> const&) = delete;
 };
 
-// Modified from https://stackoverflow.com/a/1008289
+// Modified from https://stackoverflow.com/a/1008289.
 template<class T>
 class ThreadLocalSingleton
 {
-private:
-    // Constructor
+protected:
+    // Constructor.
     ThreadLocalSingleton<T>() {}
 
 public:

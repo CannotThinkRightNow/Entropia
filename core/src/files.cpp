@@ -1,31 +1,20 @@
-#include "config.h"
-#include "utilities/types.h"
-#include "utilities/logging.h"
-#include "utilities/singletons.h"
+#include "files.h"
 
 #define FILES_ID "Files"
 
 namespace io
 {
-    class File
-    {
-    public:
-        const c_str path;
-        File(c_str path) : path(path){}
-    };
+    File::File(c_str path) : path(path) {}
 
     template<class T>
-    class SingletonFile : public Singleton<T>, public File
-    {
-    public:
-        SingletonFile(c_str path) : File(path){}
-    };
+    SingletonFile<T>::SingletonFile(c_str path) : io::File(path) {}
 
-    // Files
     namespace files
     {
-        class Pointer : public SingletonFile<Pointer>
+        Pointer::Pointer() : SingletonFile<Pointer>("") {}
+        c_str Pointer::getDataPath()
         {
-        };
+            return dataPath;
+        }
     }
 }
