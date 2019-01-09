@@ -5,8 +5,16 @@
 
 #define NAME "@PROJECT_NAME@"
 #define VERSION "@PROJECT_VERSION@"
+
 #define PLATFORM_@PLATFORM@ 1
 #define @GRAPHICS_LIBRARY@_GRAPHICS 1
 #define SECURE_FUNCTIONS @SECURE_FUNCTIONS@
+#define WIDE_STRING @WIDE_STRING@
+
+#if WIDE_STRING
+#define string_(str) L##str
+#else /* WIDE_STRING */
+#define string_(str) str
+#endif
 
 #endif /* CONFIG_H_ */

@@ -3,6 +3,8 @@
 
 #pragma once
 
-#define CLIENT_ID "Client"
+#include "config.h"
+
+#define CLIENT_ID string_("Client")
 
 #endif /* MAIN_H_ */

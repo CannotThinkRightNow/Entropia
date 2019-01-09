@@ -69,8 +69,10 @@ endif ()
 
 if (WINDOWS)
   set (SECURE_FUNCTIONS 1)
+  set (WIDE_STRING 1)
 else ()
   set (SECURE_FUNCTIONS 0)
+  set (WIDE_STRING 0)
 endif ()
 
 if (NOT DEFINED ENV{CI})

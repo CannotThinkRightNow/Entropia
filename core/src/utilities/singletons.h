@@ -29,8 +29,8 @@ public:
     //       due to the compilers behavior to check accessibility
     //       before deleted status.
 
-    Singleton<T>(Singleton<T> const&) = delete;
-    void operator=(Singleton<T> const&) = delete;
+    Singleton<T>(Singleton<T> const&) final = delete;
+    virtual void operator=(Singleton<T> const&) final = delete;
 };
 
 // Modified from https://stackoverflow.com/a/1008289.
@@ -39,7 +39,7 @@ class ThreadLocalSingleton
 {
 protected:
     // Constructor.
-    ThreadLocalSingleton<T>() {}
+    ThreadLocalSingleton<T>(){}
 
 public:
     static T& getInstance()
@@ -61,8 +61,8 @@ public:
     //       due to the compilers behavior to check accessibility
     //       before deleted status.
 
-    ThreadLocalSingleton<T>(ThreadLocalSingleton<T> const&) = delete;
-    void operator=(ThreadLocalSingleton<T> const&) = delete;
+    ThreadLocalSingleton<T>(ThreadLocalSingleton<T> const&) final = delete;
+    virtual void operator=(ThreadLocalSingleton<T> const&) final = delete;
 };
 
 #endif /* SINGLETONS_H_ */

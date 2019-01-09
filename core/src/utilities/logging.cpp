@@ -2,6 +2,9 @@
 #include "config.h"
 
 #include <iostream>
+#if WIDE_STRING
+#include <sstream>
+#endif /* WIDE_STRING */
 #include <chrono>
 #include <ctime>
 #include <algorithm>
@@ -10,46 +13,58 @@ using system_clock = std::chrono::system_clock;
 
 namespace logging
 {
-    c_str getNowTimeString()
+#if WIDE_STRING
+    using char_t = wchar_t;
+#else /* WIDE_STRING */
+    using char_t = char;
+#endif
+
+    const string getNowTimeString()
     {
         std::time_t time = system_clock::to_time_t(system_clock::now());
 #if SECURE_FUNCTIONS
         char time_c_str[26];
         ctime_s(time_c_str, sizeof time_c_str, &time);
-        std::string time_str(time_c_str);
-#else
+#if WIDE_STRING
+        std::wostringstream woss;
+        woss << time_c_str;
+        string time_str = woss.str();
+#else /* WIDE_STRING */
+        string time_str(time_c_str);
+#endif
+#else /* SECURE_FUNCTIONS */
         std::string time_str(ctime(&time));
 #endif
-        time_str.erase(std::remove_if(time_str.begin(), time_str.end(), [](const char& c) { return c == '\n'; }), time_str.end());
-        char* ret = new char[time_str.length() + 1]();
-#if SECURE_FUNCTIONS
-        strcpy_s(ret, time_str.length() + 1, time_str.c_str());
-#else
-        strcpy(ret, time_str.c_str());
-#endif
-        return ret;
+        time_str.erase(std::remove_if(time_str.begin(), time_str.end(), [](const char_t c) { return c == string_('\n'); }), time_str.end());
+        return time_str;
     }
-
-    // template<typename... Args>
-    // int printf(Level level, c_str id, c_str format, Args... args);
-
-    // template<typename... Args>
-    // int printlnf(Level level, c_str id, c_str format, Args... args);
 
     int println()
     {
+#if WIDE_STRING
+        return std::wprintf(L"\n");
+#else /* WIDE_STRING */
         return std::printf("\n");
+#endif
     }
     
     namespace utilities
     {
-        void printArgs(c_str id, int argc, char** argv)
+        void printArgs(string id, int argc, char** argv)
         {
-            printlnf(Level::LEVEL_INFO, id, SECTION_HEADER_NAMED, "Arguments");
-            printlnf(Level::LEVEL_INFO, id, "Arguments Count: %d", argc);
-            printf(Level::LEVEL_INFO, id, "Arguments:");
+            printlnf(Level::LEVEL_INFO, id, SECTION_HEADER_NAMED, string_("Arguments"));
+            printlnf(Level::LEVEL_INFO, id, string_("Arguments Count: %d"), argc);
+            printf(Level::LEVEL_INFO, id, string_("Arguments:"));
             for (int i = 0; i < argc; i++)
+#if WIDE_STRING
+            {
+                std::wostringstream woss;
+                woss << argv[i];
+                std::wprintf(L" %s", woss.str().c_str());
+            }
+#else /* WIDE_STRING */
                 std::printf(" %s", argv[i]);
+#endif
             println();
             printlnf(Level::LEVEL_INFO, id, SECTION_FOOTER);
         }

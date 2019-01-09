@@ -4,38 +4,49 @@
 #pragma once
 
 #include "config.h"
-#include "utilities/typedefs.h"
 #include "utilities/singletons.h"
 
-#define FILES_ID "Files"
+#include <string>
 
 namespace io
 {
+#if WIDE_STRING
+    using string = std::wstring;
+#else /* WIDE_STRING */
+    using string = std::string;
+#endif
+
     class File
     {
+    private:
+        const string path;
+
     public:
-        const c_str path;
-        File(c_str path);
+        File(string path);
+        virtual const string getPath();
     };
 
     template<class T>
     class SingletonFile : public File, public Singleton<T>
     {
-    public:
-        SingletonFile<T>(c_str path);
+    protected:
+        SingletonFile<T>(string path);
     };
-
+    
     // Files
     namespace files
     {
-        class Pointer : public SingletonFile<Pointer>
+        class Pointer final : public SingletonFile<Pointer>
         {
+            friend class Singleton<Pointer>;
+
         private:
-            c_str dataPath;
+            string dataPath;
             Pointer();
 
         public:
-            c_str getDataPath();
+            const string getPath() override;
+            const string getDataPath();
         };
     }
 }
