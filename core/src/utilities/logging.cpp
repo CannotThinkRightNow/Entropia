@@ -1,72 +1,76 @@
 #include "logging.h"
 #include "config.h"
 
-#include <iostream>
-#if WIDE_STRING
 #include <sstream>
-#endif /* WIDE_STRING */
-#include <chrono>
-#include <ctime>
-#include <algorithm>
-
-using system_clock = std::chrono::system_clock;
+#include <map>
+#include <spdlog/spdlog.h>
+#include <spdlog/async.h>
+#include <spdlog/sinks/basic_file_sink.h>
+#if PLATFORM_ANDROID
+#include <spdlog/sinks/android_sink.h>
+#else /* PLATFORM_ANDROID */
+#include <spdlog/sinks/stdout_color_sinks.h>
+#endif
 
 namespace logging
 {
-#if WIDE_STRING
-    using char_t = wchar_t;
-#else /* WIDE_STRING */
-    using char_t = char;
-#endif
+    std::shared_ptr<spdlog::logger> logger = nullptr;
+    std::shared_ptr<spdlog::logger> unformatted = nullptr;
+    std::map<std::string, std::shared_ptr<spdlog::logger>> map;
 
-    const string getNowTimeString()
+    void init()
     {
-        std::time_t time = system_clock::to_time_t(system_clock::now());
-#if SECURE_FUNCTIONS
-        char time_c_str[26];
-        ctime_s(time_c_str, sizeof time_c_str, &time);
-#if WIDE_STRING
-        std::wostringstream woss;
-        woss << time_c_str;
-        string time_str = woss.str();
-#else /* WIDE_STRING */
-        string time_str(time_c_str);
+        spdlog::init_thread_pool(8192, 1);
+#if PLATFORM_ANDROID
+        auto log_sink = std::make_shared<spdlog::sinks::android_logger>();
+#else /* PLATFORM_ANDROID */
+        auto log_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
 #endif
-#else /* SECURE_FUNCTIONS */
-        std::string time_str(ctime(&time));
-#endif
-        time_str.erase(std::remove_if(time_str.begin(), time_str.end(), [](const char_t c) { return c == string_('\n'); }), time_str.end());
-        return time_str;
+        auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("");
+        std::vector<spdlog::sink_ptr> sinks { log_sink, file_sink };
+        logger = std::make_shared<spdlog::async_logger>("logger", sinks.begin(), sinks.end(), spdlog::thread_pool(), spdlog::async_overflow_policy::block);
+        spdlog::register_logger(logger);
+        unformatted = getLogger("raw");
+        unformatted->set_pattern("%v");
     }
 
-    int println()
+    void terminate()
     {
-#if WIDE_STRING
-        return std::wprintf(L"\n");
-#else /* WIDE_STRING */
-        return std::printf("\n");
-#endif
+        spdlog::shutdown();
     }
-    
-    namespace utilities
+
+    const std::shared_ptr<spdlog::logger>& getLogger()
     {
-        void printArgs(string id, int argc, char** argv)
-        {
-            printlnf(Level::LEVEL_INFO, id, SECTION_HEADER_NAMED, string_("Arguments"));
-            printlnf(Level::LEVEL_INFO, id, string_("Arguments Count: %d"), argc);
-            printf(Level::LEVEL_INFO, id, string_("Arguments:"));
-            for (int i = 0; i < argc; i++)
-#if WIDE_STRING
-            {
-                std::wostringstream woss;
-                woss << argv[i];
-                std::wprintf(L" %s", woss.str().c_str());
-            }
-#else /* WIDE_STRING */
-                std::printf(" %s", argv[i]);
-#endif
-            println();
-            printlnf(Level::LEVEL_INFO, id, SECTION_FOOTER);
-        }
+        return logger;
+    }
+
+    const std::shared_ptr<spdlog::logger>& getUnformattedLogger()
+    {
+        return unformatted;
+    }
+
+    const std::shared_ptr<spdlog::logger>& getLogger(std::string name)
+    {
+        if (map.count(name) == 0) // Create new logger
+            map[name] = logger->clone(name);
+        return map[name];
+    }
+
+    void println()
+    {
+        unformatted->critical("");
+    }
+
+    void printArgs(std::string name, int argc, char** argv)
+    {
+        auto logger = getLogger(name);
+        logger->info(SECTION_HEADER_NAMED, "Arguments");
+        logger->info("Arguments Count: %i", argc);
+        std::ostringstream oss;
+        oss << "Arguments:";
+        for (int i = 0; i < argc; i++)
+            oss << " " << argv[argc];
+        logger->info(oss.str());
+        logger->info(SECTION_FOOTER);
     }
 }

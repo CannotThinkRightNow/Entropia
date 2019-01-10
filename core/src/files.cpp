@@ -1,47 +1,46 @@
 #include "files.h"
+#include "config.h"
 #include "utilities/logging.h"
 
-#define FILES_ID string_("Files")
+#define FILES_ID "Files"
 
 #if PLATFORM_WINDOWS
 #include <ShlObj.h>
-#endif
+#endif /* PLATFORM_WINDOWS */
 #include <stdexcept>
-
-using logLevel = logging::Level;
 
 namespace io
 {
-    File::File(string path) : path(path) {}
-    const string File::getPath()
+    File::File(std::string path) : path(path) {}
+    const std::string File::getPath()
     {
         return path;
     }
 
     template<class T>
-    SingletonFile<T>::SingletonFile(string path) : io::File(path){}
+    SingletonFile<T>::SingletonFile(std::string path) : io::File(path){}
 
     namespace files
     {
         Pointer::Pointer() : SingletonFile<Pointer>(getPath()){}
-        const string Pointer::getPath()
+        const std::string Pointer::getPath()
         {
+            auto logger = logging::getLogger(FILES_ID);
 #if PLATFORM_WINDOWS
             LPWSTR out;
             if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_LocalAppData, KF_FLAG_DEFAULT, nullptr, &out)))
             {
                 std::unique_ptr<WCHAR, decltype(&CoTaskMemFree)> p(out, &CoTaskMemFree);
-                string ret(out);
-                return ret;
+                return nullptr;
             }
             else
             {
-                logging::printlnf(logLevel::LEVEL_FATAL, FILES_ID, string_("Error while accessing local app data: %u"), GetLastError());
+                logger->info("Error while accessing local app data: %u", GetLastError());
                 throw std::runtime_error("Error while accessing local app data.");
             }
 #endif
         }
-        const string Pointer::getDataPath()
+        const std::string Pointer::getDataPath()
         {
             return dataPath;
         }

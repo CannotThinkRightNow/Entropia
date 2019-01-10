@@ -1,16 +1,13 @@
 #include "graphics.h"
 #include "utilities/logging.h"
 
-#define GRAPHICS_ID string_("Graphics")
-
 #if PLATFORM_WINDOWS
 #include <Windows.h>
 #include <WinUser.h>
 #endif /* PLATFORM_WINDOWS */
-#if WIDE_STRING
-#include <sstream>
-#endif /* WIDE_STRING */
 #include <stdexcept>
+
+#define GRAPHICS_ID "Graphics"
 
 #if PLATFORM_MACOS
 
@@ -22,8 +19,6 @@
 #define PRIMARY_X GetSystemMetrics(SM_CXSCREEN)
 #define PRIMARY_Y GetSystemMetrics(SM_CYSCREEN)
 #endif /* PLATFORM_WINDOWS */
-
-using logLevel = logging::Level;
 
 namespace graphics
 {
@@ -37,22 +32,23 @@ namespace graphics
     {
         glfwSetErrorCallback(glfwErrorCallback);
 
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, SECTION_HEADER_NAMED, string_("GLFW"));
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, string_("Compiled-time version: %i.%i.%i"), GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR, GLFW_VERSION_REVISION);
+        auto logger = logging::getLogger(GRAPHICS_ID);
+        logger->info(SECTION_HEADER_NAMED, "GLFW");
+        logger->info("Compiled-time version: %i.%i.%i", GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR, GLFW_VERSION_REVISION);
         int major, minor, revision;
         glfwGetVersion(&major, &minor, &revision);
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, string_("Runtime version: %i.%i.%i"), major, minor, revision);
+        logger->info("Runtime version: %i.%i.%i", major, minor, revision);
         if (GLFW_VERSION_MAJOR != major || GLFW_VERSION_MINOR != minor || GLFW_VERSION_REVISION != revision)
         {
             glfwUnsupported = true;
-            logging::printlnf(logLevel::LEVEL_WARNING, GRAPHICS_ID, string_("Compiled-time version and runtime version differs."));
-            logging::printlnf(logLevel::LEVEL_WARNING, GRAPHICS_ID, string_("No support is provided by using a different version of GLFW!"));
+            logger->warn("Compiled-time version and runtime version differs.");
+            logger->warn("No support is provided by using a different version of GLFW!");
         }
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, SECTION_FOOTER);
+        logger->info(SECTION_FOOTER);
 
         if (!glfwInit())
         {
-            logging::printlnf(logLevel::LEVEL_FATAL, GRAPHICS_ID, string_("Failed to initialize glfw!"));
+            logger->critical("Failed to initialize glfw!");
             throw std::runtime_error("Failed to initialize glfw!");
         }
 
@@ -65,13 +61,13 @@ namespace graphics
 
         glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, SECTION_HEADER_NAMED, string_("Monitors Information"));
+        logger->info(SECTION_HEADER_NAMED, "Monitors");
 #if PLATFORM_WINDOWS
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, string_("Virtual Monitor Size: (%d, %d)"), VIRTUAL_X, VIRTUAL_Y);
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, string_("Primary Monitor Size: (%d, %d)"), PRIMARY_X, PRIMARY_Y);
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, string_("Primary Monitor Work Area: %d"), GetSystemMetrics(SPI_GETWORKAREA));
+        logger->info("Virtual Monitor Size: (%i, %i)", VIRTUAL_X, VIRTUAL_Y);
+        logger->info("Primary Monitor Size: (%i, %i)", PRIMARY_X, PRIMARY_Y);
+        logger->info("Primary Monitor Work Area : %i", GetSystemMetrics(SPI_GETWORKAREA));
 #endif /* PLATFORM_WINDOWS */
-        logging::printlnf(logLevel::LEVEL_INFO, GRAPHICS_ID, SECTION_FOOTER);
+        logger->info(SECTION_FOOTER);
 
         window = glfwCreateWindow(PRIMARY_X, PRIMARY_Y, NAME, glfwGetPrimaryMonitor(), nullptr);
         glfwMakeContextCurrent(window);
@@ -86,13 +82,7 @@ namespace graphics
 
     void glfwErrorCallback(int error, const char* description)
     {
-#if WIDE_STRING
-        std::wostringstream woss;
-        woss << description;
-        logging::printlnf(logLevel::LEVEL_ERROR, string_("GLFW"), string_("An error occured. Code: %i, Description: %s"), error, woss.str().c_str());
-#else /* WIDE_STRING */
-        logging::printlnf(logLevel::LEVEL_ERROR, string_("GLFW"), string_("An error occured. Code: %i, Description: %s"), error, description);
-#endif
+        logging::getLogger("GLFW")->info("An error occured. Code: %i, Description: %s", error, description);
     }
 
 #elif GLES_GRAPHICS /* GL_GRAPHICS */

@@ -5,6 +5,8 @@
 
 version: "0.0.1-b{build}-{branch}"
 
+clone_depth: 50
+
 branches:
   except:
     - gh-pages
@@ -40,7 +42,7 @@ install:
   # Install Python package 'requests'
   - cmd: pip install requests
 
-  # Clone polly
+  # Clone submodules
   - cmd: git submodule update --init --recursive
 
   # Install dependencies (CMake, Ninja)

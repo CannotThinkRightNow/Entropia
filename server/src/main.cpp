@@ -1,9 +1,12 @@
 #include "utilities/logging.h"
-#include "main.h"
 
-namespace logUtilities = logging::utilities;
+#define SERVER_ID "Server"
 
 int main(int argc, char** argv)
 {
-    logUtilities::printArgs(SERVER_ID, argc, argv);
+    logging::init();
+    logging::printArgs(SERVER_ID, argc, argv);
+
+    logging::terminate();
+    return 0;
 }

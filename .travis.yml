@@ -6,6 +6,10 @@
 language:
   - cpp
 
+git:
+  depth: 50
+  submodules: false
+
 addons:
   apt:
     packages:
@@ -85,6 +89,9 @@ install:
   # fix broken clang link on Travis-CI
   - if [[ "`uname`" == "Linux" ]]; then mkdir clang-bin; ln -s /usr/local/clang-5.0.0/bin/clang++ clang-bin/clang++-5.0; fi
   - if [[ "`uname`" == "Darwin" ]]; then mkdir clang-bin; ln -s /usr/bin/clang++ clang-bin/clang++-5.0; fi
+
+  # Clone submodules
+  - git submodule update --init --recursive
 
   # Install dependencies (CMake, Android NDK)
   - POLLY_SOURCE_DIR="`pwd`/polly"

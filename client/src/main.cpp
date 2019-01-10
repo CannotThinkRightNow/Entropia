@@ -1,13 +1,13 @@
 #include "utilities/logging.h"
-#include "main.h"
 #include "graphics.h"
 #include "files.h"
 
-namespace logUtilities = logging::utilities;
+#define CLIENT_ID "Client"
 
 int main(int argc, char** argv)
 {
-    logUtilities::printArgs(CLIENT_ID, argc, argv);
+    logging::init();
+    logging::printArgs(CLIENT_ID, argc, argv);
     graphics::createWindow();
     graphics::glInit();
     
@@ -19,5 +19,7 @@ int main(int argc, char** argv)
             glfwSetWindowShouldClose(graphics::window, GL_TRUE);
     }
     
+    glfwTerminate();
+    logging::terminate();
     return 0;
 }

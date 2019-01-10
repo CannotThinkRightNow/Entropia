@@ -3,85 +3,24 @@
 
 #pragma once
 
-#include "config.h"
+#include <spdlog/logger.h>
 
-#include <iostream>
-#include <sstream>
-
-#define SECTION_HEADER string_("==================================================")
-#define SECTION_HEADER_NAMED string_("=========================%s=========================")
-#define SECTION_SPLITTER string_("--------------------------------------------------")
-#define SECTION_FOOTER string_("==================================================")
+#define SECTION_HEADER "=================================================="
+#define SECTION_HEADER_NAMED "=========================%s========================="
+#define SECTION_SPLITTER "--------------------------------------------------"
+#define SECTION_FOOTER "=================================================="
 
 namespace logging
 {
-#if WIDE_STRING
-    using string = std::wstring;
-#else /* WIDE_STRING */
-    using string = std::string;
-#endif
+    void init();
+    void terminate();
 
-    enum class Level : unsigned int
-    {
-        LEVEL_FATAL,
-        LEVEL_ERROR,
-        LEVEL_WARNING,
-        LEVEL_INFO,
-        LEVEL_DEBUG,
-    };
+    const std::shared_ptr<spdlog::logger>& getLogger();
+    const std::shared_ptr<spdlog::logger>& getUnformattedLogger();
+    const std::shared_ptr<spdlog::logger>& getLogger(std::string name);
 
-    static const string levelNames[] = { string_("Fatal"), string_("Error"), string_("Warning"), string_("Info"), string_("Debug") };
-
-    const string getNowTimeString();
-
-#if WIDE_STRING
-    // Do not include std::wstring in args.
-    template<typename... Args>
-    int printf(Level level, string id, string format, Args... args)
-    {
-        unsigned int levelValue = static_cast<unsigned int>(level);
-        std::wostringstream woss;
-        woss << L"[%s] [%s] [%s] " << format;
-        return std::wprintf(woss.str().c_str(), getNowTimeString().c_str(), levelNames[levelValue].c_str(), id.c_str(), args...);
-    }
-
-    // Do not include std::wstring in args.
-    template<typename... Args>
-    int printlnf(Level level, string id, string format, Args... args)
-    {
-        std::wostringstream woss;
-        woss << format << L"\n";
-        return printf(level, id, woss.str(), args...);
-    }
-
-#else /* WIDE_STRING */
-    // Do not include std::string in args.
-    template<typename... Args>
-    int printf(Level level, string id, string format, Args... args)
-    {
-        unsigned int levelValue = static_cast<unsigned int>(level);
-        std::ostringstream oss;
-        oss << "[%s] [%s] [%s] " << format;
-        return std::printf(oss.str().c_str(), getNowTimeString().c_str(), levelNames[levelValue].c_str(), id.c_str(), args...);
-    }
-
-    // Do not include std::string in args.
-    template<typename... Args>
-    int printlnf(Level level, string id, string format, Args... args)
-    {
-        std::ostringstream oss;
-        oss << format << "\n";
-        return printf(level, id, oss.str(), args...);
-    }
-
-#endif
-
-    int println();
-
-    namespace utilities
-    {
-        void printArgs(string id, int argc, char** argv);
-    }
+    void println();
+    void printArgs(std::string name, int argc, char** argv);
 }
 
 #endif /* LOGGING_H_ */
