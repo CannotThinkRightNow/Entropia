@@ -19,24 +19,22 @@ message (STATUS ${SECTION_HEADER})
 message (STATUS "Dependencies")
 message (STATUS ${SECTION_SPLITTER})
 # Build
-if (ANDROID)
-  # OpenGL ES 2.0
+if (ANDROID) # OpenGL ES 2.0
   find_library (GLES2_LIB "libGLESv2.so" HINTS "${ANDROID_NDK}/platforms/android-${CMAKE_ANDROID_API}/arch-${CMAKE_ANDROID_ARCH}")
   add_library (gles2 SHARED IMPORTED GLOBAL)
   set_target_properties (gles2 PROPERTIES IMPORTED_LOCATION ${GLES2_LIB})
 
   set (GRAPHICS_LIBRARY "GLES2")
-elseif (IOS)
-  # Metal
+elseif (IOS) # Metal
   # TODO: use Metal here...
 
   set (GRAPHICS_LIBRARY "METAL")
-elseif (LINUX OR MACOS OR WINDOWS)
-  # OpenGL
+elseif (LINUX OR MACOS OR WINDOWS) # OpenGL
   # GLEW
   message (STATUS "Building 'glew'...")
   include ("cmake/glew.cmake")
   add_subdirectory ("${GLEW_DIR}/build/cmake" ${GLEW_DIR})
+  target_include_directories (glew PUBLIC "${GLEW_DIR}/include")
   message (STATUS "Successfully built 'glew'.")
   message (STATUS ${SECTION_SPLITTER})
   # GLFW
@@ -47,8 +45,8 @@ elseif (LINUX OR MACOS OR WINDOWS)
   message (STATUS ${SECTION_SPLITTER})
 
   set (GRAPHICS_LIBRARY "GL")
-else ()
-  message (FATAL_ERROR "Unknown graphics library: ${GRAPHICS_LIBRARY}")
+else () # Unknown
+  message (FATAL_ERROR "Graphics library unknown.")
 endif ()
 # spdlog
 message (STATUS "Building 'spdlog'...")
