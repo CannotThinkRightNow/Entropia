@@ -7,7 +7,6 @@ file (GLOB_RECURSE SERVER_SOURCE CONFIGURE_DEPENDS "src/*")
 
 # Targets
 add_executable (server ${SERVER_SOURCE})
-target_include_directories (server PUBLIC ${SERVER_SOURCE})
 target_link_libraries (server core)
 
 # Packaging

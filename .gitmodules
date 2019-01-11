@@ -8,11 +8,5 @@
     path = glfw
     url = https://github.com/glfw/glfw.git
 [submodule "spdlog"]
-	path = spdlog
-	url = https://github.com/gabime/spdlog.git
-[submodule "boost/filesystem"]
-	path = boost/filesystem
-	url = https://github.com/boostorg/filesystem.git
-[submodule "boost/system"]
-	path = boost/system
-	url = https://github.com/boostorg/system.git
+    path = spdlog
+    url = https://github.com/gabime/spdlog.git

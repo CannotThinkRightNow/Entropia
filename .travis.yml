@@ -13,6 +13,9 @@ git:
 addons:
   apt:
     packages:
+      - git
+      - cmake
+      - libx11-dev
       - python3-pip
 
 dist:
