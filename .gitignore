@@ -10,7 +10,7 @@
 # Custom definitions.
 
 # Configured files
-out/
+config.h
 
 ####################
 # C++

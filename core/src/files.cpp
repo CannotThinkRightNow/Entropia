@@ -1,6 +1,6 @@
-#include "files.h"
-#include "config.h"
-#include "utilities/logging.h"
+#include "core/files.h"
+#include "core/config.h"
+#include "core/utilities/logging.h"
 
 #define FILES_ID "Files"
 

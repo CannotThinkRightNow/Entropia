@@ -1,5 +1,5 @@
-#include "logging.h"
-#include "config.h"
+#include "core/utilities/logging.h"
+#include "core/config.h"
 
 #include <sstream>
 #include <map>
@@ -51,7 +51,7 @@ namespace logging
 
     const std::shared_ptr<spdlog::logger>& getLogger(std::string name)
     {
-        if (map.count(name) == 0) // Create new logger
+        if (map.count(name) == 0) // Logger not found.
             map[name] = logger->clone(name);
         return map[name];
     }

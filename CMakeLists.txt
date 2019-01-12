@@ -10,9 +10,12 @@ project ("unnamed")
 set (PROJECT_VERSION "0.0.1-v1-alpha")
 
 include ("cmake/variables.cmake")
-include ("cmake/gitmodules.cmake")
 include (GNUInstallDirs)
-include (ExternalProject)
+include (FetchContent)
+include ("cmake/GitModules.cmake")
+include ("cmake/utilities.cmake")
+
+GitModules_UpdateOrCheck ($ENV{CI})
 
 # Dependencies
 message (STATUS ${SECTION_HEADER})
@@ -31,17 +34,15 @@ elseif (IOS) # Metal
   set (GRAPHICS_LIBRARY "METAL")
 elseif (LINUX OR MACOS OR WINDOWS) # OpenGL
   # GLEW
-  message (STATUS "Building 'glew'...")
+  message (STATUS "Adding 'glew'...")
   include ("cmake/glew.cmake")
-  add_subdirectory ("${GLEW_DIR}/build/cmake" ${GLEW_DIR})
-  target_include_directories (glew PUBLIC "${GLEW_DIR}/include")
-  message (STATUS "Successfully built 'glew'.")
+  message (STATUS "Successfully added 'glew'.")
   message (STATUS ${SECTION_SPLITTER})
   # GLFW
-  message (STATUS "Building 'glfw'...")
-  set (GLFW_DIR "${PROJECT_SOURCE_DIR}/glfw")
-  add_subdirectory (${GLFW_DIR})
-  message (STATUS "Successfully built 'glfw'.")
+  message (STATUS "Adding 'glfw'...")
+  FetchContent_Declare (glfw_project
+                        SOURCE_DIR "${PROJECT_SOURCE_DIR}/glfw")
+  message (STATUS "Successfully added 'glfw'.")
   message (STATUS ${SECTION_SPLITTER})
 
   set (GRAPHICS_LIBRARY "GL")
@@ -49,10 +50,10 @@ else () # Unknown
   message (FATAL_ERROR "Graphics library unknown.")
 endif ()
 # spdlog
-message (STATUS "Building 'spdlog'...")
-set (SPDLOG_DIR "${PROJECT_SOURCE_DIR}/spdlog")
-add_subdirectory (${SPDLOG_DIR})
-message (STATUS "Successfully built 'spdlog'.")
+message (STATUS "Adding 'spdlog'...")
+FetchContent_Declare (spdlog_project
+                      SOURCE_DIR "${PROJECT_SOURCE_DIR}/spdlog")
+message (STATUS "Successfully added 'spdlog'.")
 message (STATUS ${SECTION_FOOTER})
 
 # Sub-projects
@@ -78,7 +79,7 @@ message (STATUS "Successfully built '${PROJECT_NAME}'.")
 message (STATUS ${SECTION_FOOTER})
 
 # Packaging
-install (FILES "LICENSE.txt" "LICENSE.md" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install (FILES "LICENSE.txt" "LICENSE.md" ${OUT_INCLUDE} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 include (InstallRequiredSystemLibraries)
 set (CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE.txt")
