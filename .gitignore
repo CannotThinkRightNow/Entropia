@@ -10,12 +10,13 @@
 # Custom definitions.
 
 # Configured files
-out/
+config.h
 
 # Submodules
 glew/
 glfw/
 polly/
+spdlog/
 
 ####################
 # Visual Studio
