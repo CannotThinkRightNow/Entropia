@@ -5,14 +5,6 @@
 # Get latest from https://github.com/github/gitignore.
 
 ####################
-# Custom
-####################
-# Custom definitions.
-
-# Configured files
-config.h
-
-####################
 # C++
 ####################
 # Get latest from https://github.com/github/gitignore/blob/master/C++.gitignore.
@@ -402,3 +394,11 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+####################
+# Custom
+####################
+# Custom definitions.
+
+# Configured files
+config.h
