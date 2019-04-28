@@ -69,7 +69,7 @@ namespace logging
         std::ostringstream oss;
         oss << "Arguments:";
         for (int i = 0; i < argc; i++)
-            oss << " " << argv[argc];
+            oss << " " << argv[i];
         logger->info(oss.str());
         logger->info(SECTION_FOOTER);
     }

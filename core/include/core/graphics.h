@@ -13,12 +13,14 @@
 #endif
 #include <GLFW/glfw3.h>
 
+#include "core_export.h"
+
 namespace graphics
 {
-    extern bool glfwUnsupported;
-    extern GLFWmonitor* monitor;
-    extern GLFWwindow* window;
-    extern GLuint vertexBuffer;
+    CORE_EXPORT extern bool glfwUnsupported;
+    CORE_EXPORT extern GLFWmonitor* monitor;
+    CORE_EXPORT extern GLFWwindow* window;
+    CORE_EXPORT extern GLuint vertexBuffer;
 
     void createWindow();
     void glInit();

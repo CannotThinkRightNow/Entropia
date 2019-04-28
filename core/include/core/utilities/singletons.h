@@ -1,7 +1,8 @@
+// Modified from https://stackoverflow.com/a/1008289/9341868.
+
 #ifndef SINGLETONS_H_
 #define SINGLETONS_H_
 
-// Modified from https://stackoverflow.com/a/1008289.
 template<class T>
 class Singleton
 {
@@ -29,11 +30,10 @@ public:
     //       due to the compilers behavior to check accessibility
     //       before deleted status.
 
-    Singleton<T>(Singleton<T> const&) final = delete;
-    virtual void operator=(Singleton<T> const&) final = delete;
+    Singleton<T>(Singleton<T> const&) = delete;
+    virtual void operator=(Singleton<T> const&) = delete;
 };
 
-// Modified from https://stackoverflow.com/a/1008289.
 template<class T>
 class ThreadLocalSingleton
 {
@@ -61,8 +61,8 @@ public:
     //       due to the compilers behavior to check accessibility
     //       before deleted status.
 
-    ThreadLocalSingleton<T>(ThreadLocalSingleton<T> const&) final = delete;
-    virtual void operator=(ThreadLocalSingleton<T> const&) final = delete;
+    ThreadLocalSingleton<T>(ThreadLocalSingleton<T> const&) = delete;
+    virtual void operator=(ThreadLocalSingleton<T> const&) = delete;
 };
 
 #endif /* SINGLETONS_H_ */

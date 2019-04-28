@@ -1,6 +1,6 @@
-#include "utilities/logging.h"
-#include "graphics.h"
-#include "files.h"
+#include "core/utilities/logging.h"
+#include "core/graphics.h"
+#include "core/files.h"
 
 #define CLIENT_ID "Client"
 

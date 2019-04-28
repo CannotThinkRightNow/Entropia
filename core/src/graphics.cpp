@@ -27,7 +27,7 @@ namespace graphics
     GLFWmonitor* monitor;
     GLFWwindow* window;
     GLuint vertexBuffer;
-
+    
     void createWindow()
     {
         glfwSetErrorCallback(glfwErrorCallback);
