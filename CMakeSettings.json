@@ -30,7 +30,22 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-x64-Windows-x86-Release",
+      "description": "Build application for Android x86-64 on Windows x86.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-x64",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-x86-64-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -45,13 +60,43 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
     {
-      "name": "Android-arm64-Windows-x86-Release",
-      "description": "Build application for Android ARM64 on Windows x86.",
+      "name": "Android-armv7-Windows-x86-Release",
+      "description": "Build application for Android ARMv7 on Windows x86.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-armv7-neon-Windows-x86-Release",
+      "description": "Build application for Android ARMv7 with NEON on Windows x86.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-armv8-Windows-x86-Release",
+      "description": "Build application for Android ARMv7 on Windows x86.",
       "generator": "Unix Makefiles",
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm64",
@@ -60,7 +105,22 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-arm64-v8a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-armv8-neon-Windows-x86-Release",
+      "description": "Build application for Android ARMv7 with NEON on Windows x86.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm64",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-arm64-v8a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -74,7 +134,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -89,7 +149,22 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-x64-Windows-x64-Release",
+      "description": "Build application for Android x86-64 on Windows x86-64.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-x64",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-x86-64-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -104,13 +179,43 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
     {
-      "name": "Android-arm64-Windows-x64-Release",
-      "description": "Build application for Android ARM64 on Windows x86-64.",
+      "name": "Android-armv7-Windows-x64-Release",
+      "description": "Build application for Android ARMv7 on Windows x86-x64.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-armv7-neon-Windows-x64-Release",
+      "description": "Build application for Android ARMv7 with NEON on Windows x86-64.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-armv8-Windows-x64-Release",
+      "description": "Build application for Android ARMv7 on Windows x86-64.",
       "generator": "Unix Makefiles",
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm64",
@@ -119,7 +224,22 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-arm64-v8a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": ""
+    },
+    {
+      "name": "Android-armv8-neon-Windows-x64-Release",
+      "description": "Build application for Android ARMv7 with NEON on Windows x86-64.",
+      "generator": "Unix Makefiles",
+      "configurationType": "RelWithDebInfo",
+      "intelliSenseMode": "android-clang-arm64",
+      "inheritEnvironments": [
+        "none"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-arm64-v8a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -133,7 +253,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-16-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -150,7 +270,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-11-4-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-12-0-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -164,7 +284,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-nocodesign-12-1-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -178,7 +298,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-nocodesign-11-4-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-nocodesign-12-1-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },

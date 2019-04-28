@@ -13,10 +13,11 @@ addons:
     packages:
       - git
       - cmake
-      - libx11-dev
       - python3-pip
+      - libx11-dev
+      - libboost-all-dev
 
-dist: trusty
+dist: xenial
 
 matrix:
   include:
@@ -24,31 +25,43 @@ matrix:
     # Android
     ####################
     - os: linux
-      env: TOOLCHAIN=android-ndk-r15c-api-16-x86-clang-libcxx CONFIG=Release
+      env: TOOLCHAIN=android-ndk-r15c-api-21-x86-clang-libcxx CONFIG=Release
     - os: linux
-      env: TOOLCHAIN=android-ndk-r15c-api-16-x86-clang-libcxx CONFIG=Debug
+      env: TOOLCHAIN=android-ndk-r15c-api-21-x86-clang-libcxx CONFIG=Debug
     - os: linux
-      env: TOOLCHAIN=android-ndk-r15c-api-16-armeabi-clang-libcxx CONFIG=Release
+      env: TOOLCHAIN=android-ndk-r15c-api-21-x86-64-clang-libcxx CONFIG=Release
     - os: linux
-      env: TOOLCHAIN=android-ndk-r15c-api-16-armeabi-clang-libcxx CONFIG=Debug
+      env: TOOLCHAIN=android-ndk-r15c-api-21-x86-64-clang-libcxx CONFIG=Debug
     - os: linux
-      env: TOOLCHAIN=android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx CONFIG=Release
+      env: TOOLCHAIN=android-ndk-r15c-api-21-armeabi-clang-libcxx CONFIG=Release
     - os: linux
-      env: TOOLCHAIN=android-ndk-r15c-api-16-armeabi-v7a-clang-libcxx CONFIG=Debug
+      env: TOOLCHAIN=android-ndk-r15c-api-21-armeabi-clang-libcxx CONFIG=Debug
     - os: linux
-      env: TOOLCHAIN=android-ndk-r15c-api-16-mips-clang-libcxx CONFIG=Release
+      env: TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-clang-libcxx CONFIG=Release
     - os: linux
-      env: TOOLCHAIN=android-ndk-r15c-api-16-mips-clang-libcxx CONFIG=Debug
+      env: TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-clang-libcxx CONFIG=Debug
+    - os: linux
+      env: TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx CONFIG=Release
+    - os: linux
+      env: TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx CONFIG=Debug
+    - os: linux
+      env: TOOLCHAIN=android-ndk-r15c-api-21-arm64-v8a-clang-libcxx CONFIG=Release
+    - os: linux
+      env: TOOLCHAIN=android-ndk-r15c-api-21-arm64-v8a-clang-libcxx CONFIG=Debug
+    - os: linux
+      env: TOOLCHAIN=android-ndk-r15c-api-21-arm64-v8a-neon-clang-libcxx CONFIG=Release
+    - os: linux
+      env: TOOLCHAIN=android-ndk-r15c-api-21-arm64-v8a-neon-clang-libcxx CONFIG=Debug
 
     ####################
     # iOS
     ####################
     - os: osx
-      osx_image: xcode9.4
-      env: TOOLCHAIN=ios-nocodesign-11-4-dep-9-0-bitcode-cxx11 CONFIG=Release
+      osx_image: xcode10.1
+      env: TOOLCHAIN=ios-nocodesign-12-1-dep-9-0-bitcode-cxx11 CONFIG=Release
     - os: osx
-      osx_image: xcode9.4
-      env: TOOLCHAIN=ios-nocodesign-11-4-dep-9-0-bitcode-cxx11 CONFIG=Debug
+      osx_image: xcode10.1
+      env: TOOLCHAIN=ios-nocodesign-12-1-dep-9-0-bitcode-cxx11 CONFIG=Debug
 
     ####################
     # Linux
@@ -62,10 +75,10 @@ matrix:
     # macOS
     ####################
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode10.2
       env: TOOLCHAIN=osx-10-14 CONFIG=Release
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode10.2
       env: TOOLCHAIN=osx-10-14 CONFIG=Debug
 
     ####################
