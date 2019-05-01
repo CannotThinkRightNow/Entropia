@@ -121,7 +121,7 @@ install:
   - if [[ "`uname`" == "Darwin" ]]; then mkdir clang-bin; ln -s /usr/bin/clang++ clang-bin/clang++-5.0; fi
 
   # Install dependencies (CMake, Android NDK)
-  - POLLY_SOURCE_DIR="`pwd`"
+  - POLLY_SOURCE_DIR="`pwd`/polly"
   - python3 "${POLLY_SOURCE_DIR}/bin/install-ci-dependencies.py"
 
   # Tune locations
