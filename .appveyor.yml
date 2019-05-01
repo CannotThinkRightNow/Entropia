@@ -50,7 +50,9 @@ install:
   - cmd: python %POLLY_SOURCE_DIR%\bin\install-ci-dependencies.py
 
   # Rename directories
-  # - sh: if [[ $(ls "`pwd`/_ci" | grep "cmake*") != "cmake/" ]]; then mv $(ls "`pwd`/_ci" | grep "cmake*") "cmake/"; fi
+  - cmd: cd _ci
+  # - sh: if [[ $(ls --ignore=*.tar.gz | grep "cmake*") != "cmake/" ]]; then mv $(ls --ignore=*.tar.gz | grep "cmake*") "cmake/"; fi
+  - cmd: cd ..
   
   # Tune locations
   - cmd: set PATH=%cd%\_ci\cmake\bin;%PATH%

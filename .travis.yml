@@ -128,7 +128,9 @@ install:
   - python3 "${POLLY_SOURCE_DIR}/bin/install-ci-dependencies.py"
 
   # Rename directories
-  - if [[ $(ls "`pwd`/_ci" | grep "cmake*") != "cmake/" ]]; then mv $(ls "`pwd`/_ci" | grep "cmake*") "cmake/"; fi
+  - cd _ci
+  - if [[ $(ls --ignore=*.tar.gz | grep "cmake*") != "cmake/" ]]; then mv $(ls --ignore=*.tar.gz | grep "cmake*") "cmake/"; fi
+  - cd ..
 
   # Tune locations
   - export PATH="`pwd`/_ci/cmake/bin:`pwd`/clang-bin:${PATH}"
