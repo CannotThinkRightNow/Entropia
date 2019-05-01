@@ -8,8 +8,20 @@ language: cpp
 git:
   depth: 50
 
+branches:
+  except:
+    - gh-pages
+
+# Container-based infrastructure (Linux)
+# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
+sudo: false
+
+# Install packages differs for container-based infrastructure
+# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
       - git
       - cmake
@@ -17,7 +29,12 @@ addons:
       - libx11-dev
       - libboost-all-dev
 
-dist: xenial
+      - g++-5
+      - gcc-5
+      - g++-7
+      - gcc-7
+
+dist: trusty
 
 matrix:
   include:
@@ -100,14 +117,11 @@ install:
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
   # fix broken clang link on Travis-CI
-  - if [[ "`uname`" == "Linux" ]]; then mkdir clang-bin; ln -s /usr/local/clang-5.0.0/bin/clang++ clang-bin/clang++-5.0; fi
+  - if [[ "`uname`" == "Linux" ]]; then  mkdir clang-bin; ln -s /usr/local/clang-5.0.0/bin/clang++ clang-bin/clang++-5.0; fi
   - if [[ "`uname`" == "Darwin" ]]; then mkdir clang-bin; ln -s /usr/bin/clang++ clang-bin/clang++-5.0; fi
 
-  # Clone submodules
-  # - git submodule update --init --recursive
-
   # Install dependencies (CMake, Android NDK)
-  - POLLY_SOURCE_DIR="`pwd`/polly"
+  - POLLY_SOURCE_DIR="`pwd`"
   - python3 "${POLLY_SOURCE_DIR}/bin/install-ci-dependencies.py"
 
   # Tune locations
@@ -121,14 +135,12 @@ install:
 script:
   - >
     python3 "${POLLY_SOURCE_DIR}/bin/build.py"
-    --home .
+    --home examples/${EXAMPLE}
     --toolchain ${TOOLCHAIN}
     --config ${CONFIG}
+    --ios-multiarch
+    --ios-combined
     --verbose
     --clear
     --install
     --test
-
-branches:
-  except:
-    - gh-pages
