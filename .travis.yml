@@ -23,8 +23,8 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - git
-      - cmake
+      # - git
+      # - cmake
       - python3-pip
       - libx11-dev
       - libboost-all-dev
