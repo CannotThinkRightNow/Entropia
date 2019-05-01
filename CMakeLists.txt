@@ -12,7 +12,7 @@ set(PROJECT_VERSION "0.0.1-v1-alpha")
 include("cmake/variables.cmake")
 include(GNUInstallDirs)
 include(FetchContent)
-include("cmake/GitModules.cmake")
+include("cmake/gitmodules.cmake")
 include("cmake/utilities.cmake")
 include(GenerateExportHeader)
 
