@@ -43,7 +43,7 @@ install:
   - cmd: pip install requests
 
   # Install dependencies (CMake, Ninja)
-  - cmd: set POLLY_SOURCE_DIR=%cd%/polly
+  - cmd: set POLLY_SOURCE_DIR=%cd%\polly
   - cmd: python %POLLY_SOURCE_DIR%\bin\install-ci-dependencies.py
 
   # Tune locations
@@ -61,4 +61,4 @@ install:
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
 
 build_script:
-  - cmd: python %POLLY_SOURCE_DIR%\bin\build.py --home examples/%EXAMPLE% --toolchain %TOOLCHAIN% --config %CONFIG% --verbose --clear --install --test
+  - cmd: python %POLLY_SOURCE_DIR%\bin\build.py --home %cd% --toolchain %TOOLCHAIN% --config %CONFIG% --verbose --clear --install --test

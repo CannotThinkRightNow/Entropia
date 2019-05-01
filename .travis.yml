@@ -117,7 +117,7 @@ install:
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
   # fix broken clang link on Travis-CI
-  - if [[ "`uname`" == "Linux" ]]; then  mkdir clang-bin; ln -s /usr/local/clang-5.0.0/bin/clang++ clang-bin/clang++-5.0; fi
+  - if [[ "`uname`" == "Linux" ]]; then mkdir clang-bin; ln -s /usr/local/clang-5.0.0/bin/clang++ clang-bin/clang++-5.0; fi
   - if [[ "`uname`" == "Darwin" ]]; then mkdir clang-bin; ln -s /usr/bin/clang++ clang-bin/clang++-5.0; fi
 
   # Install dependencies (CMake, Android NDK)
@@ -135,7 +135,7 @@ install:
 script:
   - >
     python3 "${POLLY_SOURCE_DIR}/bin/build.py"
-    --home examples/${EXAMPLE}
+    --home `pwd`
     --toolchain ${TOOLCHAIN}
     --config ${CONFIG}
     --ios-multiarch
