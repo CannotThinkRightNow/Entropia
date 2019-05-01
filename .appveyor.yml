@@ -48,11 +48,6 @@ install:
   # Install dependencies (CMake, Ninja)
   - cmd: set POLLY_SOURCE_DIR=%cd%\polly
   - cmd: python %POLLY_SOURCE_DIR%\bin\install-ci-dependencies.py
-
-  # Rename directories
-  - cmd: cd _ci
-  # - sh: if [[ $(ls --ignore=*.tar.gz | grep "cmake*") != "cmake/" ]]; then mv $(ls --ignore=*.tar.gz | grep "cmake*") "cmake/"; fi
-  - cmd: cd ..
   
   # Tune locations
   - cmd: set PATH=%cd%\_ci\cmake\bin;%PATH%
