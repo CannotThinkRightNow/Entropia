@@ -42,9 +42,15 @@ install:
   # Install Python package 'requests'
   - cmd: pip install requests
 
+  # Clone submodules
+  - cmd: git submodule update --init --recursive
+
   # Install dependencies (CMake, Ninja)
   - cmd: set POLLY_SOURCE_DIR=%cd%\polly
   - cmd: python %POLLY_SOURCE_DIR%\bin\install-ci-dependencies.py
+
+  # Rename directories
+  - sh: if [[ $(ls | grep "cmake*") != "cmake/" ]]; then mv $(ls | grep "cmake*") "cmake/"; fi
 
   # Tune locations
   - cmd: set PATH=%cd%\_ci\cmake\bin;%PATH%
