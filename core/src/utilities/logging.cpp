@@ -6,9 +6,9 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/async.h>
 #include <spdlog/sinks/basic_file_sink.h>
-#if PLATFORM_ANDROID
+#if CONFIG_PLATFORM_ANDROID
 #include <spdlog/sinks/android_sink.h>
-#else /* PLATFORM_ANDROID */
+#else /* CONFIG_PLATFORM_ANDROID */
 #include <spdlog/sinks/stdout_color_sinks.h>
 #endif
 
@@ -21,9 +21,9 @@ namespace logging
     void init()
     {
         spdlog::init_thread_pool(8192, 1);
-#if PLATFORM_ANDROID
+#if CONFIG_PLATFORM_ANDROID
         auto log_sink = std::make_shared<spdlog::sinks::android_logger>();
-#else /* PLATFORM_ANDROID */
+#else /* CONFIG_PLATFORM_ANDROID */
         auto log_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
 #endif
         auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("");

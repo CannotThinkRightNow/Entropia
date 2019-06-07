@@ -5,10 +5,10 @@
 
 #include "config.h"
 
-#if GL_GRAPHICS
-#if PLATFORM_MACOS
+#if CONFIG_GL_GRAPHICS
+#if CONFIG_PLATFORM_MACOS
 #include <OpenGL/glew.h>
-#else /* PLATFORM_MACOS */
+#else /* CONFIG_PLATFORM_MACOS */
 #include <GL/glew.h>
 #endif
 #include <GLFW/glfw3.h>
@@ -28,10 +28,10 @@ namespace graphics
     void glfwErrorCallback(int error, const char* description);
 }
 
-#elif GLES_GRAPHICS /* GL_GRAPHICS */
+#elif CONFIG_GLES_GRAPHICS /* CONFIG_GL_GRAPHICS */
 
-#elif METAL_GRAPHICS /* GLES_GRAPHICS */
+#elif CONFIG_METAL_GRAPHICS /* CONFIG_GLES_GRAPHICS */
 
-#endif /* METAL_GRAPHICS*/
+#endif /* CONFIG_METAL_GRAPHICS */
 
 #endif /* GRAPHICS_H_ */

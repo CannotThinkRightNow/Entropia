@@ -1,28 +1,28 @@
 #include "core/graphics.h"
 #include "core/utilities/logging.h"
 
-#if PLATFORM_WINDOWS
+#if CONFIG_PLATFORM_WINDOWS
 #include <Windows.h>
 #include <WinUser.h>
-#endif /* PLATFORM_WINDOWS */
+#endif /* CONFIG_PLATFORM_WINDOWS */
 #include <stdexcept>
 
 #define GRAPHICS_ID "Graphics"
 
-#if PLATFORM_MACOS
+#if CONFIG_PLATFORM_MACOS
 
-#elif PLATFORM_LINUX /* PLATFORM_MACOS */
+#elif CONFIG_PLATFORM_LINUX /* CONFIG_PLATFORM_MACOS */
 
-#elif PLATFORM_WINDOWS /* PLATFORM_LINUX */
+#elif CONFIG_PLATFORM_WINDOWS /* CONFIG_PLATFORM_LINUX */
 #define VIRTUAL_X GetSystemMetrics(SM_CXVIRTUALSCREEN)
 #define VIRTUAL_Y GetSystemMetrics(SM_CYVIRTUALSCREEN)
 #define PRIMARY_X GetSystemMetrics(SM_CXSCREEN)
 #define PRIMARY_Y GetSystemMetrics(SM_CYSCREEN)
-#endif /* PLATFORM_WINDOWS */
+#endif /* CONFIG_PLATFORM_WINDOWS */
 
 namespace graphics
 {
-#if GL_GRAPHICS
+#if CONFIG_GL_GRAPHICS
     bool glfwUnsupported = false;
     GLFWmonitor* monitor;
     GLFWwindow* window;
@@ -62,14 +62,14 @@ namespace graphics
         glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
         logger->info(SECTION_HEADER_NAMED, "Monitors");
-#if PLATFORM_WINDOWS
+#if CONFIG_PLATFORM_WINDOWS
         logger->info("Virtual Monitor Size: (%i, %i)", VIRTUAL_X, VIRTUAL_Y);
         logger->info("Primary Monitor Size: (%i, %i)", PRIMARY_X, PRIMARY_Y);
         logger->info("Primary Monitor Work Area : %i", GetSystemMetrics(SPI_GETWORKAREA));
-#endif /* PLATFORM_WINDOWS */
+#endif /* CONFIG_PLATFORM_WINDOWS */
         logger->info(SECTION_FOOTER);
 
-        window = glfwCreateWindow(PRIMARY_X, PRIMARY_Y, NAME, glfwGetPrimaryMonitor(), nullptr);
+        window = glfwCreateWindow(PRIMARY_X, PRIMARY_Y, CONFIG_NAME, glfwGetPrimaryMonitor(), nullptr);
         glfwMakeContextCurrent(window);
     }
 
@@ -85,9 +85,9 @@ namespace graphics
         logging::getLogger("GLFW")->info("An error occured. Code: %i, Description: %s", error, description);
     }
 
-#elif GLES_GRAPHICS /* GL_GRAPHICS */
+#elif GLES_GRAPHICS /* CONFIG_GL_GRAPHICS */
 
-#elif METAL_GRAPHICS /* GLES_GRAPHICS */
+#elif METAL_GRAPHICS /* CONFIG_GLES_GRAPHICS */
 
-#endif /* METAL_GRAPHICS*/
+#endif /* CONFIG_METAL_GRAPHICS*/
 }

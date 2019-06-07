@@ -4,9 +4,9 @@
 
 #define FILES_ID "Files"
 
-#if PLATFORM_WINDOWS
+#if CONFIG_PLATFORM_WINDOWS
 #include <ShlObj.h>
-#endif /* PLATFORM_WINDOWS */
+#endif /* CONFIG_PLATFORM_WINDOWS */
 #include <stdexcept>
 
 namespace io
@@ -26,7 +26,7 @@ namespace io
         const std::string Pointer::getPath()
         {
             auto logger = logging::getLogger(FILES_ID);
-#if PLATFORM_WINDOWS
+#if CONFIG_PLATFORM_WINDOWS
             LPWSTR out;
             if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_LocalAppData, KF_FLAG_DEFAULT, nullptr, &out)))
             {
@@ -38,7 +38,7 @@ namespace io
                 logger->info("Error while accessing local app data: %u", GetLastError());
                 throw std::runtime_error("Error while accessing local app data.");
             }
-#endif
+#endif /* CONFIG_PLATFORM_WINDOWS */
         }
         const std::string Pointer::getDataPath()
         {
