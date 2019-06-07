@@ -13,18 +13,8 @@ add_library(core SHARED ${CORE_SOURCE})
 generate_export_header(core EXPORT_FILE_NAME ${CORE_EXPORT_HEADER}
                             INCLUDE_GUARD_NAME "CORE_EXPORT_H_"
                             DEFINE_NO_DEPRECATED)
-message(STATUS "==========Debug==========")
-message(STATUS core)
-message(STATUS PROPERTIES)
-message(STATUS PUBLIC_HEADER)
-message(STATUS ${CORE_INCLUDE})
-message(STATUS PRIVATE_HEADER)
-message(STATUS ${CORE_EXPORT_HEADER})
-message(STATUS "-------------------------")
-message(STATUS core PROPERTIES PUBLIC_HEADER ${CORE_INCLUDE} PRIVATE_HEADER ${CORE_EXPORT_HEADER})
-message(STATUS "=========================")
-set_target_properties(core PROPERTIES PUBLIC_HEADER ${CORE_INCLUDE}
-                                      PRIVATE_HEADER ${CORE_EXPORT_HEADER})
+set_target_properties(core PROPERTIES PUBLIC_HEADER "${CORE_INCLUDE}"
+                                      PRIVATE_HEADER "${CORE_EXPORT_HEADER}")
 target_include_directories(core PUBLIC "include")
 # Boost
 target_link_libraries(core Boost::boost Boost::filesystem)
