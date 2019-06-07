@@ -20,14 +20,16 @@ sudo: false
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
 addons:
   apt:
+    update: true
     sources:
       - ubuntu-toolchain-r-test
+      - sourceline: 'ppa:mhier/libboost-latest' # https://launchpad.net/~mhier/+archive/ubuntu/libboost-latest
     packages:
       # - git
       # - cmake
       - python3-pip
       - libx11-dev
-      - libboost-all-dev
+      - boost1.70 # Version should be the latest version of 'ppa:mhier/libboost-latest'
 
       - g++-5
       - gcc-5
