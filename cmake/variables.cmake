@@ -6,6 +6,20 @@ set(SECTION_HEADER "==================================================")
 set(SECTION_SPLITTER "--------------------------------------------------")
 set(SECTION_FOOTER "==================================================")
 
+if (NOT DEFINED ENV{CI})
+  set(ENV{CI} FALSE)
+elseif ($ENV{CI} EQUAL "true" # Travis CI, AppVeyor
+        OR $ENV{CI} EQUAL "True") # AppVeyor
+  set(ENV{CI} TRUE)
+endif ()
+
+if (NOT DEFINED ENV{APPVEYOR})
+  set(ENV{APPVEYOR} FALSE)
+elseif ($ENV{APPVEYOR} EQUAL "true" # Ubuntu
+        OR $ENV{APPVEYOR} EQUAL "True")
+  set(ENV{APPVEYOR} TRUE)
+endif ()
+
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
@@ -18,6 +32,12 @@ set(Boost_LATEST_MINOR_VERSION 70)
 foreach (Boost_MINOR_VERSION RANGE ${Boost_MINIMUM_MINOR_VERSION} ${Boost_LATEST_MINOR_VERSION})
   list(APPEND Boost_ADDITIONAL_VERSIONS "1.${Boost_MINOR_VERSION}")
   list(APPEND Boost_ADDITIONAL_VERSIONS "1.${Boost_MINOR_VERSION}.0")
+  if (ENV{APPVEYOR})
+    set(Boost_DIR "C:/Libraries/boost_1_${Boost_MINOR_VERSION}_0")
+    if (EXISTS ${Boost_DIR} AND IS_DIRECTORY ${Boost_DIR})
+      set(BOOST_ROOT ${Boost_DIR})
+    endif ()
+  endif ()
 endforeach (${Boost_MINOR_VERSION})
 set(Boost_COMPONENTS "filesystem")
 
@@ -70,13 +90,6 @@ elseif (MACOS)
   set(PLATFORM "MACOS")
 else (WINDOWS)
   set(PLATFORM "WINDOWS")
-endif ()
-
-if (NOT DEFINED ENV{CI})
-  set(ENV{CI} FALSE)
-elseif ($ENV{CI} EQUAL "true" # Travis CI, AppVeyor
-        OR $ENV{CI} EQUAL "True") # AppVeyor
-  set(ENV{CI} TRUE)
 endif ()
 
 # Messages
