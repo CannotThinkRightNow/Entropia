@@ -1,5 +1,5 @@
-#include "core/utilities/logging.h"
 #include "core/config.h"
+#include "core/utilities/logging.h"
 
 #include <sstream>
 #include <map>
@@ -14,8 +14,8 @@
 
 namespace logging
 {
-    std::shared_ptr<spdlog::logger> logger = nullptr;
-    std::shared_ptr<spdlog::logger> unformatted = nullptr;
+    std::shared_ptr<spdlog::logger> logger;
+    std::shared_ptr<spdlog::logger> unformatted;
     std::map<std::string, std::shared_ptr<spdlog::logger>> map;
 
     void init()
@@ -26,7 +26,7 @@ namespace logging
 #else /* CONFIG_PLATFORM_ANDROID */
         auto log_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
 #endif
-        auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("");
+        auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>();
         std::vector<spdlog::sink_ptr> sinks { log_sink, file_sink };
         logger = std::make_shared<spdlog::async_logger>("logger", sinks.begin(), sinks.end(), spdlog::thread_pool(), spdlog::async_overflow_policy::block);
         spdlog::register_logger(logger);
@@ -58,7 +58,7 @@ namespace logging
 
     void println()
     {
-        unformatted->critical("");
+        unformatted->log(unformatted->default_level(), "");
     }
 
     void printArgs(std::string name, int argc, char** argv)
