@@ -1,5 +1,5 @@
-#ifndef LOGGING_H_
-#define LOGGING_H_
+#ifndef LOGGING_HPP_
+#define LOGGING_HPP_
 
 #pragma once
 
@@ -23,4 +23,4 @@ namespace logging
     void printArgs(std::string name, int argc, char** argv);
 }
 
-#endif /* LOGGING_H_ */
+#endif /* LOGGING_HPP_ */

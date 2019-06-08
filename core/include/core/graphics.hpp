@@ -1,5 +1,5 @@
-#ifndef GRAPHICS_H_
-#define GRAPHICS_H_
+#ifndef GRAPHICS_HPP_
+#define GRAPHICS_HPP_
 
 #pragma once
 
@@ -34,4 +34,4 @@ namespace graphics
 
 #endif /* CONFIG_METAL_GRAPHICS */
 
-#endif /* GRAPHICS_H_ */
+#endif /* GRAPHICS_HPP_ */

@@ -1,5 +1,5 @@
 #include "core/config.h"
-#include "core/utilities/logging.h"
+#include "core/utilities/logging.hpp"
 
 #include <sstream>
 #include <map>

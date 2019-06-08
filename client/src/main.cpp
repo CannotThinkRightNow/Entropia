@@ -1,5 +1,5 @@
-#include "core/utilities/logging.h"
-#include "core/graphics.h"
+#include "core/utilities/logging.hpp"
+#include "core/graphics.hpp"
 
 #define CLIENT_ID "Client"
 

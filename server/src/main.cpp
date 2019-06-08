@@ -1,4 +1,4 @@
-#include "core/utilities/logging.h"
+#include "core/utilities/logging.hpp"
 
 #define SERVER_ID "Server"
 

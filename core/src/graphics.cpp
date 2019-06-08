@@ -1,5 +1,5 @@
-#include "core/graphics.h"
-#include "core/utilities/logging.h"
+#include "core/graphics.hpp"
+#include "core/utilities/logging.hpp"
 
 #if CONFIG_PLATFORM_WINDOWS
 #include <Windows.h>

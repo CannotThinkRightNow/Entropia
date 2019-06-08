@@ -1,5 +1,5 @@
-#ifndef IO_H_
-#define IO_H_
+#ifndef IO_HPP_
+#define IO_HPP_
 
 #pragma once
 
@@ -18,4 +18,4 @@ namespace io
     }
 }
 
-#endif /* IO_H_ */
+#endif /* IO_HPP_ */
