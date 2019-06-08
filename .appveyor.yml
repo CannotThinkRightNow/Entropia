@@ -11,7 +11,7 @@ branches:
   except:
     - gh-pages
 
-image: Visual Studio 2019 Preview
+image: Visual Studio 2017
 
 environment:
   matrix:
@@ -23,16 +23,16 @@ environment:
     ####################
     # Windows
     ####################
-    - TOOLCHAIN: "vs-16-2019"
+    - TOOLCHAIN: "vs-15-2017"
       CONFIG: Release
 
-    - TOOLCHAIN: "vs-16-2019"
+    - TOOLCHAIN: "vs-15-2017"
       CONFIG: Debug
 
-    - TOOLCHAIN: "vs-16-2019-win64"
+    - TOOLCHAIN: "vs-15-2017-win64"
       CONFIG: Release
 
-    - TOOLCHAIN: "vs-16-2019-win64"
+    - TOOLCHAIN: "vs-15-2017-win64"
       CONFIG: Debug
 
 install:
