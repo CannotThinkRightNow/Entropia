@@ -32,6 +32,7 @@ Nothing as of now.
   - **RandR**
   - **Xinerama**
   - **Xcursor**
+  - **XInput**
 
 #### Optional
 ##### Android
@@ -39,7 +40,7 @@ Nothing as of now.
 
 #### Commands
 ##### Linux
-**Ubuntu**: `sudo apt-get install git cmake libboost-all-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev`
+**Ubuntu**: `sudo apt-get install git cmake libboost-all-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev`
 
 ### Microsoft Visual Studio
 4. Click **File > Open > CMake...** and then choose **_CMakeLists.txt_**.
