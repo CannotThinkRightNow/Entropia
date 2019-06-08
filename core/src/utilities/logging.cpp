@@ -22,7 +22,7 @@ namespace logging
     {
         spdlog::init_thread_pool(8192, 1);
 #if CONFIG_PLATFORM_ANDROID
-        auto log_sink = std::make_shared<spdlog::sinks::android_logger>();
+        auto log_sink = std::make_shared<spdlog::sinks::android_sink>();
 #else /* CONFIG_PLATFORM_ANDROID */
         auto log_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
 #endif

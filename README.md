@@ -27,16 +27,18 @@ Nothing as of now.
 - **[Git](https://git-scm.com/downloads)**
 - **[CMake](https://cmake.org/download/) _3.12 or above_**
 - **[Boost](https://www.boost.org/users/download/) _1.44.0 or above_**
+##### Linux
+- **X11**
+  - **RandR**
+  - **Xinerama**
 
 #### Optional
 ##### Android
 - **[Android NDK](https://developer.android.com/ndk/downloads/) _r15c_**
-##### Linux
-- **X11**
 
 #### Commands
 ##### Linux
-**Ubuntu**: `sudo apt-get install git cmake libx11-dev libboost-all-dev`
+**Ubuntu**: `sudo apt-get install git cmake libboost-all-dev libx11-dev libxrandr-dev libxinerama-dev`
 
 ### Microsoft Visual Studio
 4. Click **File > Open > CMake...** and then choose **_CMakeLists.txt_**.

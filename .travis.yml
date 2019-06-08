@@ -30,6 +30,7 @@ addons:
       - python3-pip
       - libx11-dev
       - libxrandr-dev
+      - libxinerama-dev
       - boost1.70 # Version should be the latest version of 'ppa:mhier/libboost-latest'
 
       - g++-5
