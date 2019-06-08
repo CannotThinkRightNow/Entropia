@@ -10,6 +10,7 @@ clone_depth: 50
 branches:
   except:
     - gh-pages
+    - /ci-(?!appveyor).*/
 
 image: Visual Studio 2017
 

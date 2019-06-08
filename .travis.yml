@@ -11,6 +11,7 @@ git:
 branches:
   except:
     - gh-pages
+    - /ci-(?!travis-ci).*/
 
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
