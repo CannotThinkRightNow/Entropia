@@ -33,7 +33,7 @@ foreach (Boost_MINOR_VERSION RANGE ${Boost_MINIMUM_MINOR_VERSION} ${Boost_LATEST
   list(APPEND Boost_ADDITIONAL_VERSIONS "1.${Boost_MINOR_VERSION}")
   list(APPEND Boost_ADDITIONAL_VERSIONS "1.${Boost_MINOR_VERSION}.0")
   if (ENV{APPVEYOR})
-    set(Boost_DIR "C:/Libraries/boost_1_${Boost_MINOR_VERSION}_0")
+    set(Boost_DIR "C:\Libraries\boost_1_${Boost_MINOR_VERSION}_0")
     if (EXISTS ${Boost_DIR} AND IS_DIRECTORY ${Boost_DIR})
       set(BOOST_ROOT ${Boost_DIR})
     endif ()
