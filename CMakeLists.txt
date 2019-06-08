@@ -17,7 +17,9 @@ include("cmake/utilities.cmake")
 include(GenerateExportHeader)
 
 # Cache entries
-set(BOOST_ROOT CACHE PATH "The path prefix to the preferred Boost installation.")
+if (NOT DEFINED BOOST_ROOT)
+  set(BOOST_ROOT CACHE PATH "The path prefix to the preferred Boost installation.")
+endif ()
 
 # Dependencies
 GitModules_UpdateOrCheck($ENV{CI})
