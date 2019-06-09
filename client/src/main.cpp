@@ -1,12 +1,16 @@
+#include "core/utilities/io.hpp"
 #include "core/utilities/logging.hpp"
 #include "core/graphics.hpp"
 
 #define CLIENT_ID "Client"
 
-int main(int argc, char** argv)
+int main(const int argc, const char *argv[])
 {
+    io::init();
     logging::init();
+
     logging::printArgs(CLIENT_ID, argc, argv);
+
     graphics::createWindow();
     graphics::glInit();
     

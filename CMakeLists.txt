@@ -45,7 +45,7 @@ elseif (IOS) # Metal
   # TODO: use Metal here...
 
   set(GRAPHICS_LIBRARY "METAL")
-elseif (LINUX OR MACOS OR WINDOWS) # OpenGL
+elseif (UNIX OR MACOS OR WINDOWS) # OpenGL
   # GLEW
   message(STATUS "Adding 'glew'...")
   include("cmake/glew.cmake")

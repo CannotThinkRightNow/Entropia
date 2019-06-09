@@ -30,8 +30,8 @@ public:
     //       due to the compilers behavior to check accessibility
     //       before deleted status.
 
-    Singleton<T>(Singleton<T> const&) = delete;
-    virtual void operator=(Singleton<T> const&) = delete;
+    Singleton<T>(const Singleton<T>&) = delete;
+    virtual void operator=(const Singleton<T>&) = delete;
 };
 
 template<class T>
@@ -61,8 +61,8 @@ public:
     //       due to the compilers behavior to check accessibility
     //       before deleted status.
 
-    ThreadLocalSingleton<T>(ThreadLocalSingleton<T> const&) = delete;
-    virtual void operator=(ThreadLocalSingleton<T> const&) = delete;
+    ThreadLocalSingleton<T>(const ThreadLocalSingleton<T>&) = delete;
+    virtual void operator=(const ThreadLocalSingleton<T>&) = delete;
 };
 
 #endif /* SINGLETONS_H_ */

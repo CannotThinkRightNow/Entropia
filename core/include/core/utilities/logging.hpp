@@ -17,10 +17,10 @@ namespace logging
 
     const std::shared_ptr<spdlog::logger>& getLogger();
     const std::shared_ptr<spdlog::logger>& getUnformattedLogger();
-    const std::shared_ptr<spdlog::logger>& getLogger(std::string name);
+    const std::shared_ptr<spdlog::logger>& getLogger(const std::string name);
 
     void println();
-    void printArgs(std::string name, int argc, char** argv);
+    void printArgs(const std::string name, const int argc, const char *argv[]);
 }
 
 #endif /* LOGGING_HPP_ */

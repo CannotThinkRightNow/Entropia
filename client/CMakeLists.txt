@@ -8,6 +8,9 @@ file(GLOB_RECURSE CLIENT_SOURCE CONFIGURE_DEPENDS "src/*")
 # Targets
 add_executable(client ${CLIENT_SOURCE})
 set_target_properties(client PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
+
+# Libraries
+# Core
 target_link_libraries(client core)
 
 # Packaging

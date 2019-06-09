@@ -16,6 +16,8 @@ generate_export_header(core EXPORT_FILE_NAME ${CORE_EXPORT_HEADER}
 set_target_properties(core PROPERTIES PUBLIC_HEADER "${CORE_INCLUDE}"
                                       PRIVATE_HEADER "${CORE_EXPORT_HEADER}")
 target_include_directories(core PUBLIC "include")
+
+# Libraries
 # Boost
 target_link_libraries(core Boost::boost Boost::filesystem)
 # Graphics

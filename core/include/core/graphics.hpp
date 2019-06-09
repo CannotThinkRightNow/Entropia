@@ -25,7 +25,7 @@ namespace graphics
     void createWindow();
     void glInit();
 
-    void glfwErrorCallback(int error, const char* description);
+    void glfwErrorCallback(const int error, const char* description);
 }
 
 #elif CONFIG_GLES_GRAPHICS /* CONFIG_GL_GRAPHICS */

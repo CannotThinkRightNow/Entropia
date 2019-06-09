@@ -303,11 +303,11 @@
       "ctestCommandArgs": ""
     },
     ////////////////////
-    // Linux
+    // Unix
     ////////////////////
     {
-      "name": "Linux-x86-Remote-Debug",
-      "description": "Debug application for Linux x86 remotely.",
+      "name": "Unix-x86-Remote-Debug",
+      "description": "Debug application for Unix x86 remotely.",
       "generator": "Unix Makefiles",
       "remoteMachineName": "${defaultRemoteMachineName}",
       "configurationType": "Debug",
@@ -337,8 +337,8 @@
       ]
     },
     {
-      "name": "Linux-x86-Remote-Release",
-      "description": "Build application for Linux x86 remotely.",
+      "name": "Unix-x86-Remote-Release",
+      "description": "Build application for Unix x86 remotely.",
       "generator": "Unix Makefiles",
       "remoteMachineName": "${defaultRemoteMachineName}",
       "configurationType": "RelWithDebInfo",
@@ -368,8 +368,8 @@
       ]
     },
     {
-      "name": "Linux-x64-Remote-Debug",
-      "description": "Debug application for Linux x86-64 remotely.",
+      "name": "Unix-x64-Remote-Debug",
+      "description": "Debug application for Unix x86-64 remotely.",
       "generator": "Unix Makefiles",
       "remoteMachineName": "${defaultRemoteMachineName}",
       "configurationType": "Debug",
@@ -399,8 +399,8 @@
       ]
     },
     {
-      "name": "Linux-x64-Remote-Release",
-      "description": "Build application for Linux x86-64 remotely.",
+      "name": "Unix-x64-Remote-Release",
+      "description": "Build application for Unix x86-64 remotely.",
       "generator": "Unix Makefiles",
       "remoteMachineName": "${defaultRemoteMachineName}",
       "configurationType": "RelWithDebInfo",
@@ -430,8 +430,8 @@
       ]
     },
     {
-      "name": "Linux-arm-Remote-Debug",
-      "description": "Debug application for Linux ARM remotely.",
+      "name": "Unix-arm-Remote-Debug",
+      "description": "Debug application for Unix ARM remotely.",
       "generator": "Unix Makefiles",
       "remoteMachineName": "${defaultRemoteMachineName}",
       "configurationType": "Debug",
@@ -461,8 +461,8 @@
       ]
     },
     {
-      "name": "Linux-arm-Remote-Release",
-      "description": "Build application for Linux ARM remotely.",
+      "name": "Unix-arm-Remote-Release",
+      "description": "Build application for Unix ARM remotely.",
       "generator": "Unix Makefiles",
       "remoteMachineName": "${defaultRemoteMachineName}",
       "configurationType": "RelWithDebInfo",

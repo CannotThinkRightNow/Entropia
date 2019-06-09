@@ -11,9 +11,9 @@
 
 #if CONFIG_PLATFORM_MACOS
 
-#elif CONFIG_PLATFORM_LINUX /* CONFIG_PLATFORM_MACOS */
+#elif CONFIG_PLATFORM_UNIX /* CONFIG_PLATFORM_MACOS */
 
-#elif CONFIG_PLATFORM_WINDOWS /* CONFIG_PLATFORM_LINUX */
+#elif CONFIG_PLATFORM_WINDOWS /* CONFIG_PLATFORM_UNIX */
 #define VIRTUAL_X GetSystemMetrics(SM_CXVIRTUALSCREEN)
 #define VIRTUAL_Y GetSystemMetrics(SM_CYVIRTUALSCREEN)
 #define PRIMARY_X GetSystemMetrics(SM_CXSCREEN)
@@ -32,7 +32,7 @@ namespace graphics
     {
         glfwSetErrorCallback(glfwErrorCallback);
 
-        auto logger = logging::getLogger(GRAPHICS_ID);
+        const auto logger = logging::getLogger(GRAPHICS_ID);
         logger->info(SECTION_HEADER_NAMED, "GLFW");
         logger->info("Compiled-time version: %i.%i.%i", GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR, GLFW_VERSION_REVISION);
         int major, minor, revision;
@@ -80,7 +80,7 @@ namespace graphics
         glGenBuffers(1, &vertexBuffer);
     }
 
-    void glfwErrorCallback(int error, const char* description)
+    void glfwErrorCallback(const int error, const char* description)
     {
         logging::getLogger("GLFW")->info("An error occured. Code: %i, Description: %s", error, description);
     }
