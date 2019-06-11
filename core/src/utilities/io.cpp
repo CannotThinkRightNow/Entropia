@@ -13,11 +13,15 @@
 #include <ShlObj.h>
 #endif /* CONFIG_PLATFORM_WINDOWS */
 
+#include <boost/thread/thread.hpp>
+#include <boost/interprocess/sync/scoped_lock.hpp>
+
 using namespace boost::filesystem;
 
 namespace
 {
     static io::files::details::executable_path_func_t executable_path_func;
+    static boost::shared_mutex file_mutex;
 }
 
 namespace io
@@ -31,37 +35,51 @@ namespace io
 #endif /* CONFIG_PLATFORM_UNIX */
     }
 
-    bool read(const path file, std::string &out, const bool failfast = true, const std::iostream::openmode mode = std::iostream::in)
+    bool read(const path file, std::string &out, const bool failfast = true, const std::iostream::openmode mode = std::iostream::in, const bool blocking = true)
     {
         if (exists(file) && !is_regular_file(file)) return false;
-        std::ifstream i;
-        if (failfast) i.exceptions(std::ios::failbit);
+        {
+            boost::interprocess::scoped_lock<boost::shared_mutex> l(file_mutex, boost::interprocess::defer_lock);
+            if (blocking) l.lock();
+            else if (!l.try_lock()) return false;
 
-        i.open(file.string(), mode);
-        if (!i.good()) return false;
+            std::ifstream i;
+            if (failfast) i.exceptions(std::ios::failbit);
 
-        i.seekg(0, std::ios::end);
+            i.open(file.string(), mode);
+            if (!i.good()) return false;
+
+            i.seekg(0, std::ios::end);
 #pragma warning(suppress: 4244)
-        out.resize(i.tellg());
-        i.seekg(0, std::ios::beg);
-        i.read(&out[0], out.size());
+            out.resize(i.tellg());
+            i.seekg(0, std::ios::beg);
+            i.read(&out[0], out.size());
 
-        // i.close();
+            // i.close();
+            // l.unlock();
+        }
         return true;
     }
 
-    bool write(const path file, const std::string content, const bool failfast = true, const std::iostream::openmode mode = std::iostream::out)
+    bool write(const path file, const std::string content, const bool failfast = true, const std::iostream::openmode mode = std::iostream::out, const bool blocking = true)
     {
         if (exists(file) && !is_regular_file(file)) return false;
-        std::ofstream o;
-        if (failfast) o.exceptions(std::ios::failbit);
+        {
+            boost::interprocess::scoped_lock<boost::shared_mutex> l(file_mutex, boost::interprocess::defer_lock);
+            if (blocking) l.lock();
+            else if (!l.try_lock()) return false;
+            
+            std::ofstream o;
+            if (failfast) o.exceptions(std::ios::failbit);
 
-        o.open(file.string(), mode);
-        if (!o.good()) return false;
+            o.open(file.string(), mode);
+            if (!o.good()) return false;
 
-        o << content;
+            o << content;
 
-        // o.close();
+            // o.close();
+            // l.unlock();
+        }
         return true;
     }
 
@@ -77,18 +95,18 @@ namespace io
 
         path data_path()
         {
-            const path pp = files::pointer_path();
-            if (!is_regular_file(pp)) remove_all(pp);
+            const path pptr = files::pointer_path();
+            if (!is_regular_file(pptr)) remove_all(pptr);
 
             std::string res;
-            if (exists(pp) && !is_empty(pp)) read(pp, res);
+            if (exists(pptr) && !is_empty(pptr)) read(pptr, res);
             else res = default_data_path().string();
 
             boost::system::error_code errc;
             create_directories(path(res), errc);
             if (errc.failed()) res = default_data_path().string();
 
-            write(pp, res);
+            write(pptr, res);
             return path(res);
         }
 
