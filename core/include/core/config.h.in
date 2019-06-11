@@ -1,12 +1,12 @@
-#ifndef CONFIG_H_
-#define CONFIG_H_
+#ifndef CORE_CONFIG_H_
+#define CORE_CONFIG_H_
 
 #pragma once
 
 #define CONFIG_NAME "@PROJECT_NAME@"
 #define CONFIG_VERSION "@PROJECT_VERSION@"
 
-#define CONFIG_PLATFORM_@PLATFORM@ 1
-#define CONFIG_@GRAPHICS_LIBRARY@_GRAPHICS 1
+#define CONFIG_PLATFORM_@PLATFORM@
+#define CONFIG_@GRAPHICS_LIBRARY@_GRAPHICS
 
-#endif /* CONFIG_H_ */
+#endif /* CORE_CONFIG_H_ */

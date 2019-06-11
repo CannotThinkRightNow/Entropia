@@ -1,19 +1,20 @@
 #include "core/graphics.hpp"
 #include "core/utilities/logging.hpp"
 
-#if CONFIG_PLATFORM_WINDOWS
+#ifdef CONFIG_PLATFORM_WINDOWS
 #include <Windows.h>
 #include <WinUser.h>
 #endif /* CONFIG_PLATFORM_WINDOWS */
+
 #include <stdexcept>
 
 #define GRAPHICS_ID "Graphics"
 
-#if CONFIG_PLATFORM_MACOS
+#ifdef CONFIG_PLATFORM_MACOS
 
-#elif CONFIG_PLATFORM_UNIX /* CONFIG_PLATFORM_MACOS */
+#elif defined(CONFIG_PLATFORM_UNIX) /* CONFIG_PLATFORM_MACOS */
 
-#elif CONFIG_PLATFORM_WINDOWS /* CONFIG_PLATFORM_UNIX */
+#elif defined(CONFIG_PLATFORM_WINDOWS) /* CONFIG_PLATFORM_UNIX */
 #define VIRTUAL_X GetSystemMetrics(SM_CXVIRTUALSCREEN)
 #define VIRTUAL_Y GetSystemMetrics(SM_CYVIRTUALSCREEN)
 #define PRIMARY_X GetSystemMetrics(SM_CXSCREEN)
@@ -22,26 +23,26 @@
 
 namespace graphics
 {
-#if CONFIG_GL_GRAPHICS
-    bool glfwUnsupported = false;
+#ifdef CONFIG_GL_GRAPHICS
+    bool glfw_unsupported = false;
     GLFWmonitor* monitor;
     GLFWwindow* window;
-    GLuint vertexBuffer;
+    GLuint vertex_buffer;
     
-    void createWindow()
+    void create_window()
     {
-        glfwSetErrorCallback(glfwErrorCallback);
+        glfwSetErrorCallback(glfw_error_callback);
 
-        const auto logger = logging::getLogger(GRAPHICS_ID);
+        const auto logger = logging::logger(GRAPHICS_ID);
         logger->info(SECTION_HEADER_NAMED, "GLFW");
-        logger->info("Compiled-time version: %i.%i.%i", GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR, GLFW_VERSION_REVISION);
+        logger->info("Compile-time version: {:d}.{:d}.{:d}", GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR, GLFW_VERSION_REVISION);
         int major, minor, revision;
         glfwGetVersion(&major, &minor, &revision);
-        logger->info("Runtime version: %i.%i.%i", major, minor, revision);
+        logger->info("Runtime version: {:d}.{:d}.{:d}", major, minor, revision);
         if (GLFW_VERSION_MAJOR != major || GLFW_VERSION_MINOR != minor || GLFW_VERSION_REVISION != revision)
         {
-            glfwUnsupported = true;
-            logger->warn("Compiled-time version and runtime version differs.");
+            glfw_unsupported = true;
+            logger->warn("Compile-time version and runtime version differs.");
             logger->warn("No support is provided by using a different version of GLFW!");
         }
         logger->info(SECTION_FOOTER);
@@ -62,7 +63,7 @@ namespace graphics
         glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
         logger->info(SECTION_HEADER_NAMED, "Monitors");
-#if CONFIG_PLATFORM_WINDOWS
+#ifdef CONFIG_PLATFORM_WINDOWS
         logger->info("Virtual Monitor Size: (%i, %i)", VIRTUAL_X, VIRTUAL_Y);
         logger->info("Primary Monitor Size: (%i, %i)", PRIMARY_X, PRIMARY_Y);
         logger->info("Primary Monitor Work Area : %i", GetSystemMetrics(SPI_GETWORKAREA));
@@ -73,21 +74,21 @@ namespace graphics
         glfwMakeContextCurrent(window);
     }
 
-    void glInit()
+    void gl_init()
     {
         glewExperimental = GL_TRUE;
         glewInit();
-        glGenBuffers(1, &vertexBuffer);
+        glGenBuffers(1, &vertex_buffer);
     }
 
-    void glfwErrorCallback(const int error, const char* description)
+    void glfw_error_callback(const int error, const char* description)
     {
-        logging::getLogger("GLFW")->info("An error occured. Code: %i, Description: %s", error, description);
+        logging::logger("GLFW")->info("An error occured. Code: %i, Description: %s", error, description);
     }
 
-#elif GLES_GRAPHICS /* CONFIG_GL_GRAPHICS */
+#elif defined(GLES_GRAPHICS) /* CONFIG_GL_GRAPHICS */
 
-#elif METAL_GRAPHICS /* CONFIG_GLES_GRAPHICS */
+#elif defined(METAL_GRAPHICS) /* CONFIG_GLES_GRAPHICS */
 
 #endif /* CONFIG_METAL_GRAPHICS*/
 }

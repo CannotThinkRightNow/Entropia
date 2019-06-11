@@ -1,9 +1,12 @@
-#ifndef IO_HPP_
-#define IO_HPP_
+#ifndef CORE_IO_HPP_
+#define CORE_IO_HPP_
 
 #pragma once
 
+#include "core/utilities/id.h"
+
 #include <string>
+
 #define BOOST_FILESYSTEM_NO_DEPRECATED
 #include <boost/filesystem.hpp>
 
@@ -18,16 +21,21 @@ namespace io
 
     namespace files
     {
-        const path getPointerPath();
-        const path getDataPath();
-        const path getDefaultDataPath();
+        path executable_path() noexcept;
+        path pointer_path();
+        path data_path();
+        path default_data_path();
 
         namespace details
         {
-            const path getPointerPath();
-            const path getDefaultDataPath();
+            typedef path (*executable_path_func_t)();
+
+            void set_executable_path_func(executable_path_func_t func);
+
+            path pointer_path();
+            path default_data_path();
         }
     }
 }
 
-#endif /* IO_HPP_ */
+#endif /* CORE_IO_HPP_ */

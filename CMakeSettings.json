@@ -522,7 +522,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=ninja-vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -537,7 +537,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=ninja-vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -552,7 +552,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=ninja-vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -567,7 +567,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=ninja-vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }

@@ -1,12 +1,12 @@
-#ifndef GRAPHICS_HPP_
-#define GRAPHICS_HPP_
+#ifndef CORE_GRAPHICS_HPP_
+#define CORE_GRAPHICS_HPP_
 
 #pragma once
 
 #include "config.h"
 
-#if CONFIG_GL_GRAPHICS
-#if CONFIG_PLATFORM_MACOS
+#ifdef CONFIG_GL_GRAPHICS
+#ifdef CONFIG_PLATFORM_MACOS
 #include <OpenGL/glew.h>
 #else /* CONFIG_PLATFORM_MACOS */
 #include <GL/glew.h>
@@ -17,21 +17,21 @@
 
 namespace graphics
 {
-    CORE_EXPORT extern bool glfwUnsupported;
+    CORE_EXPORT extern bool glfw_unsupported;
     CORE_EXPORT extern GLFWmonitor* monitor;
     CORE_EXPORT extern GLFWwindow* window;
-    CORE_EXPORT extern GLuint vertexBuffer;
+    CORE_EXPORT extern GLuint vertex_buffer;
 
-    void createWindow();
-    void glInit();
+    void create_window();
+    void gl_init();
 
-    void glfwErrorCallback(const int error, const char* description);
+    void glfw_error_callback(const int error, const char* description);
 }
 
-#elif CONFIG_GLES_GRAPHICS /* CONFIG_GL_GRAPHICS */
+#elif defined(CONFIG_GLES_GRAPHICS) /* CONFIG_GL_GRAPHICS */
 
-#elif CONFIG_METAL_GRAPHICS /* CONFIG_GLES_GRAPHICS */
+#elif defined(CONFIG_METAL_GRAPHICS) /* CONFIG_GLES_GRAPHICS */
 
 #endif /* CONFIG_METAL_GRAPHICS */
 
-#endif /* GRAPHICS_HPP_ */
+#endif /* CORE_GRAPHICS_HPP_ */

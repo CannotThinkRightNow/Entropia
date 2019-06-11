@@ -1,18 +1,30 @@
+#include "client/main.hpp"
+
+#include "core/utilities/id.h"
+
 #include "core/utilities/io.hpp"
 #include "core/utilities/logging.hpp"
 #include "core/graphics.hpp"
 
 #define CLIENT_ID "Client"
 
+namespace
+{
+    static boost::filesystem::path executable_path_;
+}
+
 int main(const int argc, const char *argv[])
 {
+    id::set_id(id::CLIENT);
     io::init();
+    executable_path_ = argv[0];
+    io::files::details::set_executable_path_func(&executable_path);
     logging::init();
 
-    logging::printArgs(CLIENT_ID, argc, argv);
+    logging::print_args(CLIENT_ID, argc, argv);
 
-    graphics::createWindow();
-    graphics::glInit();
+    graphics::create_window();
+    graphics::gl_init();
     
     while (!glfwWindowShouldClose(graphics::window))
     {
@@ -26,3 +38,5 @@ int main(const int argc, const char *argv[])
     logging::terminate();
     return 0;
 }
+
+boost::filesystem::path executable_path() noexcept { return executable_path_; }

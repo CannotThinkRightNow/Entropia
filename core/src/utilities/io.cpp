@@ -1,27 +1,35 @@
 #include "core/config.h"
 #include "core/utilities/io.hpp"
 
+#include "core/utilities/id.h"
+
+#include <utility>
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
 
-#if CONFIG_PLATFORM_WINDOWS
+#ifdef CONFIG_PLATFORM_WINDOWS
 #include <ShlObj.h>
 #endif /* CONFIG_PLATFORM_WINDOWS */
 
 using namespace boost::filesystem;
 
+namespace
+{
+    static io::files::details::executable_path_func_t executable_path_func;
+}
+
 namespace io
 {
     void init()
     {
-#if CONFIG_PLATFORM_WINDOWS
+#ifdef CONFIG_PLATFORM_WINDOWS
         path::codecvt(); // Ensure VC++ does not race during initialization.
-#elif CONFIG_PLATFORM_UNIX /* CONFIG_PLATFORM_WINDOWS */
+#elif defined(CONFIG_PLATFORM_UNIX) /* CONFIG_PLATFORM_WINDOWS */
         // std::locale(""); // Check whether environment variable for language is invalid.
 #endif /* CONFIG_PLATFORM_UNIX */
     }
-
 
     bool read(const path file, std::string &out, const bool failfast = true, const std::iostream::openmode mode = std::iostream::in)
     {
@@ -36,7 +44,8 @@ namespace io
         out.resize(i.tellg());
         i.seekg(0, std::ios::beg);
         i.read(&out[0], out.size());
-        i.close();
+
+        // i.close();
         return true;
     }
 
@@ -50,55 +59,88 @@ namespace io
         if (!o.good()) return false;
 
         o << content;
-        o.close();
+
+        // o.close();
         return true;
     }
 
     namespace files
     {
-        const path getPointerPath()
+        path executable_path() noexcept { return (*executable_path_func)(); }
+
+        path pointer_path()
         {
-            static const path res = details::getPointerPath();
+            static const path res = details::pointer_path();
             return res;
         }
 
-        const path getDataPath()
+        path data_path()
         {
-            const path pp = files::getPointerPath();
+            const path pp = files::pointer_path();
             if (!is_regular_file(pp)) remove_all(pp);
 
             std::string res;
             if (exists(pp) && !is_empty(pp)) read(pp, res);
-            else res = getDefaultDataPath().string();
+            else res = default_data_path().string();
 
             boost::system::error_code errc;
             create_directories(path(res), errc);
-            if (errc.failed()) res = getDefaultDataPath().string();
+            if (errc.failed()) res = default_data_path().string();
 
             write(pp, res);
             return path(res);
         }
 
-        const path getDefaultDataPath()
+        path default_data_path()
         {
-            static const path res = details::getDefaultDataPath();
+            static const path res = details::default_data_path();
             return res;
         }
 
         namespace details
         {
-            const path getPointerPath()
+            void set_executable_path_func(executable_path_func_t func) { std::swap(executable_path_func, func); }
+
+            path pointer_path()
             {
-#if CONFIG_PLATFORM_WINDOWS
-                LPWSTR o;
-                if (FAILED(SHGetKnownFolderPath(FOLDERID_LocalAppData, KF_FLAG_DEFAULT, nullptr, &o)))
+                if (id::id_g() == id::CLIENT)
                 {
-                    // No logging here.
-                    throw std::runtime_error("Error while getting local app data directory path.");
-                }
-                const std::unique_ptr<WCHAR, decltype(&CoTaskMemFree)> p(o, &CoTaskMemFree);
-                return path(p.get()) /= "pointer.txt";
+#ifdef CONFIG_PLATFORM_WINDOWS
+                    LPWSTR out;
+                    if (FAILED(SHGetKnownFolderPath(FOLDERID_LocalAppData, KF_FLAG_DEFAULT, nullptr, &out)))
+                    {
+                        // No logging here.
+                        throw std::runtime_error("Error while getting local app data directory path.");
+                    }
+                    const std::unique_ptr<WCHAR, decltype(&CoTaskMemFree)> ptr(out, &CoTaskMemFree);
+                    return path(ptr.get()) / "pointer.txt";
 #endif /* CONFIG_PLATFORM_WINDOWS */
+                }
+                else if (id::id_g() == id::SERVER)
+                {
+                    return files::default_data_path() / "pointer.txt";
+                }
+            }
+
+            path default_data_path()
+            {
+                if (id::id_g() == id::CLIENT)
+                {
+#ifdef CONFIG_PLATFORM_WINDOWS
+                    LPWSTR out;
+                    if (FAILED(SHGetKnownFolderPath(FOLDERID_RoamingAppData, KF_FLAG_DEFAULT, nullptr, &out)))
+                    {
+                        // No logging here.
+                        throw std::runtime_error("Error while getting roaming app data directory path.");
+                    }
+                    const std::unique_ptr<WCHAR, decltype(&CoTaskMemFree)> ptr(out, &CoTaskMemFree);
+                    return path(ptr.get()) /= "data";
+#endif /* CONFIG_PLATFORM_WINDOWS */
+                }
+                else if (id::id_g() == id::SERVER)
+                {
+                    return files::executable_path() /= "data";
+                }
             }
         }
     }

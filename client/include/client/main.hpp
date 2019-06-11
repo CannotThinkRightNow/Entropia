@@ -1,5 +1,5 @@
-#ifndef SERVER_MAIN_HPP_
-#define SERVER_MAIN_HPP_
+#ifndef CLIENT_MAIN_HPP_
+#define CLIENT_MAIN_HPP_
 
 #pragma once
 
@@ -8,4 +8,4 @@
 
 boost::filesystem::path executable_path() noexcept;
 
-#endif /* SERVER_MAIN_HPP_ */
+#endif /* CLIENT_MAIN_HPP_ */

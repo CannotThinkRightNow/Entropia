@@ -16,11 +16,6 @@ include("cmake/gitmodules.cmake")
 include("cmake/utilities.cmake")
 include(GenerateExportHeader)
 
-# Cache entries
-if (NOT DEFINED BOOST_ROOT)
-  set(BOOST_ROOT CACHE PATH "The path prefix to the preferred Boost installation.")
-endif ()
-
 # Dependencies
 GitModules_UpdateOrCheck($ENV{CI})
 message(STATUS ${SECTION_HEADER})
