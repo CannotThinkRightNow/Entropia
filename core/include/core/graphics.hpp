@@ -22,10 +22,11 @@ namespace graphics
     CORE_EXPORT extern GLFWwindow* window;
     CORE_EXPORT extern GLuint vertex_buffer;
 
-    void create_window();
-    void gl_init();
+    void init();
 
-    void glfw_error_callback(const int error, const char* description);
+    void create_window();
+
+    void error_callback(const int error, const char* description);
 }
 
 #elif defined(CONFIG_GLES_GRAPHICS) /* CONFIG_GL_GRAPHICS */

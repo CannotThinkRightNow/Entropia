@@ -28,10 +28,17 @@ namespace graphics
     GLFWmonitor* monitor;
     GLFWwindow* window;
     GLuint vertex_buffer;
+
+    void init()
+    {
+        glewExperimental = GL_TRUE;
+        glewInit();
+        glGenBuffers(1, &vertex_buffer);
+    }
     
     void create_window()
     {
-        glfwSetErrorCallback(glfw_error_callback);
+        glfwSetErrorCallback(error_callback);
 
         const auto logger = logging::logger(GRAPHICS_ID);
         logger->info(SECTION_HEADER_NAMED, "GLFW");
@@ -43,14 +50,14 @@ namespace graphics
         {
             glfw_unsupported = true;
             logger->warn("Compile-time version and runtime version differs.");
-            logger->warn("No support is provided by using a different version of GLFW!");
+            logger->warn("No support is provided by using a different version of GLFW.");
         }
         logger->info(SECTION_FOOTER);
 
         if (!glfwInit())
         {
-            logger->critical("Failed to initialize glfw!");
-            throw std::runtime_error("Failed to initialize glfw!");
+            logger->critical("Failed to initialize glfw.");
+            throw std::runtime_error("Failed to initialize glfw.");
         }
 
         // Require the OpenGL context to support OpenGL 3.2 at the least.
@@ -71,17 +78,15 @@ namespace graphics
         logger->info(SECTION_FOOTER);
 
         window = glfwCreateWindow(PRIMARY_X, PRIMARY_Y, CONFIG_NAME, glfwGetPrimaryMonitor(), nullptr);
+        if (!window)
+        {
+            logger->critical("Failed to create window.");
+            throw std::runtime_error("Failed to create window.");
+        }
         glfwMakeContextCurrent(window);
     }
 
-    void gl_init()
-    {
-        glewExperimental = GL_TRUE;
-        glewInit();
-        glGenBuffers(1, &vertex_buffer);
-    }
-
-    void glfw_error_callback(const int error, const char* description)
+    void error_callback(const int error, const char* description)
     {
         logging::logger("GLFW")->info("An error occured. Code: %i, Description: %s", error, description);
     }

@@ -24,7 +24,7 @@ int main(const int argc, const char *argv[])
     logging::print_args(CLIENT_ID, argc, argv);
 
     graphics::create_window();
-    graphics::gl_init();
+    graphics::init();
     
     while (!glfwWindowShouldClose(graphics::window))
     {
