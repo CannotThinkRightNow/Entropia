@@ -41,6 +41,7 @@ namespace io
         if (!i.good()) return false;
 
         i.seekg(0, std::ios::end);
+#pragma warning(suppress: 4244)
         out.resize(i.tellg());
         i.seekg(0, std::ios::beg);
         i.read(&out[0], out.size());
