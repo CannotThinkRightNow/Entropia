@@ -19,7 +19,9 @@ target_include_directories(core PUBLIC "include")
 
 # Libraries
 # Boost
-target_link_libraries(core Boost::boost Boost::filesystem)
+target_link_libraries(core Boost::boost Boost::filesystem
+                           Boost::disable_autolinking) # Prevent Microsoft Visual Stuio auto-linking from overriding command-line arguments passed to the linker.
+                                                       # https://stackoverflow.com/a/44133003/9341868
 # Graphics
 if (${GRAPHICS_LIBRARY} STREQUAL "GLES2") # OpenGL ES 2.0
   target_link_libraries(core gles2)
