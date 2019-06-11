@@ -15,7 +15,6 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #endif
 
-#define BOOST_FILESYSTEM_NO_DEPRECATED
 #include <boost/filesystem.hpp>
 #include "core/utilities/io.hpp"
 

@@ -46,6 +46,7 @@ namespace graphics
         int major, minor, revision;
         glfwGetVersion(&major, &minor, &revision);
         logger->info("Runtime version: {:d}.{:d}.{:d}", major, minor, revision);
+        logger->info("Runtime version string: {:s}", glfwGetVersionString());
         if (GLFW_VERSION_MAJOR != major || GLFW_VERSION_MINOR != minor || GLFW_VERSION_REVISION != revision)
         {
             glfw_unsupported = true;
@@ -71,9 +72,9 @@ namespace graphics
 
         logger->info(SECTION_HEADER_NAMED, "Monitors");
 #ifdef CONFIG_PLATFORM_WINDOWS
-        logger->info("Virtual Monitor Size: (%i, %i)", VIRTUAL_X, VIRTUAL_Y);
-        logger->info("Primary Monitor Size: (%i, %i)", PRIMARY_X, PRIMARY_Y);
-        logger->info("Primary Monitor Work Area : %i", GetSystemMetrics(SPI_GETWORKAREA));
+        logger->info("Virtual Monitor Size: ({:d}, {:d})", VIRTUAL_X, VIRTUAL_Y);
+        logger->info("Primary Monitor Size: ({:d}, {:d})", PRIMARY_X, PRIMARY_Y);
+        logger->info("Primary Monitor Work Area : {:d}", GetSystemMetrics(SPI_GETWORKAREA));
 #endif /* CONFIG_PLATFORM_WINDOWS */
         logger->info(SECTION_FOOTER);
 
@@ -84,11 +85,13 @@ namespace graphics
             throw std::runtime_error("Failed to create window.");
         }
         glfwMakeContextCurrent(window);
+
+        glfwSwapInterval(1);
     }
 
     void error_callback(const int error, const char* description)
     {
-        logging::logger("GLFW")->info("An error occured. Code: %i, Description: %s", error, description);
+        logging::logger("GLFW")->info("An error occured. Code: {:d}, Description: {:s}", error, description);
     }
 
 #elif defined(GLES_GRAPHICS) /* CONFIG_GL_GRAPHICS */

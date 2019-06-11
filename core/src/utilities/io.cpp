@@ -132,12 +132,12 @@ namespace io
                         throw std::runtime_error("Error while getting local app data directory path.");
                     }
                     const std::unique_ptr<WCHAR, decltype(&CoTaskMemFree)> ptr(out, &CoTaskMemFree);
-                    return path(ptr.get()) / "pointer.txt";
+                    return path(ptr.get()) / CONFIG_NAME / "pointer.txt";
 #endif /* CONFIG_PLATFORM_WINDOWS */
                 }
                 else if (id::id_g() == id::SERVER)
                 {
-                    return files::default_data_path() / "pointer.txt";
+                    return files::executable_path() / "pointer.txt";
                 }
             }
 
@@ -153,12 +153,12 @@ namespace io
                         throw std::runtime_error("Error while getting roaming app data directory path.");
                     }
                     const std::unique_ptr<WCHAR, decltype(&CoTaskMemFree)> ptr(out, &CoTaskMemFree);
-                    return path(ptr.get()) /= "data";
+                    return path(ptr.get()) / CONFIG_NAME;
 #endif /* CONFIG_PLATFORM_WINDOWS */
                 }
                 else if (id::id_g() == id::SERVER)
                 {
-                    return files::executable_path() /= "data";
+                    return files::executable_path() / "data";
                 }
             }
         }

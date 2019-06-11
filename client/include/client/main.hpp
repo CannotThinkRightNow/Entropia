@@ -3,7 +3,6 @@
 
 #pragma once
 
-#define BOOST_FILESYSTEM_NO_DEPRECATED
 #include <boost/filesystem.hpp>
 
 boost::filesystem::path executable_path() noexcept;

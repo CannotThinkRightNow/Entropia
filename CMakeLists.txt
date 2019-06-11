@@ -65,6 +65,9 @@ FetchContent_Declare(spdlog_project
 message(STATUS "Successfully added 'spdlog'.")
 message(STATUS ${SECTION_FOOTER})
 
+# Compile Defintions
+include("cmake/CompileDefinitions.cmake")
+
 # Sub-projects
 message(STATUS ${SECTION_HEADER})
 message(STATUS "Building '${PROJECT_NAME}'...")
