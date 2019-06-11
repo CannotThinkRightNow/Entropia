@@ -41,7 +41,7 @@ namespace io
         if (!i.good()) return false;
 
         i.seekg(0, std::ios::end);
-        out.resize(i.tellg());
+        out.resize(std::streamoff(i.tellg()));
         i.seekg(0, std::ios::beg);
         i.read(&out[0], out.size());
 
