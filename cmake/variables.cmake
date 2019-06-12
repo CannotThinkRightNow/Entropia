@@ -6,6 +6,7 @@ set(SECTION_HEADER "==================================================")
 set(SECTION_SPLITTER "--------------------------------------------------")
 set(SECTION_FOOTER "==================================================")
 
+# Environment Variables
 if (NOT DEFINED ENV{CI})
   set(ENV{CI} FALSE)
 elseif ($ENV{CI} STREQUAL "true" # Travis CI, AppVeyor (Ubuntu)
@@ -20,12 +21,14 @@ elseif ($ENV{APPVEYOR} STREQUAL "true" # Ubuntu
   set(ENV{APPVEYOR} TRUE)
 endif ()
 
+# CMake
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
+# Boost
 set(Boost_MINIMUM_MINOR_VERSION 44)
 set(Boost_MINIMUM_VERSION "1.${Boost_MINIMUM_MINOR_VERSION}.0")
 set(Boost_LATEST_MINOR_VERSION 70)
@@ -40,6 +43,14 @@ foreach (Boost_MINOR_VERSION RANGE ${Boost_MINIMUM_MINOR_VERSION} ${Boost_LATEST
   endif ()
 endforeach (${Boost_MINOR_VERSION})
 set(Boost_COMPONENTS "filesystem")
+
+# GLFW
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+
+# Variables
+set(BUILD_SHARED_LIBS TRUE)
 
 if (NOT DEFINED TOOLCHAIN_TAG)
   if (DEFINED CMAKE_TOOLCHAIN_FILE)

@@ -13,8 +13,13 @@ add_library(core SHARED ${CORE_SOURCE})
 generate_export_header(core EXPORT_FILE_NAME ${CORE_EXPORT_HEADER}
                             INCLUDE_GUARD_NAME "CORE_EXPORT_H_"
                             DEFINE_NO_DEPRECATED)
+get_target_property(CORE_COMPILE_DEFINITIONS core COMPILE_DEFINITIONS)
+if (NOT ${CORE_COMPILE_DEFINITIONS})
+  set(CORE_COMPILE_DEFINITIONS "")
+endif ()
 set_target_properties(core PROPERTIES PUBLIC_HEADER "${CORE_INCLUDE}"
-                                      PRIVATE_HEADER "${CORE_EXPORT_HEADER}")
+                                      PRIVATE_HEADER "${CORE_EXPORT_HEADER}"
+                                      COMPILE_DEFINITIONS "GLFW_DLL;${CORE_COMPILE_DEFINITIONS}")
 target_include_directories(core PUBLIC "include")
 
 # Libraries
