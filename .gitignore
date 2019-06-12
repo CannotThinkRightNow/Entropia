@@ -402,4 +402,4 @@ ASALocalRun/
 
 # Generated files
 config.h
-*_export.h
+export.h
