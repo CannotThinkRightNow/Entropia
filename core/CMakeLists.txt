@@ -3,10 +3,12 @@
 ##################################################
 
 # Files
-configure_file("include/core/config.h.in" "${CMAKE_CURRENT_LIST_DIR}/include/core/config.h" @ONLY)
 file(GLOB_RECURSE CORE_SOURCE CONFIGURE_DEPENDS "src/*")
 file(GLOB_RECURSE CORE_INCLUDE CONFIGURE_DEPENDS "include/*")
-set(CORE_EXPORT_HEADER "${CMAKE_CURRENT_LIST_DIR}/include/core/export.h")
+set(CONFIG_HEADER "${CMAKE_CURRENT_LIST_DIR}/include/config.h")
+configure_file("include/config.h.in" ${CONFIG_HEADER} @ONLY)
+set(CORE_EXPORT_HEADER "${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAMESPACE}/core/export.h")
+list(REMOVE_ITEM CORE_INCLUDE ${CONFIG_HEADER} ${CORE_EXPORT_HEADER})
 
 # Targets
 add_library(core SHARED ${CORE_SOURCE})
@@ -18,7 +20,7 @@ if (NOT ${CORE_COMPILE_DEFINITIONS})
   set(CORE_COMPILE_DEFINITIONS "")
 endif ()
 set_target_properties(core PROPERTIES PUBLIC_HEADER "${CORE_INCLUDE}"
-                                      PRIVATE_HEADER "${CORE_EXPORT_HEADER}"
+                                      PRIVATE_HEADER "${CONFIG_HEADER};${CORE_EXPORT_HEADER}"
                                       COMPILE_DEFINITIONS "GLFW_DLL;${CORE_COMPILE_DEFINITIONS}")
 target_include_directories(core PUBLIC "include")
 

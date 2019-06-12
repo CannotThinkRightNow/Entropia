@@ -7,7 +7,6 @@ cmake_minimum_required(VERSION 3.12)
 
 # Project
 project("unnamed")
-set(PROJECT_VERSION "0.0.1-v1-alpha")
 
 include("cmake/variables.cmake")
 include("cmake/options.cmake")

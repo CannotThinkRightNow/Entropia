@@ -1,12 +1,15 @@
-#include "client/main.hpp"
+#include "config.h"
+#include STR(CONFIG_NAMESPACE/client/main.hpp)
 
-#include "core/utilities/id.h"
+#include STR(CONFIG_NAMESPACE/core/utilities/id.h)
 
-#include "core/utilities/io.hpp"
-#include "core/utilities/logging.hpp"
-#include "core/graphics.hpp"
+#include STR(CONFIG_NAMESPACE/core/utilities/io.hpp)
+#include STR(CONFIG_NAMESPACE/core/utilities/logging.hpp)
+#include STR(CONFIG_NAMESPACE/core/graphics.hpp)
 
 #define CLIENT_ID "Client"
+
+using namespace CONFIG_NAMESPACE;
 
 namespace
 {
@@ -18,7 +21,7 @@ int main(const int argc, const char *argv[])
     id::set_id(id::CLIENT);
     io::init();
     executable_path_ = argv[0];
-    io::files::details::set_executable_path_func(&executable_path);
+    io::files::details::set_executable_path_func(&CONFIG_NAMESPACE::executable_path);
     logging::init();
 
     logging::print_args(CLIENT_ID, argc, argv);
@@ -39,4 +42,7 @@ int main(const int argc, const char *argv[])
     return 0;
 }
 
-boost::filesystem::path executable_path() noexcept { return executable_path_; }
+namespace CONFIG_NAMESPACE
+{
+    boost::filesystem::path executable_path() noexcept { return executable_path_; }
+}

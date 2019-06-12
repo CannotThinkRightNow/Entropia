@@ -2,9 +2,14 @@
 # Variables
 ##################################################
 
+# Logging
 set(SECTION_HEADER "==================================================")
 set(SECTION_SPLITTER "--------------------------------------------------")
 set(SECTION_FOOTER "==================================================")
+
+# Important Variables
+set(PROJECT_VERSION "0.0.1-v1-alpha")
+set(PROJECT_NAMESPACE "unnamed")
 
 # Environment Variables
 if (NOT DEFINED ENV{CI})

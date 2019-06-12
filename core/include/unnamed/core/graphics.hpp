@@ -13,20 +13,23 @@
 #endif
 #include <GLFW/glfw3.h>
 
-#include "export.h"
+#include STR(CONFIG_NAMESPACE/core/export.h)
 
-namespace graphics
+namespace CONFIG_NAMESPACE
 {
-    CORE_EXPORT extern bool glfw_unsupported;
-    CORE_EXPORT extern GLFWmonitor* monitor;
-    CORE_EXPORT extern GLFWwindow* window;
-    CORE_EXPORT extern GLuint vertex_buffer;
+    namespace graphics
+    {
+        CORE_EXPORT extern bool glfw_unsupported;
+        CORE_EXPORT extern GLFWmonitor* monitor;
+        CORE_EXPORT extern GLFWwindow* window;
+        CORE_EXPORT extern GLuint vertex_buffer;
 
-    void init();
+        void init();
 
-    void create_window();
+        void create_window();
 
-    void error_callback(const int error, const char* description);
+        void error_callback(const int error, const char* description);
+    }
 }
 
 #elif defined(CONFIG_GLES_GRAPHICS) /* CONFIG_GL_GRAPHICS */

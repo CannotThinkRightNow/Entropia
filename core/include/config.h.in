@@ -3,8 +3,12 @@
 
 #pragma once
 
+#define STR_(s) #s
+#define STR(s) STR_(s)
+
 #define CONFIG_NAME "@PROJECT_NAME@"
 #define CONFIG_VERSION "@PROJECT_VERSION@"
+#define CONFIG_NAMESPACE @PROJECT_NAMESPACE@
 
 #define CONFIG_PLATFORM_@PLATFORM@
 #define CONFIG_@GRAPHICS_LIBRARY@_GRAPHICS

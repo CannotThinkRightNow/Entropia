@@ -1,11 +1,14 @@
-#include "server/main.hpp"
+#include "config.h"
+#include STR(CONFIG_NAMESPACE/server/main.hpp)
 
-#include "core/utilities/id.h"
+#include STR(CONFIG_NAMESPACE/core/utilities/id.h)
 
-#include "core/utilities/io.hpp"
-#include "core/utilities/logging.hpp"
+#include STR(CONFIG_NAMESPACE/core/utilities/io.hpp)
+#include STR(CONFIG_NAMESPACE/core/utilities/logging.hpp)
 
 #define SERVER_ID "Server"
+
+using namespace CONFIG_NAMESPACE;
 
 namespace
 {
@@ -26,4 +29,7 @@ int main(const int argc, const char *argv[])
     return 0;
 }
 
-boost::filesystem::path executable_path() noexcept { return executable_path_; }
+namespace CONFIG_NAMESPACE
+{
+    boost::filesystem::path executable_path() noexcept { return executable_path_; }
+}
