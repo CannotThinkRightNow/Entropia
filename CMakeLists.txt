@@ -71,6 +71,10 @@ include("cmake/CompileDefinitions.cmake")
 # Sub-projects
 message(STATUS ${SECTION_HEADER})
 message(STATUS "Building '${PROJECT_NAME}'...")
+
+configure_file("include/private/config.h.in" "${PROJECT_SOURCE_DIR}/include/private/config.h" @ONLY)
+file(GLOB_RECURSE PROJECT_INCLUDE_PRIVATE CONFIGURE_DEPENDS "include/private/*")
+
 message(STATUS ${SECTION_SPLITTER})
 # Core
 message(STATUS "Building 'core'...")
