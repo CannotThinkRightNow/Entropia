@@ -6,7 +6,7 @@
 configure_file("include/core/config.h.in" "${CMAKE_CURRENT_LIST_DIR}/include/core/config.h" @ONLY)
 file(GLOB_RECURSE CORE_SOURCE CONFIGURE_DEPENDS "src/*")
 file(GLOB_RECURSE CORE_INCLUDE CONFIGURE_DEPENDS "include/*")
-set(CORE_EXPORT_HEADER "${CMAKE_CURRENT_LIST_DIR}/include/core/core_export.h")
+set(CORE_EXPORT_HEADER "${CMAKE_CURRENT_LIST_DIR}/include/core/export.h")
 
 # Targets
 add_library(core SHARED ${CORE_SOURCE})

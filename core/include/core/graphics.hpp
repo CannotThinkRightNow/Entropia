@@ -13,7 +13,7 @@
 #endif
 #include <GLFW/glfw3.h>
 
-#include "core_export.h"
+#include "export.h"
 
 namespace graphics
 {
