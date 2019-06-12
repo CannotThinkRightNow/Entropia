@@ -10,6 +10,7 @@ project("unnamed")
 set(PROJECT_VERSION "0.0.1-v1-alpha")
 
 include("cmake/variables.cmake")
+include("cmake/options.cmake")
 include(GNUInstallDirs)
 include(FetchContent)
 include("cmake/gitmodules.cmake")
