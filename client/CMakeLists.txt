@@ -10,9 +10,9 @@ file(GLOB_RECURSE CLIENT_INCLUDE_PUBLIC CONFIGURE_DEPENDS "include/public/*")
 add_executable(client ${CLIENT_SOURCE})
 set_target_properties(client PROPERTIES OUTPUT_NAME "${PROJECT_NAME}"
                                         PUBLIC_HEADER "${CLIENT_INCLUDE_PUBLIC}"
-                                        PRIVATE_HEADER "${PROJECT_INCLUDE_PRIVATE}")
+                                        PRIVATE_HEADER "${PROJECT_GENERATED_INCLUDE_PRIVATE}")
 target_include_directories(client PUBLIC "include/public"
-                                  PRIVATE "../include/private")
+                                  PRIVATE "${PROJECT_BINARY_DIR}/include/private")
 
 # Libraries
 # Core

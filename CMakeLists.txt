@@ -65,15 +65,16 @@ FetchContent_Declare(spdlog_project
 message(STATUS "Successfully added 'spdlog'.")
 message(STATUS ${SECTION_FOOTER})
 
-# Compile Defintions
-include("cmake/CompileDefinitions.cmake")
-
 # Sub-projects
 message(STATUS ${SECTION_HEADER})
 message(STATUS "Building '${PROJECT_NAME}'...")
 
-configure_file("include/private/config.h.in" "${PROJECT_SOURCE_DIR}/include/private/config.h" @ONLY)
-file(GLOB_RECURSE PROJECT_INCLUDE_PRIVATE CONFIGURE_DEPENDS "include/private/*")
+# Compile defintions
+include("cmake/CompileDefinitions.cmake")
+
+# Generated files
+configure_file("include/private/config.h.in" "include/private/config.h" @ONLY)
+file(GLOB_RECURSE PROJECT_GENERATED_INCLUDE_PRIVATE CONFIGURE_DEPENDS "${PROJECT_BINARY_DIR}/include/private/*")
 
 message(STATUS ${SECTION_SPLITTER})
 # Core

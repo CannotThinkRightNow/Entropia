@@ -5,20 +5,22 @@
 # Files
 file(GLOB_RECURSE CORE_SOURCE CONFIGURE_DEPENDS "src/*")
 file(GLOB_RECURSE CORE_INCLUDE_PUBLIC CONFIGURE_DEPENDS "include/public/*")
-file(GLOB_RECURSE CORE_INCLUDE_PRIVATE CONFIGURE_DEPENDS "include/private/*")
-set(CORE_EXPORT_HEADER "${CMAKE_CURRENT_LIST_DIR}/include/public/${PROJECT_NAMESPACE}/core/export.h")
 
-# Target
+# Targets
 add_library(core SHARED ${CORE_SOURCE})
-generate_export_header(core EXPORT_FILE_NAME ${CORE_EXPORT_HEADER}
+
+# Generated files
+generate_export_header(core EXPORT_FILE_NAME "${PROJECT_BINARY_DIR}/core/include/public/${PROJECT_NAMESPACE}/core/export.h"
                             INCLUDE_GUARD_NAME "CORE_EXPORT_H_"
                             DEFINE_NO_DEPRECATED)
-list(APPEND CORE_INCLUDE_PRIVATE ${CORE_EXPORT_HEADER})
-set_target_properties(core PROPERTIES PUBLIC_HEADER "${CORE_INCLUDE_PUBLIC}"
-                                      PRIVATE_HEADER "${PROJECT_INCLUDE_PRIVATE};${CORE_INCLUDE_PRIVATE}"
+file(GLOB_RECURSE CORE_GENERATED_INCLUDE_PUBLIC CONFIGURE_DEPENDS "${PROJECT_BINARY_DIR}/include/public/*")
+
+# Targets (continued)
+set_target_properties(core PROPERTIES PUBLIC_HEADER "${CORE_INCLUDE_PUBLIC};${CORE_GENERATED_INCLUDE_PUBLIC}"
+                                      PRIVATE_HEADER "${PROJECT_GENERATED_INCLUDE_PRIVATE}"
                                       COMPILE_DEFINITIONS "GLFW_DLL")
-target_include_directories(core PUBLIC "include/public"
-                                PRIVATE "../include/private")
+target_include_directories(core PUBLIC "include/public" "${PROJECT_BINARY_DIR}/core/include/public"
+                                PRIVATE "${PROJECT_BINARY_DIR}/include/private")
 
 # Libraries
 # Boost

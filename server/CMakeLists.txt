@@ -9,9 +9,9 @@ file(GLOB_RECURSE SERVER_INCLUDE_PUBLIC CONFIGURE_DEPENDS "include/public/*")
 # Targets
 add_executable(server ${SERVER_SOURCE})
 set_target_properties(server PROPERTIES PUBLIC_HEADER "${SERVER_INCLUDE_PUBLIC}"
-                                        PRIVATE_HEADER "${PROJECT_INCLUDE_PRIVATE}")
+                                        PRIVATE_HEADER "${PROJECT_GENERATED_INCLUDE_PRIVATE}")
 target_include_directories(server PUBLIC "include/public"
-                                  PRIVATE "../include/private")
+                                  PRIVATE "${PROJECT_BINARY_DIR}/include/private")
 
 # Libraries
 # Core

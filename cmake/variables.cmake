@@ -7,11 +7,11 @@ set(SECTION_HEADER "==================================================")
 set(SECTION_SPLITTER "--------------------------------------------------")
 set(SECTION_FOOTER "==================================================")
 
-# Important Variables
+# Important variables
 set(PROJECT_VERSION "0.0.1-v1-alpha")
 set(PROJECT_NAMESPACE "unnamed")
 
-# Environment Variables
+# Environment variables
 if (NOT DEFINED ENV{CI})
   set(ENV{CI} FALSE)
 elseif ($ENV{CI} STREQUAL "true" # Travis CI, AppVeyor (Ubuntu)
