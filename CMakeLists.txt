@@ -7,19 +7,14 @@ cmake_minimum_required(VERSION 3.12)
 
 # Project
 project("unnamed")
-set(PROJECT_VERSION "0.0.1-v1-alpha")
 
 include("cmake/variables.cmake")
+include("cmake/options.cmake")
 include(GNUInstallDirs)
 include(FetchContent)
 include("cmake/gitmodules.cmake")
 include("cmake/utilities.cmake")
 include(GenerateExportHeader)
-
-# Cache entries
-if (NOT DEFINED BOOST_ROOT)
-  set(BOOST_ROOT CACHE PATH "The path prefix to the preferred Boost installation.")
-endif ()
 
 # Dependencies
 GitModules_UpdateOrCheck($ENV{CI})
@@ -45,7 +40,7 @@ elseif (IOS) # Metal
   # TODO: use Metal here...
 
   set(GRAPHICS_LIBRARY "METAL")
-elseif (LINUX OR MACOS OR WINDOWS) # OpenGL
+elseif (UNIX OR MACOS OR WINDOWS) # OpenGL
   # GLEW
   message(STATUS "Adding 'glew'...")
   include("cmake/glew.cmake")
@@ -73,6 +68,14 @@ message(STATUS ${SECTION_FOOTER})
 # Sub-projects
 message(STATUS ${SECTION_HEADER})
 message(STATUS "Building '${PROJECT_NAME}'...")
+
+# Compile defintions
+include("cmake/CompileDefinitions.cmake")
+
+# Generated files
+configure_file("include/private/config.h.in" "include/private/config.h" @ONLY)
+file(GLOB_RECURSE PROJECT_GENERATED_INCLUDE_PRIVATE CONFIGURE_DEPENDS "${PROJECT_BINARY_DIR}/include/private/*")
+
 message(STATUS ${SECTION_SPLITTER})
 # Core
 message(STATUS "Building 'core'...")

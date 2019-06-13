@@ -1,15 +1,33 @@
-#include "core/utilities/logging.h"
-#include "core/graphics.h"
-#include "core/files.h"
+#include "config.h"
+#include STR(CONFIG_NAMESPACE/client/main.hpp)
+
+#include STR(CONFIG_NAMESPACE/core/utilities/id.h)
+
+#include STR(CONFIG_NAMESPACE/core/utilities/io.hpp)
+#include STR(CONFIG_NAMESPACE/core/utilities/logging.hpp)
+#include STR(CONFIG_NAMESPACE/core/graphics.hpp)
 
 #define CLIENT_ID "Client"
 
-int main(int argc, char** argv)
+using namespace CONFIG_NAMESPACE;
+
+namespace
 {
+    static boost::filesystem::path executable_path_;
+}
+
+int main(const int argc, const char *argv[])
+{
+    id::set_id(id::CLIENT);
+    io::init();
+    executable_path_ = argv[0];
+    io::files::details::set_executable_path_func(&CONFIG_NAMESPACE::executable_path);
     logging::init();
-    logging::printArgs(CLIENT_ID, argc, argv);
-    graphics::createWindow();
-    graphics::glInit();
+
+    logging::print_args(CLIENT_ID, argc, argv);
+
+    graphics::create_window();
+    graphics::init();
     
     while (!glfwWindowShouldClose(graphics::window))
     {
@@ -22,4 +40,9 @@ int main(int argc, char** argv)
     glfwTerminate();
     logging::terminate();
     return 0;
+}
+
+namespace CONFIG_NAMESPACE
+{
+    boost::filesystem::path executable_path() noexcept { return executable_path_; }
 }
