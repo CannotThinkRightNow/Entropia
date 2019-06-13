@@ -24,13 +24,14 @@ namespace CONFIG_NAMESPACE
         namespace files
         {
             path executable_path() noexcept;
+            path executable_dir() noexcept;
             path pointer_path();
             path data_path();
             path default_data_path();
 
             namespace details
             {
-                typedef path(*executable_path_func_t)();
+                typedef path(*executable_path_func_t)() /*noexcept*/;
 
                 void set_executable_path_func(executable_path_func_t func);
 

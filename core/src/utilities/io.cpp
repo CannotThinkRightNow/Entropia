@@ -88,7 +88,17 @@ namespace CONFIG_NAMESPACE
 
         namespace files
         {
-            path executable_path() noexcept { return (*executable_path_func)(); }
+            path executable_path() noexcept
+            {
+                static const path res = (*executable_path_func)();
+                return res;
+            }
+
+            path executable_dir() noexcept
+            {
+                static const path res = executable_path().parent_path();
+                return res;
+            }
 
             path pointer_path()
             {
@@ -140,7 +150,7 @@ namespace CONFIG_NAMESPACE
                     }
                     else if (id::id_g() == id::SERVER)
                     {
-                        return files::executable_path() / "pointer.txt";
+                        return files::executable_dir() / "pointer.txt";
                     }
                 }
 
@@ -161,7 +171,7 @@ namespace CONFIG_NAMESPACE
                     }
                     else if (id::id_g() == id::SERVER)
                     {
-                        return files::executable_path() / "data";
+                        return files::executable_dir() / "data";
                     }
                 }
             }
