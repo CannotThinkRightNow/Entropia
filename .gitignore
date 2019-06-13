@@ -399,7 +399,3 @@ ASALocalRun/
 # Custom
 ####################
 # Custom definitions.
-
-# Generated files
-config.h
-export.h

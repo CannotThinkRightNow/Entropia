@@ -2,10 +2,16 @@
 # Variables
 ##################################################
 
+# Logging
 set(SECTION_HEADER "==================================================")
 set(SECTION_SPLITTER "--------------------------------------------------")
 set(SECTION_FOOTER "==================================================")
 
+# Important variables
+set(PROJECT_VERSION "0.0.1-v1-alpha")
+set(PROJECT_NAMESPACE "unnamed")
+
+# Environment variables
 if (NOT DEFINED ENV{CI})
   set(ENV{CI} FALSE)
 elseif ($ENV{CI} STREQUAL "true" # Travis CI, AppVeyor (Ubuntu)
@@ -20,12 +26,14 @@ elseif ($ENV{APPVEYOR} STREQUAL "true" # Ubuntu
   set(ENV{APPVEYOR} TRUE)
 endif ()
 
+# CMake
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
+# Boost
 set(Boost_MINIMUM_MINOR_VERSION 44)
 set(Boost_MINIMUM_VERSION "1.${Boost_MINIMUM_MINOR_VERSION}.0")
 set(Boost_LATEST_MINOR_VERSION 70)
@@ -40,6 +48,9 @@ foreach (Boost_MINOR_VERSION RANGE ${Boost_MINIMUM_MINOR_VERSION} ${Boost_LATEST
   endif ()
 endforeach (${Boost_MINOR_VERSION})
 set(Boost_COMPONENTS "filesystem")
+
+# Variables
+set(BUILD_SHARED_LIBS TRUE)
 
 if (NOT DEFINED TOOLCHAIN_TAG)
   if (DEFINED CMAKE_TOOLCHAIN_FILE)
@@ -61,11 +72,11 @@ if (${IOS} EQUAL -1)
 else ()
   set(IOS TRUE)
 endif ()
-string(FIND ${TOOLCHAIN_TAG} "libcxx" LINUX)
-if (${LINUX} EQUAL -1)
-  set(LINUX FALSE)
+string(FIND ${TOOLCHAIN_TAG} "libcxx" UNIX)
+if (${UNIX} EQUAL -1)
+  set(UNIX FALSE)
 else ()
-  set(LINUX TRUE)
+  set(UNIX TRUE)
 endif ()
 string(FIND ${TOOLCHAIN_TAG} "osx" MACOS)
 if (${MACOS} EQUAL -1)
@@ -84,8 +95,8 @@ if (ANDROID)
   set(PLATFORM "ANDROID")
 elseif (IOS)
   set(PLATFORM "IOS")
-elseif (LINUX)
-  set(PLATFORM "LINUX")
+elseif (UNIX)
+  set(PLATFORM "UNIX")
 elseif (MACOS)
   set(PLATFORM "MACOS")
 else (WINDOWS)

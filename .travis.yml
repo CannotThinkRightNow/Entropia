@@ -89,7 +89,7 @@ matrix:
       env: TOOLCHAIN=ios-nocodesign-12-1-dep-9-0-bitcode-cxx11 CONFIG=Debug
 
     ####################
-    # Linux
+    # Unix
     ####################
     - os: linux
       env: TOOLCHAIN=libcxx CONFIG=Release
