@@ -6,7 +6,7 @@
 file(GLOB_RECURSE CORE_SOURCE CONFIGURE_DEPENDS "src/*")
 file(GLOB_RECURSE CORE_INCLUDE_PUBLIC CONFIGURE_DEPENDS "include/public/*")
 file(GLOB_RECURSE CORE_INCLUDE_PRIVATE CONFIGURE_DEPENDS "include/private/*")
-set(CORE_EXPORT_HEADER "${CMAKE_CURRENT_LIST_DIR}/include/private/${PROJECT_NAMESPACE}/core/export.h")
+set(CORE_EXPORT_HEADER "${CMAKE_CURRENT_LIST_DIR}/include/public/${PROJECT_NAMESPACE}/core/export.h")
 
 # Target
 add_library(core SHARED ${CORE_SOURCE})
@@ -14,15 +14,11 @@ generate_export_header(core EXPORT_FILE_NAME ${CORE_EXPORT_HEADER}
                             INCLUDE_GUARD_NAME "CORE_EXPORT_H_"
                             DEFINE_NO_DEPRECATED)
 list(APPEND CORE_INCLUDE_PRIVATE ${CORE_EXPORT_HEADER})
-get_target_property(CORE_COMPILE_DEFINITIONS core COMPILE_DEFINITIONS)
-if (NOT ${CORE_COMPILE_DEFINITIONS})
-  set(CORE_COMPILE_DEFINITIONS "")
-endif ()
 set_target_properties(core PROPERTIES PUBLIC_HEADER "${CORE_INCLUDE_PUBLIC}"
                                       PRIVATE_HEADER "${PROJECT_INCLUDE_PRIVATE};${CORE_INCLUDE_PRIVATE}"
-                                      COMPILE_DEFINITIONS "GLFW_DLL;${CORE_COMPILE_DEFINITIONS}")
+                                      COMPILE_DEFINITIONS "GLFW_DLL")
 target_include_directories(core PUBLIC "include/public"
-                                PRIVATE "../include/private" "include/private")
+                                PRIVATE "../include/private")
 
 # Libraries
 # Boost
