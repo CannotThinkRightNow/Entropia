@@ -400,10 +400,6 @@ ASALocalRun/
 ####################
 # Custom definitions.
 
-# Generated files
-config.h
-export.h
-
 # Submodules
 glew/
 glfw/
