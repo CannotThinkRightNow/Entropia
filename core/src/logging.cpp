@@ -1,5 +1,5 @@
 #include "config.h"
-#include STR(CONFIG_NAMESPACE/core/utilities/logging.hpp)
+#include STR(CONFIG_NAMESPACE/core/logging.hpp)
 
 #include <sstream>
 

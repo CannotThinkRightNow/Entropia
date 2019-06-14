@@ -1,6 +1,6 @@
 #include "config.h"
 #include STR(CONFIG_NAMESPACE/core/utilities/graphics.hpp)
-#include STR(CONFIG_NAMESPACE/core/utilities/logging.hpp)
+#include STR(CONFIG_NAMESPACE/core/logging.hpp)
 
 #ifdef CONFIG_PLATFORM_WINDOWS
 #include <Windows.h>
