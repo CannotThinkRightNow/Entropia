@@ -5,7 +5,7 @@
 
 #include STR(CONFIG_NAMESPACE/core/utilities/io.hpp)
 #include STR(CONFIG_NAMESPACE/core/utilities/logging.hpp)
-#include STR(CONFIG_NAMESPACE/core/graphics.hpp)
+#include STR(CONFIG_NAMESPACE/core/utilities/graphics.hpp)
 
 #define CLIENT_ID "Client"
 
