@@ -45,6 +45,9 @@ endif () # Already checked.
 # spdlog
 FetchContent_CheckAndPopulate(spdlog_project)
 target_link_libraries(core spdlog)
+# OpenGL Mathematics
+FetchContent_CheckAndPopulate(glm_project)
+target_link_libraries(core glm)
 
 # Packaging
 set(CORE_INSTALL_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}/core")
