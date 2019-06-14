@@ -65,7 +65,7 @@ namespace CONFIG_NAMESPACE
             return true;
         }
 
-        bool write(const path file, const string content, const bool failfast = true, const iostream::openmode mode = iostream::out, const bool blocking = true)
+        bool write(const path file, const string content, const bool create_dir = true, const bool failfast = true, const iostream::openmode mode = iostream::out, const bool blocking = true)
         {
             if (exists(file) && !is_regular_file(file)) return false;
             {
@@ -76,6 +76,7 @@ namespace CONFIG_NAMESPACE
                 std::ofstream o;
                 if (failfast) o.exceptions(ios::failbit);
 
+                if (create_dir) create_directories(file.parent_path());
                 o.open(file.string(), mode);
                 if (!o.good()) return false;
 
