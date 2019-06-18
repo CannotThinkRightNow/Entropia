@@ -25,16 +25,16 @@ environment:
     # Windows
     ####################
     - TOOLCHAIN: "ninja-vs-16-2019"
-      CONFIG: Release
+      CONFIG: Debug
 
     - TOOLCHAIN: "ninja-vs-16-2019"
-      CONFIG: Debug
-
-    - TOOLCHAIN: "ninja-vs-16-2019-win64"
       CONFIG: Release
 
     - TOOLCHAIN: "ninja-vs-16-2019-win64"
       CONFIG: Debug
+
+    - TOOLCHAIN: "ninja-vs-16-2019-win64"
+      CONFIG: Release
 
 install:
   # Python 3
