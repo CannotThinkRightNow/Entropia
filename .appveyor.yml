@@ -12,7 +12,7 @@ branches:
     - gh-pages
     - /ci-(?!appveyor).*/
 
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 environment:
   matrix:
@@ -24,16 +24,16 @@ environment:
     ####################
     # Windows
     ####################
-    - TOOLCHAIN: "vs-15-2017"
+    - TOOLCHAIN: "ninja-vs-16-2019"
       CONFIG: Release
 
-    - TOOLCHAIN: "vs-15-2017"
+    - TOOLCHAIN: "ninja-vs-16-2019"
       CONFIG: Debug
 
-    - TOOLCHAIN: "vs-15-2017-win64"
+    - TOOLCHAIN: "ninja-vs-16-2019-win64"
       CONFIG: Release
 
-    - TOOLCHAIN: "vs-15-2017-win64"
+    - TOOLCHAIN: "ninja-vs-16-2019-win64"
       CONFIG: Debug
 
 install:
