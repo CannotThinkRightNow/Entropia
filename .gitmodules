@@ -4,12 +4,3 @@
 [submodule "glew"]
     path = glew
     url = https://github.com/nigels-com/glew.git
-[submodule "glfw"]
-    path = glfw
-    url = https://github.com/glfw/glfw.git
-[submodule "spdlog"]
-    path = spdlog
-    url = https://github.com/gabime/spdlog.git
-[submodule "glm"]
-    path = glm
-    url = https://github.com/g-truc/glm.git

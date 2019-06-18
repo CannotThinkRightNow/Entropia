@@ -9,7 +9,7 @@
   ////////////////////
   "environments": [
     {
-      "environment": "none"
+      "environment": "null"
     }
   ],
   ////////////////////
@@ -26,11 +26,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-x86",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -41,11 +41,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-x64",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-x86-64-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-x86-64-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -56,11 +56,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -71,11 +71,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -86,11 +86,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -101,11 +101,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm64",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-arm64-v8a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-arm64-v8a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -116,11 +116,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm64",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-arm64-v8a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-arm64-v8a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -130,11 +130,11 @@
       "generator": "Unix Makefiles",
       "configurationType": "RelWithDebInfo",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -145,11 +145,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-x86",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-x86-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -160,11 +160,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-x64",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-x86-64-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-x86-64-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -175,11 +175,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "\"-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-armeabi-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -190,11 +190,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-armeabi-v7a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -205,11 +205,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -220,11 +220,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm64",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-arm64-v8a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-arm64-v8a-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -235,11 +235,11 @@
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "android-clang-arm64",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-arm64-v8a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-arm64-v8a-neon-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -249,11 +249,11 @@
       "generator": "Unix Makefiles",
       "configurationType": "RelWithDebInfo",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/android-ndk-r15c-api-21-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/android-ndk-r15c-api-21-mips-clang-libcxx.cmake -DCMAKE_MAKE_PROGRAM:FILEPATH=${env.ANDROID_NDK_r15c}/prebuilt/windows-x86_64/bin/make.exe",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -266,11 +266,11 @@
       "generator": "Xcode",
       "configurationType": "RelWithDebInfo",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-12-0-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ios-12-0-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -280,11 +280,11 @@
       "generator": "Xcode",
       "configurationType": "RelWithDebInfo",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-nocodesign-12-1-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ios-nocodesign-12-1-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -294,11 +294,11 @@
       "generator": "Xcode",
       "configurationType": "Debug",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/ios-nocodesign-12-1-dep-9-0-device-bitcode-cxx11.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ios-nocodesign-12-1-dep-9-0-device-bitcode-cxx11.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -329,7 +329,7 @@
       ],
       "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -360,7 +360,7 @@
       ],
       "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -391,7 +391,7 @@
       ],
       "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc-x64.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -422,7 +422,7 @@
       ],
       "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc-x64.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -453,7 +453,7 @@
       ],
       "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc-armhf.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -484,7 +484,7 @@
       ],
       "rsyncCommandArgs": "-t --delete",
       "remoteCopyBuildOutput": false,
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=libcxx", // "-DCMAKE_TOOLCHAIN_FILE=polly/linux-gcc-armhf.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/libcxx.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [
@@ -500,11 +500,11 @@
       "generator": "Xcode",
       "configurationType": "RelWithDebInfo",
       "inheritEnvironments": [
-        "none"
+        "null"
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE=polly/osx-10-14.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/osx-10-14.cmake",
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     },
@@ -522,7 +522,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=ninja-vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017.cmake", // "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -537,7 +537,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=ninja-vs-15-2017", // "-DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017.cmake", // "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -552,7 +552,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=ninja-vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017-win64.cmake", // -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -567,7 +567,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DTOOLCHAIN_TAG=ninja-vs-15-2017-win64", // -DCMAKE_TOOLCHAIN_FILE=polly/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017.cmake", // -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }
