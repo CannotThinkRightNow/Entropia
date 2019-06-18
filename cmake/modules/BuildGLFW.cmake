@@ -22,7 +22,7 @@ set(EXTERNALPROJECT_BUILD_PREFIX "${PROJECT_BINARY_DIR}/external/${EXTERNALPROJE
 set(EXTERNALPROJECT_BUILD_ARGS ${EXTERNALPROJECT_BUILD_NAME}_project GIT_REPOSITORY "https://github.com/glfw/glfw.git"
                                                                      GIT_TAG "origin/${GLFW_DEFAULT_BRANCH}"
                                                                      PREFIX "${EXTERNALPROJECT_BUILD_PREFIX}"
-                                                                     CMAKE_ARGS -G ${CMAKE_GENERATOR} ${PROJECT_ARGS} "-DCMAKE_INSTALL_PREFIX:PATH=${CONTRIB_DIR}" "-DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS}" "-DGLFW_BUILD_EXAMPLES:BOOL=${GLFW_BUILD_EXAMPLES}" "-DGLFW_BUILD_TESTS:BOOL=${GLFW_BUILD_TESTS}" "-DGLFW_BUILD_DOCS:BOOL=${GLFW_BUILD_DOCS}" "-DGLFW_INSTALL:BOOL=${GLFW_INSTALL}" "-DGLFW_VULKAN_STATIC:BOOL=${GLFW_VULKAN_STATIC}"
+                                                                     CMAKE_ARGS -G "${CMAKE_GENERATOR}" ${PROJECT_ARGS} "-DCMAKE_INSTALL_PREFIX:PATH=${CONTRIB_DIR}" "-DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS}" "-DGLFW_BUILD_EXAMPLES:BOOL=${GLFW_BUILD_EXAMPLES}" "-DGLFW_BUILD_TESTS:BOOL=${GLFW_BUILD_TESTS}" "-DGLFW_BUILD_DOCS:BOOL=${GLFW_BUILD_DOCS}" "-DGLFW_INSTALL:BOOL=${GLFW_INSTALL}" "-DGLFW_VULKAN_STATIC:BOOL=${GLFW_VULKAN_STATIC}"
                                                                      GIT_SHALLOW TRUE
                                                                      GIT_PROGRESS TRUE)
 include("${PROJECT_SOURCE_DIR}/cmake/ExternalProject_Build/invoke.cmake")

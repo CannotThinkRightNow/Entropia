@@ -10,15 +10,15 @@ set(SECTION_FOOTER "==================================================")
 # Environment variables
 if (NOT DEFINED ENV{CI})
   set(ENV{CI} FALSE)
-elseif ($ENV{CI} STREQUAL "true" # Travis CI, AppVeyor (Ubuntu)
-        OR $ENV{CI} STREQUAL "True") # AppVeyor
+elseif ("$ENV{CI}" STREQUAL "true" # Travis CI, AppVeyor (Ubuntu)
+        OR "$ENV{CI}" STREQUAL "True") # AppVeyor
   set(ENV{CI} TRUE)
 endif ()
 
 if (NOT DEFINED ENV{APPVEYOR})
   set(ENV{APPVEYOR} FALSE)
-elseif ($ENV{APPVEYOR} STREQUAL "true" # Ubuntu
-        OR $ENV{APPVEYOR} STREQUAL "True")
+elseif ("$ENV{APPVEYOR}" STREQUAL "true" # Ubuntu
+        OR "$ENV{APPVEYOR}" STREQUAL "True")
   set(ENV{APPVEYOR} TRUE)
 endif ()
 
@@ -101,20 +101,20 @@ foreach (Boost_MINOR_VERSION RANGE ${Boost_MINIMUM_MINOR_VERSION} ${Boost_LATEST
   list(APPEND Boost_ADDITIONAL_VERSIONS "1.${Boost_MINOR_VERSION}.0")
   if ($ENV{APPVEYOR})
     set(Boost_FIND_DIR "C:/Libraries/boost_1_${Boost_MINOR_VERSION}_0")
-    if (EXISTS ${Boost_FIND_DIR} AND IS_DIRECTORY ${Boost_FIND_DIR})
-      set(BOOST_ROOT ${Boost_FIND_DIR})
+    if (EXISTS "${Boost_FIND_DIR}" AND IS_DIRECTORY "${Boost_FIND_DIR}")
+      set(BOOST_ROOT "${Boost_FIND_DIR}")
     endif ()
   endif ()
 endforeach (${Boost_MINOR_VERSION})
 set(Boost_COMPONENTS "filesystem")
 
 # Messages
-message(STATUS ${SECTION_HEADER})
+message(STATUS "${SECTION_HEADER}")
 message(STATUS "Variables")
-message(STATUS ${SECTION_SPLITTER})
+message(STATUS "${SECTION_SPLITTER}")
 message(STATUS "Name: ${PROJECT_NAME}")
 message(STATUS "Version: ${PROJECT_VERSION_STRING}")
 message(STATUS "Toolchain: ${TOOLCHAIN_TAG}")
 message(STATUS "Platform: ${PLATFORM}")
 message(STATUS "Continuous Integration: $ENV{CI}")
-message(STATUS ${SECTION_FOOTER})
+message(STATUS "${SECTION_FOOTER}")

@@ -25,7 +25,7 @@ find_package_handle_standard_args(GLES2 DEFAULT_MSG
 
 if (GLES2_FOUND)
   add_library(gles2 SHARED IMPORTED GLOBAL)
-  set_target_properties(gles2 PROPERTIES IMPORTED_LOCATION ${GLES2_LIBRARY}
+  set_target_properties(gles2 PROPERTIES IMPORTED_LOCATION "${GLES2_LIBRARY}"
                                          PUBLIC_HEADER "${GLES2_INCLUDE}")
-  target_include_directories(gles2 SYSTEM INTERFACE ${GLES2_INCLUDE_DIR})
+  target_include_directories(gles2 SYSTEM INTERFACE "${GLES2_INCLUDE_DIR}")
 endif ()
