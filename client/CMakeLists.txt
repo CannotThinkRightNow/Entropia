@@ -11,15 +11,20 @@ add_executable(client ${CLIENT_SOURCE})
 set_target_properties(client PROPERTIES OUTPUT_NAME "${PROJECT_NAME}"
                                         PUBLIC_HEADER "${CLIENT_INCLUDE_PUBLIC}"
                                         PRIVATE_HEADER "${PROJECT_GENERATED_INCLUDE_PRIVATE}")
-target_include_directories(client PUBLIC "include/public"
+target_include_directories(client PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/public>"
+                                         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/client/public>"
                                   PRIVATE "${PROJECT_BINARY_DIR}/include/private")
 
 # Libraries
 # Core
-target_link_libraries(client core)
+target_link_libraries(client PUBLIC core)
 
-# Packaging
+# Installation
 install(TARGETS client
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        EXPORT "${PROJECT_NAMESPACE}"
+        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
         PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/client/public"
         PRIVATE_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/client/private")
+
+# Export
+export(PACKAGE client)

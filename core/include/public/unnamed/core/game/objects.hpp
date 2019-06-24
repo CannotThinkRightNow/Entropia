@@ -6,6 +6,7 @@
 #include "config.h"
 
 #include <vector>
+#include <memory>
 
 namespace CONFIG_NAMESPACE
 {
@@ -13,19 +14,34 @@ namespace CONFIG_NAMESPACE
     {
         namespace objects
         {
+            class object;
+            class world;
+            class world_object;
+
             class object
             {
-
-            };
-
-            class world_object : public object
-            {
-
+            public:
+                virtual ~object() = default;
             };
 
             class world : public object
             {
-                virtual const std::vector<world_object> objects() const noexcept;
+            private:
+                std::shared_ptr<std::vector<world_object>> objects_ = std::make_shared<std::vector<world_object>>();
+
+            public:
+                const std::weak_ptr<std::vector<world_object>> objects() const noexcept;
+            };
+
+            class world_object : public object
+            {
+            private:
+                std::weak_ptr<world> parent_;
+
+            public:
+                world_object(std::weak_ptr<world> world);
+
+                const std::weak_ptr<world> parent() const noexcept;
             };
         }
     }
