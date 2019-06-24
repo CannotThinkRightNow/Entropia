@@ -24,10 +24,10 @@ environment:
     ####################
     # Windows
     ####################
-    - TOOLCHAIN: "ninja-vs-15-2017"
+    - TOOLCHAIN: "vs-15-2017"
       CONFIG: Debug
 
-    - TOOLCHAIN: "ninja-vs-15-2017"
+    - TOOLCHAIN: "vs-15-2017"
       CONFIG: Release
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64"
