@@ -1,6 +1,6 @@
 #include "config.h"
-#include STR(CONFIG_NAMESPACE/core/graphics.hpp)
-#include STR(CONFIG_NAMESPACE/core/utilities/logging.hpp)
+#include STR(CONFIG_NAMESPACE/core/utilities/graphics.hpp)
+#include STR(CONFIG_NAMESPACE/core/logging.hpp)
 
 #ifdef CONFIG_PLATFORM_WINDOWS
 #include <Windows.h>
@@ -22,6 +22,7 @@
 #define PRIMARY_Y GetSystemMetrics(SM_CYSCREEN)
 #endif /* CONFIG_PLATFORM_WINDOWS */
 
+using namespace std;
 using namespace CONFIG_NAMESPACE;
 
 namespace CONFIG_NAMESPACE
@@ -63,7 +64,7 @@ namespace CONFIG_NAMESPACE
             if (!glfwInit())
             {
                 logger->critical("Failed to initialize glfw.");
-                throw std::runtime_error("Failed to initialize glfw.");
+                throw runtime_error("Failed to initialize glfw.");
             }
 
             // Require the OpenGL context to support OpenGL 3.2 at the least.
@@ -87,7 +88,7 @@ namespace CONFIG_NAMESPACE
             if (!window)
             {
                 logger->critical("Failed to create window.");
-                throw std::runtime_error("Failed to create window.");
+                throw runtime_error("Failed to create window.");
             }
             glfwMakeContextCurrent(window);
 

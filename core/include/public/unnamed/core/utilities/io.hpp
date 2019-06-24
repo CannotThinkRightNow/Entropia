@@ -18,8 +18,8 @@ namespace CONFIG_NAMESPACE
 
         void init();
 
-        bool read(const path file, std::string &out, const bool failfast, const std::iostream::openmode mode);
-        bool write(const path file, const std::string content, const bool failfast, const std::iostream::openmode mode);
+        bool read(const path file, std::string &out, const bool failfast, const std::iostream::openmode mode, const bool blocking);
+        bool write(const path file, const std::string content, const bool create_dir, const bool failfast, const std::iostream::openmode mode, const bool blocking);
 
         namespace files
         {
@@ -31,7 +31,7 @@ namespace CONFIG_NAMESPACE
 
             namespace details
             {
-                typedef path(*executable_path_func_t)() /*noexcept*/;
+                typedef path(*executable_path_func_t)()/*noexcept*/;
 
                 void set_executable_path_func(executable_path_func_t func);
 

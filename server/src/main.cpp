@@ -4,7 +4,7 @@
 #include STR(CONFIG_NAMESPACE/core/utilities/id.h)
 
 #include STR(CONFIG_NAMESPACE/core/utilities/io.hpp)
-#include STR(CONFIG_NAMESPACE/core/utilities/logging.hpp)
+#include STR(CONFIG_NAMESPACE/core/logging.hpp)
 
 #define SERVER_ID "Server"
 

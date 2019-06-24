@@ -16,6 +16,7 @@
 #include <boost/thread/thread.hpp>
 #include <boost/interprocess/sync/scoped_lock.hpp>
 
+using namespace std;
 using namespace CONFIG_NAMESPACE;
 using namespace boost::filesystem;
 
@@ -34,11 +35,11 @@ namespace CONFIG_NAMESPACE
 #ifdef CONFIG_PLATFORM_WINDOWS
             path::codecvt(); // Ensure VC++ does not race during initialization.
 #elif defined(CONFIG_PLATFORM_UNIX) /* CONFIG_PLATFORM_WINDOWS */
-            // std::locale(""); // Check whether environment variable for language is invalid.
+            // locale(""); // Check whether environment variable for language is invalid.
 #endif /* CONFIG_PLATFORM_UNIX */
         }
 
-        bool read(const path file, std::string &out, const bool failfast = true, const std::iostream::openmode mode = std::iostream::in, const bool blocking = true)
+        bool read(const path file, string &out, const bool failfast = true, const iostream::openmode mode = iostream::in, const bool blocking = true)
         {
             if (exists(file) && !is_regular_file(file)) return false;
             {
@@ -47,15 +48,15 @@ namespace CONFIG_NAMESPACE
                 else if (!l.try_lock()) return false;
 
                 std::ifstream i;
-                if (failfast) i.exceptions(std::ios::failbit);
+                if (failfast) i.exceptions(ios::failbit);
 
                 i.open(file.string(), mode);
                 if (!i.good()) return false;
 
-                i.seekg(0, std::ios::end);
+                i.seekg(0, ios::end);
 #pragma warning(suppress: 4244)
                 out.resize(i.tellg());
-                i.seekg(0, std::ios::beg);
+                i.seekg(0, ios::beg);
                 i.read(&out[0], out.size());
 
                 // i.close();
@@ -64,7 +65,7 @@ namespace CONFIG_NAMESPACE
             return true;
         }
 
-        bool write(const path file, const std::string content, const bool failfast = true, const std::iostream::openmode mode = std::iostream::out, const bool blocking = true)
+        bool write(const path file, const string content, const bool create_dir = true, const bool failfast = true, const iostream::openmode mode = iostream::out, const bool blocking = true)
         {
             if (exists(file) && !is_regular_file(file)) return false;
             {
@@ -73,8 +74,9 @@ namespace CONFIG_NAMESPACE
                 else if (!l.try_lock()) return false;
 
                 std::ofstream o;
-                if (failfast) o.exceptions(std::ios::failbit);
+                if (failfast) o.exceptions(ios::failbit);
 
+                if (create_dir) create_directories(file.parent_path());
                 o.open(file.string(), mode);
                 if (!o.good()) return false;
 
@@ -111,8 +113,8 @@ namespace CONFIG_NAMESPACE
                 const path pptr = files::pointer_path();
                 if (!is_regular_file(pptr)) remove_all(pptr);
 
-                std::string res;
-                if (exists(pptr) && !is_empty(pptr)) read(pptr, res);
+                string res;
+                if (exists(pptr) && !boost::filesystem::is_empty(pptr)) read(pptr, res);
                 else res = default_data_path().string();
 
                 boost::system::error_code errc;
@@ -131,7 +133,7 @@ namespace CONFIG_NAMESPACE
 
             namespace details
             {
-                void set_executable_path_func(executable_path_func_t func) { std::swap(executable_path_func, func); }
+                void set_executable_path_func(executable_path_func_t func) { swap(executable_path_func, func); }
 
                 path pointer_path()
                 {
@@ -142,9 +144,9 @@ namespace CONFIG_NAMESPACE
                         if (FAILED(SHGetKnownFolderPath(FOLDERID_LocalAppData, KF_FLAG_DEFAULT, nullptr, &out)))
                         {
                             // No logging here.
-                            throw std::runtime_error("Error while getting local app data directory path.");
+                            throw runtime_error("Error while getting local app data directory path.");
                         }
-                        const std::unique_ptr<WCHAR, decltype(&CoTaskMemFree)> ptr(out, &CoTaskMemFree);
+                        const unique_ptr<WCHAR, decltype(&CoTaskMemFree)> ptr(out, &CoTaskMemFree);
                         return path(ptr.get()) / CONFIG_NAME / "pointer.txt";
 #endif /* CONFIG_PLATFORM_WINDOWS */
                     }
@@ -163,9 +165,9 @@ namespace CONFIG_NAMESPACE
                         if (FAILED(SHGetKnownFolderPath(FOLDERID_RoamingAppData, KF_FLAG_DEFAULT, nullptr, &out)))
                         {
                             // No logging here.
-                            throw std::runtime_error("Error while getting roaming app data directory path.");
+                            throw runtime_error("Error while getting roaming app data directory path.");
                         }
-                        const std::unique_ptr<WCHAR, decltype(&CoTaskMemFree)> ptr(out, &CoTaskMemFree);
+                        const unique_ptr<WCHAR, decltype(&CoTaskMemFree)> ptr(out, &CoTaskMemFree);
                         return path(ptr.get()) / CONFIG_NAME;
 #endif /* CONFIG_PLATFORM_WINDOWS */
                     }

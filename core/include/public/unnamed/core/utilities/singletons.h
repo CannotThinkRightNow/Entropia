@@ -37,7 +37,7 @@ namespace CONFIG_NAMESPACE
         //       before deleted status.
 
         singleton<T>(const singleton<T>&) = delete;
-        virtual void operator=(const singleton<T>&) = delete;
+        void operator=(const singleton<T>&) = delete;
     };
 
     template<class T>
@@ -68,7 +68,7 @@ namespace CONFIG_NAMESPACE
         //       before deleted status.
 
         thread_local_singleton<T>(const thread_local_singleton<T>&) = delete;
-        virtual void operator=(const thread_local_singleton<T>&) = delete;
+        void operator=(const thread_local_singleton<T>&) = delete;
     };
 }
 
