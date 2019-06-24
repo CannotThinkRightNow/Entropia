@@ -31,7 +31,7 @@ namespace CONFIG_NAMESPACE
 
             namespace details
             {
-                typedef path(*executable_path_func_t)() /*noexcept*/;
+                typedef path(*executable_path_func_t)()/*noexcept*/;
 
                 void set_executable_path_func(executable_path_func_t func);
 
