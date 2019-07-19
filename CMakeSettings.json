@@ -514,7 +514,7 @@
     {
       "name": "Windows-x86-Debug",
       "description": "Debug application for Windows x86.",
-      "generator": "Ninja", // "Visual Studio 15 2017",
+      "generator": "Visual Studio 15 2017",
       "configurationType": "Debug",
       "intelliSenseMode": "windows-msvc-x86",
       "inheritEnvironments": [
@@ -522,14 +522,14 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017.cmake", // "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
     {
       "name": "Windows-x86-Release",
       "description": "Build application for Windows x86.",
-      "generator": "Ninja", // "Visual Studio 15 2017",
+      "generator": "Visual Studio 15 2017",
       "configurationType": "RelWithDebInfo",
       "intelliSenseMode": "windows-msvc-x86",
       "inheritEnvironments": [
@@ -537,7 +537,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017.cmake", // "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -552,7 +552,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017-win64.cmake", // -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -567,7 +567,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017.cmake", // -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/vs-15-2017-win64.cmake",
+      "cmakeCommandArgs": "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=${projectDir}/polly/ninja-vs-15-2017-win64.cmake",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }

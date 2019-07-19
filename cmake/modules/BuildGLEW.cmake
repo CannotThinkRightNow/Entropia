@@ -10,7 +10,7 @@ set(GLEW_DIR "${PROJECT_SOURCE_DIR}/glew")
 
 file(READ "${GLEW_DIR}/README.md" GLEW_TGZ_URL)
 set(PROJECT_TEMP_DIR "${PROJECT_BINARY_DIR}/tmp")
-set(GLEW_SNAPSHOTS_TGZ "${PROJECT_TEMP_DIR}/GLEW/snapshots.html")
+set(GLEW_SNAPSHOTS_TGZ "${PROJECT_TEMP_DIR}/glew/snapshots.html")
 file(DOWNLOAD "https://sourceforge.net/projects/glew/files/glew/snapshots/" ${GLEW_SNAPSHOTS_TGZ} TLS_VERIFY ON)
 file(READ ${GLEW_SNAPSHOTS_TGZ} GLEW_TGZ_SHA1)
 
