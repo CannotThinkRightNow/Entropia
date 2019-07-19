@@ -65,7 +65,7 @@ install:
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
 
   # Set default build config environment variable
-  - cmd: setx CMAKE_CONFIG_TYPE=%CONFIG%
+  - cmd: setx CMAKE_CONFIG_TYPE %CONFIG%
 
 build_script:
   - cmd: python %POLLY_SOURCE_DIR%\bin\build.py --home %cd% --toolchain %TOOLCHAIN% --config %CONFIG% --verbose --clear --install --test
