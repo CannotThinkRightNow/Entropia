@@ -3,7 +3,6 @@
 #include STR(CONFIG_NAMESPACE/core/logging.hpp)
 
 #ifdef CONFIG_PLATFORM_WINDOWS
-#include <Windows.h>
 #include <WinUser.h>
 #endif /* CONFIG_PLATFORM_WINDOWS */
 

@@ -5,12 +5,17 @@
 
 #include "config.h"
 
+#ifdef CONFIG_PLATFORM_WINDOWS
+#include <Windows.h> // Include before including <GLFW/glfw3.h>
+#endif /* CONFIG_PLATFORM_WINDOWS */
+
 #ifdef CONFIG_GL_GRAPHICS
 #ifdef CONFIG_PLATFORM_MACOS
 #include <OpenGL/glew.h>
 #else /* CONFIG_PLATFORM_MACOS */
 #include <GL/glew.h>
 #endif
+
 #include <GLFW/glfw3.h>
 
 #include STR(CONFIG_NAMESPACE/core/export.h)
