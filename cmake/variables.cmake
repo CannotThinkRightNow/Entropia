@@ -8,8 +8,7 @@ set(SECTION_SPLITTER "--------------------------------------------------")
 set(SECTION_FOOTER "==================================================")
 
 # Project arguments
-set(PROJECT_ARGS_VAR "PROJECT_ARGS")
-get_arguments(${PROJECT_ARGS_VAR} TRUE)
+get_arguments(PROJECT_ARGS TRUE)
 
 # Environment variables
 if (NOT DEFINED ENV{CI})
@@ -98,7 +97,7 @@ endif ()
 
 if (ENV{CI})
   set(CMAKE_BUILD_TYPE $ENV{CONFIG})
-  list(APPEND ${PROJECT_ARGS_VAR} "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}")
+  list(APPEND PROJECT_ARGS "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}")
 endif ()
 
 # Boost
