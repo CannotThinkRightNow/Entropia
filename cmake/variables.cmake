@@ -7,6 +7,9 @@ set(SECTION_HEADER "==================================================")
 set(SECTION_SPLITTER "--------------------------------------------------")
 set(SECTION_FOOTER "==================================================")
 
+# Project arguments
+get_arguments(PROJECT_ARGS TRUE)
+
 # Environment variables
 if (NOT DEFINED ENV{CI})
   set(ENV{CI} FALSE)
@@ -90,6 +93,11 @@ if (WINDOWS)
 else ()
   set(CMAKE_FIND_LIBRARY_PREFIXES "lib")
   set(CMAKE_FIND_LIBRARY_SUFFIXES ".so" ".a")
+endif ()
+
+if ($ENV{CI})
+  set(CMAKE_BUILD_TYPE $ENV{CONFIG})
+  list(APPEND PROJECT_ARGS "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}")
 endif ()
 
 # Boost

@@ -24,16 +24,16 @@ environment:
     ####################
     # Windows
     ####################
-    - TOOLCHAIN: "vs-15-2017"
+    - TOOLCHAIN: vs-15-2017
       CONFIG: Debug
 
-    - TOOLCHAIN: "vs-15-2017"
+    - TOOLCHAIN: vs-15-2017
       CONFIG: Release
 
-    - TOOLCHAIN: "vs-15-2017-win64"
+    - TOOLCHAIN: vs-15-2017-win64
       CONFIG: Debug
 
-    - TOOLCHAIN: "vs-15-2017-win64"
+    - TOOLCHAIN: vs-15-2017-win64
       CONFIG: Release
 
 install:

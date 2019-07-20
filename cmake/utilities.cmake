@@ -2,6 +2,17 @@
 # Utilities
 ##################################################
 
+function (eval out in)
+  string(REGEX MATCHALL "\${.+}" vars ${in})
+  set(${out} ${in})
+  foreach (var ${vars})
+    string(REPLACE "\${" "" var_name ${var})
+    string(REPLACE "}" "" var_name ${var})
+    string(REPLACE "${var}" "${${var_name}}" ${out} ${${out}})
+  endforeach (${var})
+  set(${out} ${${out}} PARENT_SCOPE)
+endfunction ()
+
 # Must be included before the first call to project().
 # From: https://stackoverflow.com/a/48555098/9341868
 function (get_arguments output_var log)
