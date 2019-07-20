@@ -26,19 +26,15 @@ environment:
     ####################
     - TOOLCHAIN: vs-15-2017
       CONFIG: Debug
-      CMAKE_CONFIG_TYPE: Debug
 
     - TOOLCHAIN: vs-15-2017
       CONFIG: Release
-      CMAKE_CONFIG_TYPE: Release
 
     - TOOLCHAIN: vs-15-2017-win64
       CONFIG: Debug
-      CMAKE_CONFIG_TYPE: Debug
 
     - TOOLCHAIN: vs-15-2017-win64
       CONFIG: Release
-      CMAKE_CONFIG_TYPE: Release
 
 install:
   # Python 3

@@ -92,6 +92,10 @@ else ()
   set(CMAKE_FIND_LIBRARY_SUFFIXES ".so" ".a")
 endif ()
 
+if (ENV{CI})
+  set(CMAKE_BUILD_TYPE $ENV{CONFIG})
+endif ()
+
 # Boost
 set(Boost_MINIMUM_MINOR_VERSION 44)
 set(Boost_MINIMUM_VERSION "1.${Boost_MINIMUM_MINOR_VERSION}.0")
