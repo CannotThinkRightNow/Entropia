@@ -24,7 +24,8 @@ set(EXTERNALPROJECT_BUILD_BUILD_ARGS --config "${CMAKE_BUILD_TYPE}")
 set(EXTERNALPROJECT_BUILD_ARGS ${EXTERNALPROJECT_BUILD_NAME}_project GIT_REPOSITORY "https://github.com/gabime/spdlog.git"
                                                                      GIT_TAG "origin/${spdlog_DEFAULT_BRANCH}"
                                                                      PREFIX "${EXTERNALPROJECT_BUILD_PREFIX}"
-                                                                     CMAKE_ARGS --config "${CMAKE_BUILD_TYPE}" -G "${CMAKE_GENERATOR}" ${PROJECT_ARGS} "-DCMAKE_INSTALL_PREFIX:PATH=${CONTRIB_DIR}" "-Dspdlog_BUILD_EXAMPLES:BOOL=${spdlog_BUILD_EXAMPLES}" "-Dspdlog_BUILD_BENCH:BOOL=${spdlog_BUILD_BENCH}" "-Dspdlog_BUILD_TESTS:BOOL=${spdlog_BUILD_TESTS}" "-Dspdlog_BUILD_HO_TESTS:BOOL=${spdlog_BUILD_HO_TESTS}" "-Dspdlog_SANITIZE_ADDRESS:BOOL=${spdlog_SANITIZE_ADDRESS}" "-Dspdlog_INSTALL:BOOL=${spdlog_INSTALL}" "-Dspdlog_FMT_EXTERNAL:BOOL=${spdlog_FMT_EXTERNAL}"
+                                                                     INSTALL_DIR "${CONTRIB_DIR}"
+                                                                     CMAKE_ARGS --config "${CMAKE_BUILD_TYPE}" -G "${CMAKE_GENERATOR}" ${PROJECT_ARGS} "-DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>" "-Dspdlog_BUILD_EXAMPLES:BOOL=${spdlog_BUILD_EXAMPLES}" "-Dspdlog_BUILD_BENCH:BOOL=${spdlog_BUILD_BENCH}" "-Dspdlog_BUILD_TESTS:BOOL=${spdlog_BUILD_TESTS}" "-Dspdlog_BUILD_HO_TESTS:BOOL=${spdlog_BUILD_HO_TESTS}" "-Dspdlog_SANITIZE_ADDRESS:BOOL=${spdlog_SANITIZE_ADDRESS}" "-Dspdlog_INSTALL:BOOL=${spdlog_INSTALL}" "-Dspdlog_FMT_EXTERNAL:BOOL=${spdlog_FMT_EXTERNAL}"
                                                                      GIT_SHALLOW TRUE
                                                                      GIT_PROGRESS TRUE)
 include("${PROJECT_SOURCE_DIR}/cmake/ExternalProject_Build/invoke.cmake")
