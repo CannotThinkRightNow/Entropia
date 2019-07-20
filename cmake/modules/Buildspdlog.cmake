@@ -25,4 +25,5 @@ set(EXTERNALPROJECT_BUILD_ARGS ${EXTERNALPROJECT_BUILD_NAME}_project GIT_REPOSIT
                                                                      CMAKE_ARGS -G "${CMAKE_GENERATOR}" ${PROJECT_ARGS} "-DCMAKE_INSTALL_PREFIX:PATH=${CONTRIB_DIR}" "-Dspdlog_BUILD_EXAMPLES:BOOL=${spdlog_BUILD_EXAMPLES}" "-Dspdlog_BUILD_BENCH:BOOL=${spdlog_BUILD_BENCH}" "-Dspdlog_BUILD_TESTS:BOOL=${spdlog_BUILD_TESTS}" "-Dspdlog_BUILD_HO_TESTS:BOOL=${spdlog_BUILD_HO_TESTS}" "-Dspdlog_SANITIZE_ADDRESS:BOOL=${spdlog_SANITIZE_ADDRESS}" "-Dspdlog_INSTALL:BOOL=${spdlog_INSTALL}" "-Dspdlog_FMT_EXTERNAL:BOOL=${spdlog_FMT_EXTERNAL}"
                                                                      GIT_SHALLOW TRUE
                                                                      GIT_PROGRESS TRUE)
+set(EXTERNALPROJECT_BUILD_NO_DEV TRUE)
 include("${PROJECT_SOURCE_DIR}/cmake/ExternalProject_Build/invoke.cmake")
