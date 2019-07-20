@@ -30,5 +30,5 @@ set(EXTERNALPROJECT_BUILD_ARGS ${EXTERNALPROJECT_BUILD_NAME}_project URL ${GLEW_
                                                                      SOURCE_SUBDIR "build/cmake"
                                                                      PREFIX "${EXTERNALPROJECT_BUILD_PREFIX}"
                                                                      CMAKE_ARGS -G "${CMAKE_GENERATOR}" ${PROJECT_ARGS} "-DCMAKE_INSTALL_PREFIX:PATH=${CONTRIB_DIR}" "-DBUILD_UTILS:BOOL=${BUILD_UTILS}" "-DGLEW_REGAL:BOOL=${GLEW_REGAL}" "-DGLEW_OSMESA:BOOL=${GLEW_OSMESA}"
-                                                                     BUILD_COMMAND ${CMAKE_COMMAND} --build "${EXTERNALPROJECT_BUILD_PREFIX}" --config "${CMAKE_BUILD_TYPE}")
+                                                                     BUILD_COMMAND ${CMAKE_COMMAND} --build "${EXTERNALPROJECT_BUILD_PREFIX}/src/${EXTERNALPROJECT_BUILD_NAME}_project-build" --config "${CMAKE_BUILD_TYPE}")
 include("${PROJECT_SOURCE_DIR}/cmake/ExternalProject_Build/invoke.cmake")
