@@ -5,10 +5,11 @@
 # Policies
 cmake_minimum_required(VERSION 3.12)
 
-# Project
+# Project arguments
 include("cmake/utilities.cmake")
-include("cmake/variables.cmake")
+get_arguments(PROJECT_ARGS TRUE)
 
+# Project
 project("unnamed" VERSION "0.0.1.0"
                   DESCRIPTION "No description given."
                   HOMEPAGE_URL "https://etaoinshrdlcumwfgypbvkjxqz.github.io/unnamed/"
@@ -16,6 +17,7 @@ project("unnamed" VERSION "0.0.1.0"
 set(PROJECT_VERSION_STRING "0.0.1.0-v1-alpha")
 set(PROJECT_NAMESPACE "unnamed")
 
+include("cmake/variables.cmake")
 include("cmake/options.cmake")
 include(GNUInstallDirs)
 include(ExternalProject)
