@@ -19,7 +19,8 @@ string(REPLACE "\"" "" GLFW_DEFAULT_BRANCH ${GLFW_DEFAULT_BRANCH})
 
 set(EXTERNALPROJECT_BUILD_NAME "glfw")
 set(EXTERNALPROJECT_BUILD_PREFIX "${PROJECT_BINARY_DIR}/external/${EXTERNALPROJECT_BUILD_NAME}")
-set(EXTERNALPROJECT_BUILD_CONFIG_ARGS "-Wno-dev -Wno-error=dev -Wno-error=deprecated")
+set(EXTERNALPROJECT_BUILD_CONFIG_ARGS -Wno-dev -Wno-error=dev -Wno-error=deprecated)
+set(EXTERNALPROJECT_BUILD_BUILD_ARGS --config "${CMAKE_BUILD_TYPE}")
 set(EXTERNALPROJECT_BUILD_ARGS ${EXTERNALPROJECT_BUILD_NAME}_project GIT_REPOSITORY "https://github.com/glfw/glfw.git"
                                                                      GIT_TAG "origin/${GLFW_DEFAULT_BRANCH}"
                                                                      PREFIX "${EXTERNALPROJECT_BUILD_PREFIX}"
