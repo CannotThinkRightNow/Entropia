@@ -21,11 +21,11 @@ elseif (IOS) # Metal
 elseif (UNIX OR MACOS OR WINDOWS) # OpenGL
    # GLEW
   include(BuildGLEW)
-  find_package(glew REQUIRED CONFIG PATHS "${CONTRIB_DIR}/lib" NO_DEFAULT_PATH)
+  find_package(glew REQUIRED CONFIG)
   message(STATUS "${SECTION_SPLITTER}")
   # GLFW
   include(BuildGLFW)
-  find_package(glfw3 REQUIRED CONFIG PATHS "${CONTRIB_DIR}/lib" NO_DEFAULT_PATH)
+  find_package(glfw3 REQUIRED CONFIG)
   set(GRAPHICS_LIBRARY "GL")
 else () # Unknown
   message(FATAL_ERROR "Graphics library unknown.")
@@ -33,11 +33,11 @@ endif ()
 message(STATUS "${SECTION_SPLITTER}")
 # spdlog
 include(Buildspdlog)
-find_package(spdlog REQUIRED CONFIG PATHS "${CONTRIB_DIR}/lib" NO_DEFAULT_PATH)
+find_package(spdlog REQUIRED CONFIG)
 message(STATUS "${SECTION_SPLITTER}")
 # OpenGL Mathematics
 include(BuildGLM)
-find_package(glm REQUIRED CONFIG PATHS "${CONTRIB_DIR}/lib" NO_DEFAULT_PATH)
+find_package(glm REQUIRED CONFIG)
 message(STATUS "${SECTION_FOOTER}")
 
 # File manipulation
