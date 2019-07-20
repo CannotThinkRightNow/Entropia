@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.12)
 
 # Project
 include("cmake/utilities.cmake")
-get_arguments(PROJECT_ARGS TRUE)
+include("cmake/variables.cmake")
 
 project("unnamed" VERSION "0.0.1.0"
                   DESCRIPTION "No description given."
@@ -16,7 +16,6 @@ project("unnamed" VERSION "0.0.1.0"
 set(PROJECT_VERSION_STRING "0.0.1.0-v1-alpha")
 set(PROJECT_NAMESPACE "unnamed")
 
-include("cmake/variables.cmake")
 include("cmake/options.cmake")
 include(GNUInstallDirs)
 include(ExternalProject)
