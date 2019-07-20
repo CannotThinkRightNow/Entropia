@@ -95,8 +95,7 @@ else ()
   set(CMAKE_FIND_LIBRARY_SUFFIXES ".so" ".a")
 endif ()
 
-if ("$ENV{CI}" STREQUAL "true" # Travis CI, AppVeyor (Ubuntu)
-    OR "$ENV{CI}" STREQUAL "True") # AppVeyor
+if ($ENV{CI})
   set(CMAKE_BUILD_TYPE $ENV{CONFIG})
   list(APPEND PROJECT_ARGS "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}")
 endif ()
