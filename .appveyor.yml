@@ -24,17 +24,21 @@ environment:
     ####################
     # Windows
     ####################
-    - TOOLCHAIN: "vs-15-2017"
+    - TOOLCHAIN: vs-15-2017
       CONFIG: Debug
+      CMAKE_CONFIG_TYPE: Debug
 
-    - TOOLCHAIN: "vs-15-2017"
+    - TOOLCHAIN: vs-15-2017
       CONFIG: Release
+      CMAKE_CONFIG_TYPE: Release
 
-    - TOOLCHAIN: "vs-15-2017-win64"
+    - TOOLCHAIN: vs-15-2017-win64
       CONFIG: Debug
+      CMAKE_CONFIG_TYPE: Debug
 
-    - TOOLCHAIN: "vs-15-2017-win64"
+    - TOOLCHAIN: vs-15-2017-win64
       CONFIG: Release
+      CMAKE_CONFIG_TYPE: Release
 
 install:
   # Python 3
@@ -63,9 +67,6 @@ install:
 
   # MSYS2 location
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
-
-  # Set default build config environment variable
-  - cmd: setx CMAKE_CONFIG_TYPE %CONFIG%
 
 build_script:
   - cmd: python %POLLY_SOURCE_DIR%\bin\build.py --home %cd% --toolchain %TOOLCHAIN% --config %CONFIG% --verbose --clear --install --test
