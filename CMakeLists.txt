@@ -4,7 +4,6 @@
 
 # Policies
 cmake_minimum_required(VERSION 3.12)
-message(FATAL_ERROR "$ENV{CONFIG}")
 
 # Project
 include("cmake/utilities.cmake")
