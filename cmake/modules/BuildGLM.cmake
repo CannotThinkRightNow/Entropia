@@ -8,9 +8,9 @@ message(STATUS "Building GLM...")
 
 set(PROJECT_TEMP_DIR "${PROJECT_BINARY_DIR}/tmp")
 
-set(GLM_REPO_API "${PROJECT_TEMP_DIR}/glm/repo.json")
-file(DOWNLOAD "https://api.github.com/repos/g-truc/glm" ${GLM_REPO_API} TLS_VERIFY ON)
-file(READ ${GLM_REPO_API} GLM_DEFAULT_BRANCH)
+set(GLM_REPO_JSON "${PROJECT_TEMP_DIR}/glm/repo.json")
+file(DOWNLOAD "https://api.github.com/repos/g-truc/glm" ${GLM_REPO_JSON} TLS_VERIFY ON)
+file(READ ${GLM_REPO_JSON} GLM_DEFAULT_BRANCH)
 
 string(REGEX MATCH "\"default_branch\": \"(.[^\"])+\"" GLM_DEFAULT_BRANCH ${GLM_DEFAULT_BRANCH})
 string(REGEX MATCH " \".+\"" GLM_DEFAULT_BRANCH ${GLM_DEFAULT_BRANCH})
