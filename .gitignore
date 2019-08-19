@@ -405,3 +405,6 @@ glew/
 glfw/
 polly/
 spdlog/
+
+# Library directory
+lib/
