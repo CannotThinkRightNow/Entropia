@@ -9,10 +9,7 @@ message(STATUS "Building GLM...")
 set(PROJECT_TEMP_DIR "${PROJECT_BINARY_DIR}/tmp")
 
 set(GLM_REPO_JSON "${PROJECT_TEMP_DIR}/glm/repo.json")
-if ($ENV{GITHUB_PERSONAL_READONLY_TOKEN})
-  set(GLM_GITHUB_API_HTTPHEADER "${GLM_GITHUB_API_HTTPHEADER}\nAuthorization: token $ENV{GITHUB_PERSONAL_READONLY_TOKEN}")
-endif ()
-file(DOWNLOAD "https://api.github.com/repos/g-truc/glm" ${GLM_REPO_JSON} TLS_VERIFY ON HTTPHEADER "${GLM_GITHUB_API_HTTPHEADER}")
+file(DOWNLOAD "https://api.github.com/repos/g-truc/glm" ${GLM_REPO_JSON} TLS_VERIFY ON USERPWD "${GITHUB_API_USERPWD}")
 file(READ ${GLM_REPO_JSON} GLM_DEFAULT_BRANCH)
 
 string(REGEX MATCH "\"default_branch\": \"(.[^\"])+\"" GLM_DEFAULT_BRANCH ${GLM_DEFAULT_BRANCH})

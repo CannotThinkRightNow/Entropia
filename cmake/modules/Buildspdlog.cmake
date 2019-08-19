@@ -9,10 +9,7 @@ message(STATUS "Building spdlog...")
 set(PROJECT_TEMP_DIR "${PROJECT_BINARY_DIR}/tmp")
 
 set(spdlog_REPO_JSON "${PROJECT_TEMP_DIR}/spdlog/repo.json")
-if ($ENV{GITHUB_PERSONAL_READONLY_TOKEN})
-  set(spdlog_GITHUB_API_HTTPHEADER "${spdlog_GITHUB_API_HTTPHEADER}\nAuthorization: token $ENV{GITHUB_PERSONAL_READONLY_TOKEN}")
-endif ()
-file(DOWNLOAD "https://api.github.com/repos/gabime/spdlog" ${spdlog_REPO_JSON} TLS_VERIFY ON HTTPHEADER "${spdlog_GITHUB_API_HTTPHEADER}")
+file(DOWNLOAD "https://api.github.com/repos/gabime/spdlog" ${spdlog_REPO_JSON} TLS_VERIFY ON USERPWD "${GITHUB_API_USERPWD}")
 file(READ ${spdlog_REPO_JSON} spdlog_DEFAULT_BRANCH)
 
 string(REGEX MATCH "\"default_branch\": \"(.[^\"])+\"" spdlog_DEFAULT_BRANCH ${spdlog_DEFAULT_BRANCH})
