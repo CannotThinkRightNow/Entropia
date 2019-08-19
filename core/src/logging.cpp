@@ -61,7 +61,7 @@ namespace CONFIG_NAMESPACE
             return loggers[name];
         }
 
-        void println() { unformatted->log(unformatted->default_level(), ""); }
+        void println() { unformatted->log(unformatted->level(), ""); }
 
         void print_args(const string name, const int argc, const char *argv[])
         {
