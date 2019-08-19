@@ -9,8 +9,10 @@ message(STATUS "Building GLFW...")
 set(PROJECT_TEMP_DIR "${PROJECT_BINARY_DIR}/tmp")
 
 set(GLFW_REPO_JSON "${PROJECT_TEMP_DIR}/glfw/repo.json")
-file(DOWNLOAD "https://api.github.com/repos/glfw/glfw" ${GLFW_REPO_JSON})
+file(DOWNLOAD "https://api.github.com/repos/glfw/glfw" ${GLFW_REPO_JSON} TLS_VERIFY ON SHOW_PROGRESS)
 file(READ ${GLFW_REPO_JSON} GLFW_DEFAULT_BRANCH)
+message(STATUS "${GLFW_REPO_JSON}")
+message(FATAL_ERROR "${GLFW_DEFAULT_BRANCH}")
 
 string(REGEX MATCH "\"default_branch\": \"(.[^\"])+\"" GLFW_DEFAULT_BRANCH ${GLFW_DEFAULT_BRANCH})
 string(REGEX MATCH " \".+\"" GLFW_DEFAULT_BRANCH ${GLFW_DEFAULT_BRANCH})
