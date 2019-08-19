@@ -400,6 +400,6 @@ ASALocalRun/
 ####################
 # Custom definitions.
 
-# Library dir
+# Library directory
 lib/*
 !lib/.gitkeep
